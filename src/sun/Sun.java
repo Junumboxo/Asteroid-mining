@@ -1,4 +1,4 @@
-package sunstorm;
+package sun;
 import java.util.*;
 
 import neighbour.*;
