@@ -1,3 +1,5 @@
+package resource;
+import neighbour.*;
 
 public class Water extends Resource{
 
