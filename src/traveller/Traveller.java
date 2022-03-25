@@ -4,16 +4,14 @@ import java.util.*;
 import neighbour.*;
 
 
+
 public class traveller {
 	private Asteroid currentasteroid;
-	boolean isalive=true;
+	protected Game game;
+	
 	public void drill() {
-		if (currentasteroid.depth==0) {
-			System.out.print("asteroid already drilled");
-		}
-		else {
-			this.currentasteroid.decreaseDepth();
-		}
+		this.currentAsteroid.decreaseDepth();
+		
 	}
 	public boolean hide(Asteroid a) {
 		if (currentasteroid.isHollow==true) {
@@ -23,19 +21,17 @@ public class traveller {
 		return(false);
 	}
 	public void die() {
-		this.isalive=false;
-	}
-	public void setAsteroid(Asteroid a) {
-		this.currentasteroid=a;
 		
-	}
-	public Asteroid getAsteroid() {
-		return (this.currentasteroid);
 	}
 	public void teleport(Gate g) {
-		
+	
+	}
+	public void setasteroid(Asteroid a) {
+		this.currentAsteroid=a;
 		
 	}
-
+	public Asteroid getasteroid() {
+		return (this.currentAsteroid);
+	}
 
 }

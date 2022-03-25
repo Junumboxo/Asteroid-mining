@@ -3,8 +3,14 @@ import neighbour.*;
 
 
 public class Resource {
-public void exposed(Asteroid a)
-{
 	
-}
+	protected String type;
+	
+	public void exposed(Asteroid a)
+	{}
+	
+	public String getType()
+	{
+		return type;
+	}
 }
