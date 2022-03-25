@@ -2,9 +2,11 @@ package traveller;
 
 import java.util.*;
 import neighbour.*;
+
+
 public class traveller {
-	private asteroid currentasteroid;
-	boolean isalive;
+	private Asteroid currentasteroid;
+	boolean isalive=true;
 	public void drill() {
 		if (currentasteroid.depth==0) {
 			System.out.print("asteroid already drilled");
@@ -13,7 +15,7 @@ public class traveller {
 			this.currentasteroid.decreaseDepth();
 		}
 	}
-	public boolean hide(asteroid a) {
+	public boolean hide(Asteroid a) {
 		if (currentasteroid.isHollow==true) {
 			this.currentasteroid.setHollow(false);
 			return(true);
@@ -23,14 +25,14 @@ public class traveller {
 	public void die() {
 		this.isalive=false;
 	}
-	public void setasteroid(asteroid a) {
+	public void setAsteroid(Asteroid a) {
 		this.currentasteroid=a;
 		
 	}
-	public asteroid getasteroid() {
+	public Asteroid getAsteroid() {
 		return (this.currentasteroid);
 	}
-	public void teleport(gate g) {
+	public void teleport(Gate g) {
 		
 		
 	}
