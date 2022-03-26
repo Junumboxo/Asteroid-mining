@@ -27,7 +27,8 @@ public class Settler extends Traveller{
     public void removeResource(Resource r){
         
     }
-    public void pickUpResource(){
+    public void pickUpResource()         //picking the resource
+    {
         Resource res = currentAsteroid.getResource();
         if (resourcesOnBoardSize==10){
             System.out.print("settler is full");
