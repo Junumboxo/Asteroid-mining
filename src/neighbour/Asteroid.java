@@ -7,14 +7,14 @@ import traveller.*;
 public class Asteroid implements INeighbour{
 
 	private boolean isPerihelion;
-	private boolean isHollow;
+	private boolean isHollow; //Requirement R08
 	private int depth;
 	private List<Traveller> travellers;
-	private List<INeighbour> neighbours;
-	private Resource resource;
+	private List<INeighbour> neighbours; //Requirement R16
+	private Resource resource; //Requirement R08,09
 	
 	
-	public void setPerihelion(boolean b)    //Sets the location of the prehelion
+	public void setPerihelion(boolean b)    //Sets the location of the perihelion
 	{
 		isPerihelion = b;
 		if (b)
@@ -51,7 +51,7 @@ public class Asteroid implements INeighbour{
 		s.pickUpResource();
 	}
 	
-	public void addResource(Resource r)  //Ensures that a dropped resouce by the settler is kept in the asteroid.
+	public void addResource(Resource r)  //Ensures that a dropped resource by the settler is kept in the asteroid.
 	{
 		resource = r;
 	}
@@ -68,7 +68,7 @@ public class Asteroid implements INeighbour{
 	}
 	
 	
-	public void underStorm()  //Provides functionalities for hiding of player under the sunstorm, also repsonsible for its behaviour under the sunstorm.
+	public void underStorm()  //Provides functionalities for hiding of player under the sunstorm, also responsible for its behavior under the sunstorm.
 	{
 		for (Traveller t: travellers)
 		{
