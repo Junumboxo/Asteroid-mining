@@ -103,4 +103,9 @@ public class Asteroid implements INeighbour{
 	{
 		neighbours.remove(n);
 	}
+	
+	public INeighbour getNeighbour(int i)
+	{
+		return neighbours.get(i);
+	}
 }

@@ -29,9 +29,11 @@ public class Gate implements INeighbour{
 	
 	public void underUse(Traveller t)
 	{
-		neighbouringAsteroid.removeTraveller(t);
-		Asteroid a2 = (Asteroid) pair.getNeighbour();
-		a2.placeTraveller(t);
+		if (active) {
+			neighbouringAsteroid.removeTraveller(t);
+			Asteroid a2 = (Asteroid) pair.getNeighbour();
+			a2.placeTraveller(t);
+		}
 	}
 	
 	@Override
