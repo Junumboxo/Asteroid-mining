@@ -54,19 +54,14 @@ public class Game {
 		listOfAsteroids.add(A);
 		sun = new Sun();
 		sun.addAsteroids(listOfAsteroids);
-		System.out.println("addAsteroids()");
 
 		//adding resources to the asteroids
 		Resource r = new Resource();
 		A.addResource(r);
-		System.out.println("addResource()");
 
 		//setting asteroids on the playing field and adding settlers on asteroids
 		Settler s = new Settler(); // do the extend of settler from traveler!
-		s.setasteroid(A);
-		System.out.println("setAsteroid(A)");
 		A.placeTraveller(s);
-		System.out.println("addTraveller(s)");
 	}
 
 	//Requirement R58
