@@ -17,11 +17,11 @@ public class Traveller {
 	public void teleport(Gate g) {
 		g.underUse(this);
 	}
-	public void setasteroid(Asteroid a) {
+	public void setAsteroid(Asteroid a) {
 		this.currentAsteroid=a;
 		
 	}
-	public Asteroid getasteroid() {
+	public Asteroid getAsteroid() {
 		return (this.currentAsteroid);
 	}
 	public void underExplosion(){}
