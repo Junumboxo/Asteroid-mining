@@ -1,9 +1,6 @@
 package traveller;
-
 import java.util.*;
 import neighbour.*;
-
-
 
 public class traveller {
 	private Asteroid currentasteroid;
@@ -20,9 +17,6 @@ public class traveller {
 		}
 		return(false);
 	}
-	public void die() {
-		
-	}
 	public void teleport(Gate g) {
 	
 	}
@@ -33,5 +27,7 @@ public class traveller {
 	public Asteroid getasteroid() {
 		return (this.currentAsteroid);
 	}
+	public void underexplosion(){}
+	public void die() {}
 
 }
