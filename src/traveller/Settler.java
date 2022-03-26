@@ -2,52 +2,187 @@ package traveller;
 
 import java.util.*;
 import neighbour.*;
-import resource.*;
-
-public class Settler extends Traveller{
-    Resource[] resourcesOnBoard = new Resource[10];
-    Gate[] gatesOnBoard = new Gate[2];
-    int resourcesOnBoardSize = 0;
-    
-    public void travel(Asteroid a){
+public class Settler {
+    Resource[ ] resourceonboard = new Resource[10];
+    int resourceonboardsize=0;
+    gate g1=null;
+    gate g2=null;
+        public void travel(Asteroid a){
+        Random rand = new Random();
+        int i = rand.nextInt(5);
+        Asteorid a= getNeighbour( i);
+        currentAsteroid.removeTraveller(Traveller t);
+        currentasteroid=a;
+        currentAsteroid.placeTraveller(Traveller t);
+    }
+    //mine method
+        public void mine(){
+             Resource res =super.currentasteroid.getResource();
+            if (resourceonboardsize==10){
+                System.out.print("settler is full");
+            }
+            else{
+                resourceonboard[resourceonboardsize]=res;
+                resourceonboardsize++;
+                super.currentasteroid.removeResource();
+            }
+    }
+    //createRobot method
+        public void createRobot(){
+            int nbiron=0;int nbcarbon=0;int nburanieum=0;
+            boolean check=false;
+            for(int i=0;i<resourceonboardsize;i++){
+                if resourceonboard[i].type.equals("Iron"){
+                nbiron++;}
+                else if resourceonboard[i].type.equals("carbon"){
+                nbcarbon++;}
+                else if resourceonboard[i].type.equals("uranium"){
+                nburanieum++;}
+            }
+            if((nbcarbon>1)&&(nbiron>1)&&(nburanieum>1)){
+                super.game.addRobot(new Robot(super.currentAsteroid,super.game));
+                for(int i=0;i<resourceonboardsize;i++){
+                 check=false;
+                 if resourceonboard[i].type.equals("Iron"){
+                 for(int y=i;y<resourceonboardsize-1;y++){
+                 resourceonboard[y]=resourceonboard[y+1];
+                 }
+                 resourceonboard[resourceonboardsize-1]=null;
+                 resourceonboardsize--;
+                }
+                if (check=true)break;
+                }
+                for(int i=0;i<resourceonboardsize;i++){
+                  check=false;
+                 if resourceonboard[i].type.equals("carbon"){
+                 for(int y=i;y<resourceonboardsize-1;y++){
+                 resourceonboard[y]=resourceonboard[y+1];
+                 }
+                 resourceonboard[resourceonboardsize-1]=null;
+                 resourceonboardsize--;
+                }
+                if (check=true)break;
+                }
+                for(int i=0;i<resourceonboardsize;i++){
+                 check=false;
+                 if resourceonboard[i].type.equals("uranium"){
+                 for(int y=i;y<resourceonboardsize-1;y++){
+                 resourceonboard[y]=resourceonboard[y+1];
+                 }
+                 resourceonboard[resourceonboardsize-1]=null;
+                 resourceonboardsize--;
+                }
+                if (check=true)break;
+                }
+            }
         
     }
-    public void mine(){
-        
-    }
-    public void createRobot(){
-        
-    }
-    public void createGate(){
-        
-    }
-    public void deployGate(Gate g){
-        
-    }
-    public void removeResource(Resource r){
-        
-    }
-    public void pickUpResource()         //picking the resource
-    {
-        Resource res = currentAsteroid.getResource();
-        if (resourcesOnBoardSize==10){
-            System.out.print("settler is full");
+    //creatGate method
+        public void creatGate(){
+            int nbiron=0;int nbwater=0;int nburanieum=0;
+            boolean check=false;
+            for(int i=0;i<resourceonboardsize;i++){
+                if resourceonboard[i].type.equals("Iron"){
+                nbiron++;}
+                else if resourceonboard[i].type.equals("water"){
+                nbcarbon++;}
+                else if resourceonboard[i].type.equals("uranium"){
+                nburanieum++;}
+            }
+            if((nbwater>1)&&(nbiron>2)&&(nburanieum>1)){
+                this.g1=new Gate();
+                this.g2=new Gate();
+                this.g1.setPair(g2);
+                this.g2.setPair(g1);
+               for(int w=0;w<2;w++){
+                for(int i=0;i<resourceonboardsize;i++){
+                 check=false;
+                 if resourceonboard[i].type.equals("Iron"){
+                 for(int y=i;y<resourceonboardsize-1;y++){
+                 resourceonboard[y]=resourceonboard[y+1];
+                 }
+                 resourceonboard[resourceonboardsize-1]=null;
+                 resourceonboardsize--;
+                }
+                if (check=true)break;
+                }}
+                for(int i=0;i<resourceonboardsize;i++){
+                  check=false;
+                 if resourceonboard[i].type.equals("water"){
+                 for(int y=i;y<resourceonboardsize-1;y++){
+                 resourceonboard[y]=resourceonboard[y+1];
+                 }
+                 resourceonboard[resourceonboardsize-1]=null;
+                 resourceonboardsize--;
+                }
+                if (check=true)break;
+                }
+                for(int i=0;i<resourceonboardsize;i++){
+                 check=false;
+                 if resourceonboard[i].type.equals("uranium"){
+                 for(int y=i;y<resourceonboardsize-1;y++){
+                 resourceonboard[y]=resourceonboard[y+1];
+                 }
+                 resourceonboard[resourceonboardsize-1]=null;
+                 resourceonboardsize--;
+                }
+                if (check=true)break;
+                }
         }
-        else{
-            resourcesOnBoard[resourcesOnBoardSize]=res;
-            resourcesOnBoardSize++;
-            currentAsteroid.removeResource();
-        }
+    //deployGate method
+        public void deployGate(Gate g){
+            g.addNeighbour(super.currentAsteroid)
+            Asteroid a=g.getPair().getNeighbour();
+            if(a){g.setActive(true);g.getPair().setActive(true);}
 
     }
-    public Resource[] getResources(){
-         return(resourcesOnBoard);
+    //removeResource method
+        public void removeResource(Resource r){
+            if( super.currentAsteroid.isHollow){
+            boolean check=false;
+            for(int i=0;i<resourceonboardsize;i++){
+                 if resourceonboard[i].type.equals(r.type){
+                 for(int y=i;y<resourceonboardsize-1;y++){
+                 resourceonboard[y]=resourceonboard[y+1];
+                 }
+                 resourceonboard[resourceonboardsize-1]=null;
+                 resourceonboardsize--;
+                }
+                if (check=true)break;
+                }
+             super.currentAsteroid.addResource(r); }
+    }
+    //pickUpResource method
+        public void pickUpResource(){
+            Resource res =super.currentasteroid.getResource();
+            if (resourceonboardsize==10){
+                System.out.print("settler is full");
+            }
+            else{
+                resourceonboard[resourceonboardsize]=res;
+                resourceonboardsize++;
+                super.currentasteroid.removeResource();
+            }
+
         
     }
+    //getResource method
+        public Resource[] getResource(){
+            return(resourceonboard);
+        
+    }
+    //settler dies
+    @Override
      public void die(){
-    	 resourcesOnBoard=null;
-         resourcesOnBoardSize=0;
-         game.removeSettler(this);
+         resourceonboard=null;
+         resourceonboardsize=0;
+         super.game.removeSettler(this);
+        
+    }
+    //for when asteroid explode
+    @Override
+    public void underexplosion(){
+        this.die();
     }
 
 }
