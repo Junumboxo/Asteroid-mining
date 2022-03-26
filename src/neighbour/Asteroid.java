@@ -48,12 +48,17 @@ public class Asteroid implements INeighbour{
 	
 	public void extract(Settler s)
 	{
-		s.pickUpResource(resource);
+		s.pickUpResource();
 	}
 	
 	public void addResource(Resource r)
 	{
 		resource = r;
+	}
+	
+	public Resource getResource()
+	{
+		return resource;
 	}
 	
 	public void removeResource()

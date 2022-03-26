@@ -7,7 +7,7 @@ import resource.*;
 public class Settler extends Traveller{
     Resource[] resourcesOnBoard = new Resource[10];
     Gate[] gatesOnBoard = new Gate[2];
-    int resourcesOnboardsize=0;
+    int resourcesOnBoardSize = 0;
     
     public void travel(Asteroid a){
         
@@ -29,24 +29,23 @@ public class Settler extends Traveller{
     }
     public void pickUpResource(){
         Resource res = currentAsteroid.getResource();
-        if (resourceonboardsize==10){
+        if (resourcesOnBoardSize==10){
             System.out.print("settler is full");
         }
         else{
-            resourceOnBoard[resourceonboardsize]=res;
-            resourceonboardsize++;
+            resourcesOnBoard[resourcesOnBoardSize]=res;
+            resourcesOnBoardSize++;
             currentAsteroid.removeResource();
         }
 
-    
     }
     public Resource[] getResources(){
          return(resourcesOnBoard);
         
     }
      public void die(){
-         resourceonboard=null;
-         resourceonboardsize=0;
+    	 resourcesOnBoard=null;
+         resourcesOnBoardSize=0;
          game.removeSettler(this);
     }
 
