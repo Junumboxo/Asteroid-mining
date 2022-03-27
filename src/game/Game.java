@@ -18,7 +18,7 @@ public class Game {
 
 
 	public ArrayList<Robot> getRobots() {
-        System.out.println("getRobots");
+        System.out.println("getRobots()");
 		return this.robots;
     }
 	public void addRobot(Robot r) {
@@ -26,20 +26,20 @@ public class Game {
 		robots.add(r);
 	}
 	public void removeRobot(Robot r) {
-		System.out.println("removeRobot()");
+		System.out.println("removeRobot(r)");
 		robots.remove(r);
 	}
 
 	public ArrayList<Settler> getSettlers() {
-        System.out.println("getSettlers");
+        System.out.println("getSettlers()");
 		return this.settlers;
     }
 	public void addSettler(Settler s) {
-		System.out.println("addSettler()");
+		System.out.println("addSettler(s)");
 		settlers.add(s);
 	}
 	public void removeSettler(Settler s) {
-		System.out.println("removeSettler()");
+		System.out.println("removeSettler(s)");
 		settlers.remove(s);
 	}
 
