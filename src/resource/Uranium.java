@@ -5,7 +5,7 @@ public class Uranium extends Resource{
 
 	private String type = "uranium";
 	
-	//gets an Asteorid as a parameter and makes it explode
+	//gets an Asteorid as a parameter and makes it explode, R10, R11, 
 	@Override
 	public void exposed(Asteroid a)
 	{

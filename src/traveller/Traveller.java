@@ -6,37 +6,33 @@ public class traveller {
 	private Asteroid currentasteroid;
 	protected Game game;
 	
-	//drill method
-	public void drill() {
+	public void drill() { // R20, R41, R31, traveller drills 
+		System.out.println("drill()");
 		this.currentAsteroid.decreaseDepth();
 		
 	}
-	//hide method
-	public boolean hide(Asteroid a) {
+	public void hide(Asteroid a) { // R29, R32, R45, traveller hides
+		System.out.println("hide(a)");
 		if (currentasteroid.isHollow==true) {
 			this.currentasteroid.setHollow(false);
 			return(true);
 		}
 		return(false);
 	}
-	//teleport method
-	public void teleport(Gate g) {
+	public void teleport(Gate g) { // traveller teleports
+		System.out.println("teleport(g)");
 		g.underUse(this);
 	
 	}
-	//setasteroid method
-	public void setasteroid(Asteroid a) {
+	public void setAsteroid(Asteroid a) {     //R05 
+		System.out.println("setAsteroid()");
 		this.currentAsteroid=a;
 		
 	}
-	//getasteroid method
-	public Asteroid getasteroid() {
+	public Asteroid getAsteroid() {
+		System.out.println("getAsteroid()");
 		return (this.currentAsteroid);
 	}
-	public void underexplosion(){}
-	
-	public void die() {}
-	
-
+	public void underExplosion(){System.out.println("underExplosion()");} // R34, R35,  traveller is under exlosion
+	public void die() {System.out.println("die()");} // traveller dies
 }
-//blablabla

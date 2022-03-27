@@ -7,7 +7,7 @@ import neighbour.*;
 public class Sun {
 	private List<Asteroid> asteroids;
 	
-	public void sunstorm()
+	public void sunstorm()  //R28
 	{
 		for (Asteroid a: asteroids)
 			a.underStorm();

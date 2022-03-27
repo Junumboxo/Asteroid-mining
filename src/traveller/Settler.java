@@ -2,22 +2,22 @@ package traveller;
 
 import java.util.*;
 import neighbour.*;
-public class Settler {
-    Resource[ ] resourceonboard = new Resource[10];
-    int resourceonboardsize=0;
+import resource.*;
+
+public class Settler extends Traveller{
+    Resource[] resourcesOnBoard = new Resource[10]; // Requirement R23
     gate g1=null;
-    gate g2=null;
-        public void travel(Asteroid a){
-        Random rand = new Random();
-        int i = rand.nextInt(5);
-        Asteorid a= getNeighbour( i);
+    gate g2=null; // Requirement R49
+    int resourcesOnBoardSize = 0; // at the start of the game settler has no resources
+    
+    public void travel(Asteroid a){//Requirement R15 
         currentAsteroid.removeTraveller(Traveller t);
         currentasteroid=a;
         currentAsteroid.placeTraveller(Traveller t);
     }
-    //mine method
-        public void mine(){
-             Resource res =super.currentasteroid.getResource();
+    public void mine(){ //Requirement R21 
+        System.out.println("mine()");
+         Resource res =super.currentasteroid.getResource();
             if (resourceonboardsize==10){
                 System.out.print("settler is full");
             }
@@ -25,11 +25,10 @@ public class Settler {
                 resourceonboard[resourceonboardsize]=res;
                 resourceonboardsize++;
                 super.currentasteroid.removeResource();
-            }
     }
-    //createRobot method
-        public void createRobot(){
-            int nbiron=0;int nbcarbon=0;int nburanieum=0;
+    public void createRobot(){ //Requirement R38 
+        System.out.println("createRobot()");
+        int nbiron=0;int nbcarbon=0;int nburanieum=0;
             boolean check=false;
             for(int i=0;i<resourceonboardsize;i++){
                 if resourceonboard[i].type.equals("Iron"){
@@ -75,11 +74,10 @@ public class Settler {
                 if (check=true)break;
                 }
             }
-        
     }
-    //creatGate method
-        public void creatGate(){
-            int nbiron=0;int nbwater=0;int nburanieum=0;
+    public void createGate(){ //Requirement R46
+        System.out.println("createGate()");
+         int nbiron=0;int nbwater=0;int nburanieum=0;
             boolean check=false;
             for(int i=0;i<resourceonboardsize;i++){
                 if resourceonboard[i].type.equals("Iron"){
@@ -128,17 +126,16 @@ public class Settler {
                 }
                 if (check=true)break;
                 }
-        }
-    //deployGate method
-        public void deployGate(Gate g){
-            g.addNeighbour(super.currentAsteroid)
+    }
+    public void deployGate(Gate g){ 
+        System.out.println("deployGate(g)");
+        g.addNeighbour(super.currentAsteroid)
             Asteroid a=g.getPair().getNeighbour();
             if(a){g.setActive(true);g.getPair().setActive(true);}
-
     }
-    //removeResource method
-        public void removeResource(Resource r){
-            if( super.currentAsteroid.isHollow){
+    public void removeResource(Resource r){
+        System.out.println("removeResource(r)");
+         if( super.currentAsteroid.isHollow){
             boolean check=false;
             for(int i=0;i<resourceonboardsize;i++){
                  if resourceonboard[i].type.equals(r.type){
@@ -150,40 +147,33 @@ public class Settler {
                 }
                 if (check=true)break;
                 }
-             super.currentAsteroid.addResource(r); }
+             super.currentAsteroid.addResource(r);
     }
-    //pickUpResource method
-        public void pickUpResource(){
-            Resource res =super.currentasteroid.getResource();
-            if (resourceonboardsize==10){
-                System.out.print("settler is full");
-            }
-            else{
-                resourceonboard[resourceonboardsize]=res;
-                resourceonboardsize++;
-                super.currentasteroid.removeResource();
-            }
+    public void pickUpResource()         //Requirement R55 - picking the resource
+    {
+    	System.out.println("pickUpResource()");
+        Resource res = currentAsteroid.getResource();
+        if (resourcesOnBoardSize==10){
+            System.out.print("settler is full");
+        }
+        else{
+            resourcesOnBoard[resourcesOnBoardSize]=res;
+            resourcesOnBoardSize++;
+            currentAsteroid.removeResource();
+        }
 
         
     }
-    //getResource method
-        public Resource[] getResource(){
-            return(resourceonboard);
+    public Resource[] getResources(){ // gives the current number of resources on board
+        System.out.println("getResources()");
+    	return(resourcesOnBoards);
         
     }
-    //settler dies
-    @Override
-     public void die(){
-         resourceonboard=null;
-         resourceonboardsize=0;
-         super.game.removeSettler(this);
-        
-    }
-    //for when asteroid explode
-    @Override
-    public void underexplosion(){
-        this.die();
+     public void die(){ 	//Requirement R36
+    	 System.out.println("die()");
+    	 resourcesOnBoard=null;
+         resourcesOnBoardSize=0;
+         game.removeSettler(this);
     }
 
 }
-//blablabla
