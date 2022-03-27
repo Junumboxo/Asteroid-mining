@@ -12,7 +12,7 @@ public class Robot extends Traveller{
         a2.placeTraveller(this);
     }
     
-    public void die() { // robot dies
+    public void die() { // R45 robot dies
     	System.out.println("die()");
     	game.removeRobot(this);
     }
