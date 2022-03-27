@@ -7,12 +7,12 @@ public class Traveller {
 	protected Asteroid currentAsteroid;
 	protected Game game;
 	
-	public void drill() { // traveller drills 
+	public void drill() { // R20, R41, R31, traveller drills 
 		System.out.println("drill()");
 		this.currentAsteroid.decreaseDepth();
 		
 	}
-	public void hide(Asteroid a) { // traveller hides
+	public void hide(Asteroid a) { // R29, R32, R45, traveller hides
 		System.out.println("hide(a)");
 		a.setHollow(false);
 	}
@@ -20,7 +20,7 @@ public class Traveller {
 		System.out.println("teleport(g)");
 		g.underUse(this);
 	}
-	public void setAsteroid(Asteroid a) {
+	public void setAsteroid(Asteroid a) {     //R05 
 		System.out.println("setAsteroid()");
 		this.currentAsteroid=a;
 		
@@ -29,6 +29,6 @@ public class Traveller {
 		System.out.println("getAsteroid()");
 		return (this.currentAsteroid);
 	}
-	public void underExplosion(){System.out.println("underExplosion()");} // traveller is under exlosion
+	public void underExplosion(){System.out.println("underExplosion()");} // R34, R35,  traveller is under exlosion
 	public void die() {System.out.println("die()");} // traveller dies
 }
