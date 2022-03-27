@@ -63,16 +63,25 @@ public class Settler extends Traveller{
            			Gate g2 = new Gate();
            			g1.setPair(g2);
            			g2.setPair(g1);
+           			System.out.println("The pair of gates has been created");
            		}
            		else { 
            			System.out.println("Not enough resources!");
            		}
-        }
-        
-        
+        } 
     
     public void removeResource(Resource r){
         System.out.println("removeResource(r)");
+        System.out.println("Enter the current capacity of the settler. Enter number between 0 and 10.");
+   		Scanner in = new Scanner(System.in);
+   		String answ = in.nextLine();
+   		//checking winning condition
+   		if (Integer.parseInt(answ) <= 10) {
+   			currentAsteroid.removeResource();
+   		}
+   		else { 
+   			System.out.println("The capacity is reached");
+   		}    
         currentAsteroid.addResource(r);
     }
     
@@ -81,14 +90,16 @@ public class Settler extends Traveller{
     {
     	System.out.println("pickUpResource()");
         Resource res = currentAsteroid.getResource();
-        if (resourcesOnBoardSize==10){
-            System.out.print("settler is full");
-        }
-        else{
-            resourcesOnBoard[resourcesOnBoardSize]=res;
-            resourcesOnBoardSize++;
-            currentAsteroid.removeResource();
-        }      
+        System.out.println("Enter the current capacity of the settler. Enter number between 0 and 10.");
+   		Scanner in = new Scanner(System.in);
+   		String answ = in.nextLine();
+   		//checking winning condition
+   		if (Integer.parseInt(answ) <= 10) {
+   			currentAsteroid.removeResource();
+   		}
+   		else { 
+   			System.out.println("The capacity is reachd");
+   		}    
     }
 
     public Resource[] getResources(){ // gives the current number of resources on board

@@ -41,7 +41,7 @@ public class Asteroid implements INeighbour{
 		if (depth > 0)
 			depth--;
 		else
-			System.out.print("The asteroid is already drilled");
+			System.out.print("The asteroid is fully drilled");
 	}
 	
 	public void explode()   //Provides the functionalities for the explosion of the asteroid.
@@ -131,5 +131,10 @@ public class Asteroid implements INeighbour{
 	{
 		System.out.println("getNeighbour()");
 		return neighbours.get(i);
+	}
+
+	public int getDepth() {
+		// TODO Auto-generated method stub
+		return depth;
 	}
 }
