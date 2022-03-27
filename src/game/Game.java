@@ -58,21 +58,23 @@ public class Game {
 		//adding resources to the asteroids
 		Resource r = new Resource();
 		A.addResource(r);
-
+		
 		//setting asteroids on the playing field and adding settlers on asteroids
 		Settler s = new Settler(); // do the extend of settler from traveler!
+		A.addTraveler(s);
 		A.placeTraveller(s);
 	}
 
 	//Requirement R58
 	public void winGame() {
+		System.out.println("winGame()");
 		System.out.println("Are the resources collected enough for building space station?\n answer yes or no");
 		//reading user's input from the console
 		Scanner in = new Scanner(System.in);
 		String answ = in.nextLine();
 		//checking winning condition
 		if (answ.equals("yes")) {
-			System.out.println("winGame");
+			System.out.println("Congratulations you have won!");
 		}
 		else { 
 			System.out.println("Game not won yet");
@@ -81,13 +83,13 @@ public class Game {
 
 	//Requirement R56
 	public void loseGame() {
-		System.out.println("How many settlers are alive?");
+		System.out.println("loseGame()\nHow many settlers are alive?");
 		//reading user's input from the console
 		Scanner in = new Scanner(System.in);
 		int answ = in.nextInt();
 		//Checking losing condition
 		if (answ == 0) {
-			System.out.println("loseGame()");
+			System.out.println("You have lost :(");
 		}
 		else { 
 			System.out.println("Game isn't lost");

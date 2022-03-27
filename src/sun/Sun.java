@@ -18,9 +18,11 @@ public class Sun {
 	
 	public void addAsteroids(List<Asteroid> toAdd)
 	{
-		System.out.println("addAsteroids()");
-		for (Asteroid a: toAdd)
+		System.out.println("addAsteroids(A)");
+		for (Asteroid a: toAdd) {
 			asteroids.add(a);
+		}
+		System.out.println("Asteroids added");
 	}
 	
 	public List<Asteroid> getAsteroids()

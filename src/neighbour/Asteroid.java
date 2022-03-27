@@ -15,10 +15,13 @@ public class Asteroid implements INeighbour{
 	
 	public Asteroid() {
 		travellers = new ArrayList<Traveller>();
+		resource = new Resource();
 	}
 	public void setPerihelion(boolean b)    //Sets the location of the perihelion
 	{ // pass true as parameter if Perihelion, false if Aphelion
-		System.out.println("setPerihelion(b)");
+		if (b) System.out.println("setPerihelion(p)");
+		else 
+			System.out.println("setPerihelion(a)");
 		isPerihelion = b;
 		if (b) {
 			System.out.println("Current asteroid is in Perihelion phase");
@@ -68,6 +71,7 @@ public class Asteroid implements INeighbour{
 	public boolean addResource(Resource r)  //Ensures that a dropped resource by the settler is kept in the asteroid.
 	{
 		System.out.println("addResource(r)");
+		System.out.println("Resources in asteroids are set");
 		if (isHollow) {
 			resource = r;
 		return true;
@@ -104,7 +108,12 @@ public class Asteroid implements INeighbour{
 		}
 		isHollow = true;
 	}
-
+	
+	public void addTraveler(Traveller t) {
+		System.out.println("addTraveler(s)");
+		System.out.println("Settlers are positioned in playing field");
+	}
+	
 	@Override
 	public void placeTraveller(Traveller t)     //Sets a travelller (settler/robot) on the asteroid
 	{
