@@ -1,7 +1,7 @@
 package resource;
 import neighbour.*;
 
-public class Water extends Resource{
+public class Water extends Resource{ //R10
 	
 	private String type = "water";
 
