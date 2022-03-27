@@ -3,24 +3,11 @@ package traveller;
 import java.util.*;
 import neighbour.*;
 
-public class Robot {
+public class Robot extends Traveller{
     //robot constructor
     public Robot(Asteorid a;Game game){
         super.game=game;
         super.currentAsteroid=a;
-    }
-    //travel method
-    public void travel(){
-        do{
-        System.out.println("Enter the direction with number between 1 and 4:\n ");
-        Scanner s = new Scanner(System.in);
-        i = s.nextInt();
-        }while((i>0)&&(i<5))
-        Asteorid a= getNeighbour( i);
-        currentAsteroid.removeTraveller(Traveller t);
-        currentasteroid=a;
-        currentAsteroid.placeTraveller(Traveller t);
-        
     }
     //for when asteroid explode
     @Override
@@ -32,11 +19,6 @@ public class Robot {
 	public void die() {
         super.game.removeRobot(this);
     }
-
-}
-//blablabla
-public class Robot extends Traveller{
-	
     public void travel(){ //Requirement R40, R39
     	System.out.println("travel()");
         int i = 0;
@@ -44,11 +26,5 @@ public class Robot extends Traveller{
         currentAsteroid.removeTraveller(this);
         a2.placeTraveller(this);
     }
-    
-    public void die() { // R45 robot dies
-    	System.out.println("die()");
-    	game.removeRobot(this);
-    }
-
 }
 
