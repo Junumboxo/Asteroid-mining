@@ -1,9 +1,10 @@
 package traveller;
 import java.util.*;
 import neighbour.*;
+import game.*;
 
-public class traveller {
-	private Asteroid currentasteroid;
+public class Traveller {
+	protected Asteroid currentAsteroid;
 	protected Game game;
 	
 	public void drill() { // R20, R41, R31, traveller drills 
@@ -13,11 +14,7 @@ public class traveller {
 	}
 	public void hide(Asteroid a) { // R29, R32, R45, traveller hides
 		System.out.println("hide(a)");
-		if (currentasteroid.isHollow==true) {
-			this.currentasteroid.setHollow(false);
-			return(true);
-		}
-		return(false);
+		currentAsteroid.setHollow(false);
 	}
 	public void teleport(Gate g) { // traveller teleports
 		System.out.println("teleport(g)");

@@ -57,10 +57,14 @@ public class Asteroid implements INeighbour{
 		s.pickUpResource();
 	}
 	
-	public void addResource(Resource r)  //Ensures that a dropped resource by the settler is kept in the asteroid.
+	public boolean addResource(Resource r)  //Ensures that a dropped resource by the settler is kept in the asteroid.
 	{
 		System.out.println("addResource(r)");
-		resource = r;
+		if (isHollow) {
+			resource = r;
+		return true;
+		}
+		return false;
 	}
 	
 	public Resource getResource()  

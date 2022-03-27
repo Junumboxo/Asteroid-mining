@@ -2,16 +2,12 @@ package traveller;
 
 import java.util.*;
 import neighbour.*;
+import game.*;
 
 public class Robot extends Traveller{
-    //robot constructor
-    public Robot(Asteorid a;Game game){
-        super.game=game;
-        super.currentAsteroid=a;
-    }
     //for when asteroid explode
     @Override
-    public void underexplosion(){
+    public void underExplosion(){
         this.travel();
     }
     //robot dies
