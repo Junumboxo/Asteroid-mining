@@ -15,22 +15,28 @@ public class Asteroid implements INeighbour{
 	
 	
 	public void setPerihelion(boolean b)    //Sets the location of the perihelion
-	{
-		System.out.println("setPerihelion(boolean b)");
+	{ // pass true as parameter if Perihelion, false if Aphelion
+		System.out.println("setPerihelion(b)");
 		isPerihelion = b;
-		if (b)
+		if (b) {
+			System.out.println("Current asteroid is in Perihelion phase");
 			resource.exposed(this);
+		}
+		else {
+			System.out.println("Current asteroid is in Aphelion phase");
+		}
+			
 	}
 	
 	public void setHollow(boolean b)  //Sets the core  of the asteroid hollow.
 	{
-		System.out.println("setHollow(boolean b)");
+		System.out.println("setHollow(b)");
 		isHollow = b;
 	}
 	
 	public void setDepth(int depth)  //Sets the depth of an asteroid to the extent it can be drilled.
 	{
-		System.out.println("setDepth(int depth)");
+		System.out.println("setDepth()");
 		if (depth > 0)
 			this.depth = depth;
 	}
