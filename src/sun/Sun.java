@@ -6,7 +6,9 @@ import neighbour.*;
 
 public class Sun {
 	private List<Asteroid> asteroids;
-	
+	public Sun() {
+		asteroids = new ArrayList<Asteroid>();
+	}
 	public void sunstorm()  //R28
 	{
 		System.out.println("sunstorm()");

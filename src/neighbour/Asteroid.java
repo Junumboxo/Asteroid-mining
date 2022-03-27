@@ -13,7 +13,9 @@ public class Asteroid implements INeighbour{
 	private List<INeighbour> neighbours; //Requirement R16
 	private Resource resource; //Requirement R08,09
 	
-	
+	public Asteroid() {
+		travellers = new ArrayList<Traveller>();
+	}
 	public void setPerihelion(boolean b)    //Sets the location of the perihelion
 	{ // pass true as parameter if Perihelion, false if Aphelion
 		System.out.println("setPerihelion(b)");
