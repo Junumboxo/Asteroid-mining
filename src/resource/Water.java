@@ -9,6 +9,7 @@ public class Water extends Resource{ //R10
 	@Override
 	public void exposed(Asteroid a)
 	{
+		System.out.println("Water exposed");
 		a.removeResource();
 	}
 }

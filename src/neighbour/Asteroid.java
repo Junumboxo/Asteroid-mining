@@ -7,7 +7,7 @@ import traveller.*;
 public class Asteroid implements INeighbour{
 
 	private boolean isPerihelion;
-	private boolean isHollow; //Requirement R08
+	private boolean isHollow = true; //Requirement R08
 	private int depth;
 	private List<Traveller> travellers;
 	private List<INeighbour> neighbours; //Requirement R16
@@ -15,7 +15,7 @@ public class Asteroid implements INeighbour{
 	
 	public Asteroid() {
 		travellers = new ArrayList<Traveller>();
-		resource = new Resource();
+		neighbours = new ArrayList<INeighbour>();
 	}
 	public void setPerihelion(boolean b)    //Sets the location of the perihelion
 	{ // pass true as parameter if Perihelion, false if Aphelion
@@ -25,7 +25,13 @@ public class Asteroid implements INeighbour{
 		isPerihelion = b;
 		if (b) {
 			System.out.println("Current asteroid is in Perihelion phase");
-			resource.exposed(this);
+			System.out.println("What is the depth of the mantle? Enter number between 1 and 3");
+	   		Scanner in = new Scanner(System.in);
+	   		String answ = in.nextLine();
+	   		
+	   		if (Integer.parseInt(answ) == 0)
+	   			//Java polymorphism mechanism creates issues
+	   			resource.exposed(this);
 		}
 		else {
 			System.out.println("Current asteroid is in Aphelion phase");
@@ -58,8 +64,8 @@ public class Asteroid implements INeighbour{
 	public void explode()   //Provides the functionalities for the explosion of the asteroid.
 	{
 		System.out.println("explode()");
-		for (Traveller t: travellers)
-			t.underExplosion();
+		for (int i = 0; i < travellers.size(); i++)
+			travellers.get(i).underExplosion();
 	}
 
 	public void extract(Settler s)  //Function responsible for mining/picking up the resource.
@@ -71,9 +77,10 @@ public class Asteroid implements INeighbour{
 	public boolean addResource(Resource r)  //Ensures that a dropped resource by the settler is kept in the asteroid.
 	{
 		System.out.println("addResource(r)");
-		System.out.println("Resources in asteroids are set");
 		if (isHollow) {
 			resource = r;
+			isHollow = false;
+			System.out.println("Resources in asteroids are set");
 		return true;
 		}
 		return false;
@@ -96,14 +103,14 @@ public class Asteroid implements INeighbour{
 	public void underStorm()  //Provides functionalities for hiding of player under the sunstorm, also responsible for its behavior under the sunstorm.
 	{
 		System.out.println("underStorm()");
-		for (Traveller t: travellers)
+		for (int i = 0; i < travellers.size(); i++)
 		{
 			if (isHollow)
 			{
-				t.hide(this);
+				travellers.get(i).hide(this);
 			}
 			else
-				t.die();
+				travellers.get(i).die();
 				
 		}
 		isHollow = true;

@@ -9,6 +9,7 @@ public class Uranium extends Resource{
 	@Override
 	public void exposed(Asteroid a)
 	{
+		System.out.println("Uranium exposed");
 		a.explode();	
 	}
 }

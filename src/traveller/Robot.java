@@ -10,9 +10,11 @@ public class Robot extends Traveller{
     public void underExplosion(){
         this.travel();
     }
+    
     //robot dies
     @Override
 	public void die() {
+    	currentAsteroid.removeTraveller(this);
         super.game.removeRobot(this);
     }
     public void travel(){ //Requirement R40, R39

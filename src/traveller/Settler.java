@@ -12,30 +12,19 @@ public class Settler extends Traveller{
 
     public void deployGate(Gate g){ 
         System.out.println("deployGate(g)");
-        //deployGate(g); 
+        g.addNeighbour(currentAsteroid);
     }
    
     public void travel(Asteroid a){//Requirement R15 
         currentAsteroid.removeTraveller(this);
-        currentAsteroid = a;
+        currentAsteroid=a;
         currentAsteroid.placeTraveller(this);
-        System.out.println("Settler arrives to asteroid A1");
     }
 
     
     public void mine(){ //Requirement R21 
         System.out.println("mine()");
-        System.out.println("Is the capacity reached? yes or no");
-       		Scanner in = new Scanner(System.in);
-       		String answ = in.nextLine();
-       		//checking winning condition
-       		if (answ.equals("no")) {
-       			currentAsteroid.extract(this);
-       			System.out.println("Resource has been picked up and added to the storage");
-       		}
-       		else { 
-       			System.out.println("The capacity is reached. Cannot mine this resource!");
-       		}
+       	currentAsteroid.extract(this);
     }
 
         
@@ -95,8 +84,8 @@ public class Settler extends Traveller{
         System.out.println("Enter the current capacity of the settler. Enter number between 0 and 10.");
    		Scanner in = new Scanner(System.in);
    		String answ = in.nextLine();
-   		//checking the capacity 
-   		if (Integer.parseInt(answ) < 10) {
+   		//checking winning condition
+   		if (Integer.parseInt(answ) <= 10) {
    			currentAsteroid.removeResource();
    		}
    		else { 
@@ -109,10 +98,16 @@ public class Settler extends Traveller{
     	return(resourcesOnBoard);
         
     }
+    
+    public void underExplosion(){
+    	die();
+    }
+    
      public void die(){ 	//Requirement R36
     	 System.out.println("die()");
     	 resourcesOnBoard=null;
          resourcesOnBoardSize=0;
+         currentAsteroid.removeTraveller(this);
          game.removeSettler(this);
     }
 

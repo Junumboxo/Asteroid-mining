@@ -9,7 +9,7 @@ public class Traveller {
 	
 	public Traveller(){
 		currentAsteroid = new Asteroid();
-		game = new Game(); // !!!!!!!!
+		//game = new Game(); // !!!!!!!!
 	}
 	public void drill() { // R20, R41, R31, traveller drills 
 		System.out.println("drill()");
@@ -41,6 +41,11 @@ public class Traveller {
 		System.out.println("getAsteroid()");
 		return (this.currentAsteroid);
 	}
+	
+	public void setGame(Game g){
+		game = g;
+	}
+	
 	public void underExplosion(){System.out.println("underExplosion()");} // R34, R35,  traveller is under exlosion
 	public void die() {System.out.println("die()");} // traveller dies
 }
