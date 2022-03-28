@@ -20,7 +20,6 @@ public class Traveller {
    		this.currentAsteroid.setDepth(Integer.parseInt(answ));
 		this.currentAsteroid.decreaseDepth();
 		System.out.println("The remaining rock depth is " + currentAsteroid.getDepth());
-		
 	}
 	public void hide(Asteroid a) { // R29, R32, R45, traveller hides
 		System.out.println("hide(a)");
@@ -32,8 +31,9 @@ public class Traveller {
 		g.underUse(this);
 	
 	}
-	public void setAsteroid(Asteroid a) {     //R05 
-		System.out.println("setAsteroid()");
+	public void setAsteroid(Asteroid a) { //R05
+		if (a != null) {
+		System.out.println("setAsteroid()"); }
 		this.currentAsteroid=a;
 		
 	}

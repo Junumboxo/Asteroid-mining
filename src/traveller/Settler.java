@@ -67,7 +67,7 @@ public class Settler extends Traveller{
    		Scanner in = new Scanner(System.in);
    		String answ = in.nextLine();
    		//checking winning condition
-   		if (Integer.parseInt(answ) <= 10) {
+   		if (Integer.parseInt(answ) < 10) {
    			currentAsteroid.removeResource();
    		}
    		else { 
@@ -85,7 +85,7 @@ public class Settler extends Traveller{
    		Scanner in = new Scanner(System.in);
    		String answ = in.nextLine();
    		//checking winning condition
-   		if (Integer.parseInt(answ) <= 10) {
+   		if (Integer.parseInt(answ) < 10) {
    			currentAsteroid.removeResource();
    		}
    		else { 
