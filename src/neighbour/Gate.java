@@ -9,6 +9,9 @@ public class Gate implements INeighbour{
 	private Gate pair;
 	private INeighbour neighbouringAsteroid;
 	
+	public Gate() {
+		neighbouringAsteroid =new Asteroid();
+	}
 	public void setPair(Gate pair) 		// Sets connection between 2 teleportation gates 
 	{
 		System.out.println("setPair(pair)");
@@ -51,6 +54,7 @@ public class Gate implements INeighbour{
 			a2.placeTraveller(t);
    		}
    		else { 
+   			System.out.println("Gate is not in use. Cannot teleport");
    		}
 	}
 	

@@ -15,7 +15,10 @@ public class Game {
 	private Sun sun;
 
 	// constructor
-
+	public Game() {
+		robots =new ArrayList<Robot>();
+		settlers = new ArrayList<Settler>();
+	}
 
 	public ArrayList<Robot> getRobots() {
         System.out.println("getRobots()");
@@ -79,6 +82,7 @@ public class Game {
 		else { 
 			System.out.println("Game not won yet");
 		}
+		//in.close(); //would end the program after Win Game command execution
 	}
 
 	//Requirement R56
@@ -94,5 +98,6 @@ public class Game {
 		else { 
 			System.out.println("Game isn't lost");
 		}
+		//in.close();  // //would end the program after Lose Game command execution
 	}
 }
