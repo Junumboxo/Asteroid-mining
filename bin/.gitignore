@@ -1,6 +1,7 @@
-/sun/
-/neighbour/
-/main/
 /game/
-/traveller/
+/main/
+/module-info.class
+/neighbour/
 /resource/
+/sun/
+/traveller/
