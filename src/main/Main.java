@@ -34,8 +34,8 @@ public class Main {
 		while (in.hasNext()) {
 			while(true) {
 				String input_command = in.nextLine();
-				switch(input_command) {
-				case "Control Asteroids" :
+				switch(input_command.toLowerCase()) {
+				case "control asteroids" :
 					System.out.println("Control Asteroids command:");
 					sun.getAsteroids();
 					
@@ -46,71 +46,71 @@ public class Main {
 					else A1.setPerihelion(false);
 					break;
 					
-				case "Settler travels" :
+				case "settler travels" :
 					System.out.println("Settler travels to asteroid A1 command:");
 					s.travel(A1);
 					break;
 					
-				case "Traveler drills" :
+				case "traveler drills" :
 					System.out.println("Traveler drills command:");
 					t.drill();
 					break;		
 					
-				case "Settler mines" :
+				case "settler mines" :
 					System.out.println("Settler mines command:");
 					s.mine();
 					break;
 					
-				case "Pick Up Resource" :
+				case "pick up resource" :
 					System.out.println("Pick Up Resource command:");
 					s.pickUpResource();
 					break;
 					
-				case "Drop Resource" :
+				case "drop resource" :
 					System.out.println("Drop Resource command:");
 					s.removeResource(r);
 					break;
 					
-				case "Hide" :
+				case "hide" :
 					System.out.println("Hide command:");
 					t.hide(A1);
 					break;
 					
-				case "Create Robot" :
+				case "create robot" :
 					System.out.println("Create Robot:");
 					s.createRobot();
 					break;
 					
-				case "Create Gate" :
+				case "create gate" :
 					System.out.println("Create Gate command:");
 					s.createGate();
 					break;
 					
-				case "Install Gate" :
+				case "install gate" :
 					System.out.println("Install Gate command:");
 					s.deployGate(g1);
 					break;
 					
-				case "Traveler Teleports" :
+				case "traveler teleports" :
 					System.out.println("Traveler Teleports command:");
 					t.teleport(g1);
 					break;
 					
-				case "Win Game" :
+				case "win game" :
 					System.out.println("Win Game command:");
 					game.winGame();
 					break;
-				case "Lose Game" :
+				case "lose game" :
 					System.out.println("Lose Game command:");
 					game.loseGame();
 					break;
 					
-				case "Sunstorm" :
+				case "sunstorm" :
 					System.out.println("Sunstorm command:");
 					sun.sunstorm();
 					break;
 					
-				case "Uranium explodes" :
+				case "uranium explodes" :
 					System.out.println("Uranium explodes command:");
 					Uranium u = new Uranium();
 					A1.addResource(u);
@@ -126,7 +126,7 @@ public class Main {
 					
 					break;
 					
-				case "Water evaporates" :
+				case "water evaporates" :
 					System.out.println("Water evaporates command:");
 					Water w = new Water();
 					A2.addResource(w);
