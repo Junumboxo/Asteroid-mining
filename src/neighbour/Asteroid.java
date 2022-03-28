@@ -13,24 +13,35 @@ public class Asteroid implements INeighbour{
 	private List<INeighbour> neighbours; //Requirement R16
 	private Resource resource; //Requirement R08,09
 	
-	
+	public Asteroid() {
+		travellers = new ArrayList<Traveller>();
+		resource = new Resource();
+	}
 	public void setPerihelion(boolean b)    //Sets the location of the perihelion
-	{
-		System.out.println("setPerihelion(boolean b)");
+	{ // pass true as parameter if Perihelion, false if Aphelion
+		if (b) System.out.println("setPerihelion(p)");
+		else 
+			System.out.println("setPerihelion(a)");
 		isPerihelion = b;
-		if (b)
+		if (b) {
+			System.out.println("Current asteroid is in Perihelion phase");
 			resource.exposed(this);
+		}
+		else {
+			System.out.println("Current asteroid is in Aphelion phase");
+		}
+			
 	}
 	
 	public void setHollow(boolean b)  //Sets the core  of the asteroid hollow.
 	{
-		System.out.println("setHollow(boolean b)");
+		System.out.println("setHollow(b)");
 		isHollow = b;
 	}
 	
 	public void setDepth(int depth)  //Sets the depth of an asteroid to the extent it can be drilled.
 	{
-		System.out.println("setDepth(int depth)");
+		System.out.println("setDepth()");
 		if (depth > 0)
 			this.depth = depth;
 	}
@@ -60,6 +71,7 @@ public class Asteroid implements INeighbour{
 	public boolean addResource(Resource r)  //Ensures that a dropped resource by the settler is kept in the asteroid.
 	{
 		System.out.println("addResource(r)");
+		System.out.println("Resources in asteroids are set");
 		if (isHollow) {
 			resource = r;
 		return true;
@@ -96,7 +108,12 @@ public class Asteroid implements INeighbour{
 		}
 		isHollow = true;
 	}
-
+	
+	public void addTraveler(Traveller t) {
+		System.out.println("addTraveler(s)");
+		System.out.println("Settlers are positioned in playing field");
+	}
+	
 	@Override
 	public void placeTraveller(Traveller t)     //Sets a travelller (settler/robot) on the asteroid
 	{

@@ -12,13 +12,14 @@ public class Settler extends Traveller{
 
     public void deployGate(Gate g){ 
         System.out.println("deployGate(g)");
-        deployGate(g);
+        //deployGate(g); 
     }
    
     public void travel(Asteroid a){//Requirement R15 
         currentAsteroid.removeTraveller(this);
-        currentAsteroid=a;
+        currentAsteroid = a;
         currentAsteroid.placeTraveller(this);
+        System.out.println("Settler arrives to asteroid A1");
     }
 
     
@@ -30,9 +31,10 @@ public class Settler extends Traveller{
        		//checking winning condition
        		if (answ.equals("no")) {
        			currentAsteroid.extract(this);
+       			System.out.println("Resource has been picked up and added to the storage");
        		}
        		else { 
-       			System.out.println("The capacity is reachd");
+       			System.out.println("The capacity is reached. Cannot mine this resource!");
        		}
     }
 
@@ -93,12 +95,12 @@ public class Settler extends Traveller{
         System.out.println("Enter the current capacity of the settler. Enter number between 0 and 10.");
    		Scanner in = new Scanner(System.in);
    		String answ = in.nextLine();
-   		//checking winning condition
-   		if (Integer.parseInt(answ) <= 10) {
+   		//checking the capacity 
+   		if (Integer.parseInt(answ) < 10) {
    			currentAsteroid.removeResource();
    		}
    		else { 
-   			System.out.println("The capacity is reachd");
+   			System.out.println("The capacity is reached");
    		}    
     }
 
