@@ -147,6 +147,7 @@ public class Main {
 					System.out.println("Sunstorm command:");
 					Sun sun = new Sun();
 					sun.sunstorm();
+					Traveller t = new Traveller();
 					break;
 					
 				case "uranium explodes" :
