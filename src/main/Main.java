@@ -23,6 +23,7 @@ public class Main {
 		t.setGame(game);
 		Settler s = game.getSettlers().get(0);
 		Resource r = new Carbon();
+		Robot robot = new Robot();
 		Gate g1 = new Gate();
 		Gate g2 = new Gate();
 		//setting up Gates for Traveler Teleport!!!
@@ -53,34 +54,16 @@ public class Main {
 					
 				case "traveler drills" :
 					System.out.println("Traveler drills command:");
-					Settler s1 = new Settler();
-					s1.setGame(game);
-					A1.placeTraveller(s1);
 					A1.setDepth(5);
-					System.out.println("current depth is"+t.getDepth());
-					while(true){
-						if(A1.getDepth()>0){
-						s1.drill();
-						A1.decreaseDepth();
-						System.out.println("Traveler drills :current depth is"+A1.getDepth());
-						}
-						else{
-							System.out.println("can not drill :current depth is"+A1.getDepth());
-							break;
-						}
-						
-					}
-					
+					s.drill()
 					break;		
 					
 				case "settler mines" :
 					System.out.println("Settler mines command:");
+		      //same question as in the pick up
 					Carbon c = new Carbon();
 					A1.addResource(c);
-					Settler s1 = new Settler();
-					s1.setGame(game);
-					A1.placeTraveller(s1);
-					s1.mine();
+					s.mine();
 					//possible failures are called in mine() method
 					break;
 					
@@ -88,30 +71,21 @@ public class Main {
 					System.out.println("Pick Up Resource command:");
 					Carbon c = new Carbon();
 					A1.addResource(c);
-					Settler s1 = new Settler();
-					s1.setGame(game);
-					A1.placeTraveller(s1);
-					s1.pickUpResource();
+          //maybe it is a good idea to add a resource
+          //because so far we dont initialize resources anywhere
+          s.pickUpResource();
 					//possible failures are called in pickUpResource() method
 					break;
 					
 				case "drop resource" :
 					System.out.println("Drop Resource command:");
-					Carbon c = new Carbon();
-					A1.addResource(c);
-					Settler s1 = new Settler();
-					s1.setGame(game);
-					A1.placeTraveller(s1);
-					s1.pickUpResource();
-					s1.removeResource(r);
+					s.removeResource(r);
 					//possible failures are called in removeResource() method
-					
 					break;
 					
 				case "hide" :
 					System.out.println("Hide command:");
-					Traveller traveller = new Traveller();
-					traveller.hide();
+					s.hide();
 					break;
 					
 				case "create robot" :
@@ -119,21 +93,21 @@ public class Main {
 					s.createRobot();
 					break;
 					
-				case "create gate" :
-					System.out.println("Create Gate command:");
+				case "create transport gate" :
 					s.createGate();
 					break;
 					
-				case "install gate" :
-					System.out.println("Install Gate command:");
+				case "deploy" :
 					s.deployGate(g1);
 					break;
 					
-				case "traveler teleports" :
-					System.out.println("Traveler Teleports command:");
+				case "robot teleport" :
 					t.teleport(g1);
 					break;
 					
+				case "settler teleport" :
+					s.teleport(g1);
+					break;	
 				case "win game" :
 					System.out.println("Win Game command:");
 					game.winGame();
@@ -145,9 +119,11 @@ public class Main {
 					
 				case "sunstorm" :
 					System.out.println("Sunstorm command:");
-					Sun sun = new Sun();
+					//Sun sun = new Sun();
 					sun.sunstorm();
-					Traveller t = new Traveller();
+					break;
+				case "view inventory":
+					System.out.println(s.getResources().toString());
 					break;
 					
 				case "uranium explodes" :

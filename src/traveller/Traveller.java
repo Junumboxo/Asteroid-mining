@@ -21,13 +21,12 @@ public class Traveller {
 		System.out.println("Traveller has been hidden");
 	}
 	public void teleport(Gate g) { // traveller teleports
-		System.out.println("teleport(g)");
 		g.underUse(this);
-	
 	}
 	public void setAsteroid(Asteroid a) { //R05
 		if (a != null) {
-		System.out.println("setAsteroid()"); }
+		//System.out.println("setAsteroid()"); 
+		}
 		this.currentAsteroid=a;
 		
 	}

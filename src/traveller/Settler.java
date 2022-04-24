@@ -11,8 +11,8 @@ public class Settler extends Traveller{
     int resourcesOnBoardSize = 0; // at the start of the game settler has no resources  
 
     public void deployGate(Gate g){ 
-        System.out.println("deployGate(g)");
         g.addNeighbour(currentAsteroid);
+        System.out.println("Deployed");
     }
    
     public void travel(Asteroid a){//Requirement R15 
@@ -44,21 +44,32 @@ public class Settler extends Traveller{
            		}
         }
         public void createGate(){ //Requirement R46
-            System.out.println("createGate()");
-            System.out.println("Are there enough resources? yes or no");
-           		Scanner in = new Scanner(System.in);
-           		String answ = in.nextLine();
-           		//checking winning condition
-           		if (answ.equals("yes")) {
-           			Gate g1 = new Gate();
-           			Gate g2 = new Gate();
-           			g1.setPair(g2);
-           			g2.setPair(g1);
-           			System.out.println("The pair of gates has been created");
-           		}
-           		else { 
-           			System.out.println("Not enough resources!");
-           		}
+        	resourcesOnBoard[0]= new Iron();//To be removed
+        	resourcesOnBoard[1]= new Iron(); // comment to check not enough resources
+        	resourcesOnBoard[2]= new Water();
+        	resourcesOnBoard[3]= new Uranium();
+        	
+        	int ironCount = 0;
+        	int waterCount = 0;
+        	int uraniumCount = 0;
+        	for ( Resource r : this.getResources())
+        	{
+        		if (r instanceof Iron) ironCount++;
+        		if (r instanceof Water) waterCount++;
+        		if (r instanceof Uranium) uraniumCount++;
+        	}
+        	if (ironCount>= 2 && waterCount >= 1 && uraniumCount>= 1) {
+        		g1 = new Gate();
+        		g2 = new Gate();
+        		g1.setPair(g2);
+        		g2.setPair(g1);
+        		// ??????????????????????????????????????????????????????????
+        		//Iron r1, r2; Water w; Uranium u;
+        		//this.removeResource(r1);
+        		System.out.println("Transport Gate created");
+        	}
+        	else 
+        		System.out.println("Not enough resources to create Transport Gate");
         } 
     
     public void removeResource(Resource r){
@@ -94,7 +105,7 @@ public class Settler extends Traveller{
     }
 
     public Resource[] getResources(){ // gives the current number of resources on board
-        System.out.println("getResources()");
+        //System.out.println("getResources()");
     	return(resourcesOnBoard);
         
     }
