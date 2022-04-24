@@ -3,7 +3,9 @@ import neighbour.*;
 
 public class Uranium extends Resource{
 
-	private String type = "uranium";
+	public Uranium()  {
+		type = "Uranium";
+	}
 	
 	//gets an Asteorid as a parameter and makes it explode, R10, R11, 
 	@Override

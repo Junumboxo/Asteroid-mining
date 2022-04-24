@@ -12,4 +12,8 @@ public abstract class Resource {
 	{
 		return type;
 	}
+	public String toString()
+    {
+        return  type ;
+    }
 }
