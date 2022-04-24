@@ -73,7 +73,8 @@ public class Main {
 					
 				case "hide" :
 					System.out.println("Hide command:");
-					t.hide(A1);
+					Traveller traveller = new Traveller();
+					traveller.hide();
 					break;
 					
 				case "create robot" :
