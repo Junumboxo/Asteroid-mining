@@ -74,7 +74,7 @@ public class Main {
 				case "hide" :
 					System.out.println("Hide command:");
 					Traveller traveller = new Traveller();
-					traveller.hide();
+					//traveller.hide();
 					break;
 					
 				case "create robot" :
@@ -82,8 +82,7 @@ public class Main {
 					s.createRobot();
 					break;
 					
-				case "create gate" :
-					System.out.println("Create Gate command:");
+				case "create transport gate" :
 					s.createGate();
 					break;
 					
@@ -108,7 +107,7 @@ public class Main {
 					
 				case "sunstorm" :
 					System.out.println("Sunstorm command:");
-					Sun sun = new Sun();
+					//Sun sun = new Sun();
 					sun.sunstorm();
 					break;
 					

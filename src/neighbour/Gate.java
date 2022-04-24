@@ -14,7 +14,7 @@ public class Gate implements INeighbour{
 	}
 	public void setPair(Gate pair) 		// Sets connection between 2 teleportation gates 
 	{
-		System.out.println("setPair(pair)");
+		//System.out.println("setPair(pair)");
 		this.pair = pair;
 	}
 	
