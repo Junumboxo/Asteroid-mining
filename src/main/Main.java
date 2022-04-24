@@ -156,6 +156,8 @@ public class Main {
 				case "robot under explosion" :	
 					System.out.println("robot under explosion command:");	
 					Uranium u = new Uranium();
+					A1.addResource(u);
+					A1.placeTraveller(robot);
 					A1.setDepth(1);
 					s.drill();
 					A1.setPerihelion(true);
