@@ -3,7 +3,9 @@ import neighbour.*;
 
 public class Water extends Resource{ //R10
 	
-	private String type = "water";
+	public Water()  {
+		type = "Water";
+	}
 
 	//gets an Asteroid as a parameter and removes water resource from it, R10
 	@Override

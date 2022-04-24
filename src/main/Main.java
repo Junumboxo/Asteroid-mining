@@ -55,7 +55,7 @@ public class Main {
 				case "traveler drills" :
 					System.out.println("Traveler drills command:");
 					A1.setDepth(5);
-					s.drill()
+					//s.drill()
 					break;		
 					
 				case "settler mines" :
@@ -69,8 +69,8 @@ public class Main {
 					
 				case "pick up resource" :
 					System.out.println("Pick Up Resource command:");
-					Carbon c = new Carbon();
-					A1.addResource(c);
+					//Carbon c = new Carbon();
+					//A1.addResource(c);
           //maybe it is a good idea to add a resource
           //because so far we dont initialize resources anywhere
           s.pickUpResource();
@@ -85,7 +85,7 @@ public class Main {
 					
 				case "hide" :
 					System.out.println("Hide command:");
-					s.hide();
+					//s.hide();
 					break;
 					
 				case "create robot" :
@@ -123,7 +123,11 @@ public class Main {
 					sun.sunstorm();
 					break;
 				case "view inventory":
-					System.out.println(s.getResources().toString());
+					s.setInventory();
+					for (Resource res : s.getResources()) {
+						if (res != null)
+							System.out.println(res.getType());
+					}
 					break;
 					
 				case "uranium explodes" :

@@ -9,7 +9,21 @@ public class Settler extends Traveller{
     Gate g1=null;
     Gate g2=null; // Requirement R49
     int resourcesOnBoardSize = 0; // at the start of the game settler has no resources  
-
+    
+    public Settler() {
+    	for(int i=0;i<resourcesOnBoard.length;i++)
+    	{
+    		resourcesOnBoard[i] = null;
+    	}
+    }
+    public void setInventory() { // method for initializing the inventory and testing !!!
+    	resourcesOnBoard[0]= new Iron();//To be removed
+    	resourcesOnBoard[1]= new Iron(); // comment to check not enough resources
+    	resourcesOnBoard[2]= new Water();
+    	resourcesOnBoard[3]= new Uranium();
+    	resourcesOnBoardSize = 4;
+    }
+    
     public void deployGate(Gate g){ 
         g.addNeighbour(currentAsteroid);
         System.out.println("Deployed");
@@ -44,10 +58,7 @@ public class Settler extends Traveller{
            		}
         }
         public void createGate(){ //Requirement R46
-        	resourcesOnBoard[0]= new Iron();//To be removed
-        	resourcesOnBoard[1]= new Iron(); // comment to check not enough resources
-        	resourcesOnBoard[2]= new Water();
-        	resourcesOnBoard[3]= new Uranium();
+        	setInventory();
         	
         	int ironCount = 0;
         	int waterCount = 0;
