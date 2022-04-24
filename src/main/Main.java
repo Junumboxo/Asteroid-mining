@@ -158,7 +158,7 @@ public class Main {
 					Uranium u = new Uranium();
 					A1.setDepth(1);
 					s.drill();
-					A2.setPerihelion(true);
+					A1.setPerihelion(true);
 					break;
 						
 				default:
