@@ -53,59 +53,22 @@ public class Main {
 					
 				case "traveler drills" :
 					System.out.println("Traveler drills command:");
-					Settler s1 = new Settler();
-					s1.setGame(game);
-					A1.placeTraveller(s1);
-					A1.setDepth(5);
-					System.out.println("current depth is"+t.getDepth());
-					while(true){
-						if(t.getDepth()>0){
-						t.drill();
-						t.decreaseDepth();
-						System.out.println("Traveler drills :current depth is"+t.getDepth());
-						}
-						else{
-							System.out.println("can not drill :current depth is"+t.getDepth());
-							break;
-						}
-						
-					}
-					
+					t.drill();
 					break;		
 					
 				case "settler mines" :
 					System.out.println("Settler mines command:");
-					Carbon c = new Carbon();
-					A2.addResource(c);
-					Settler s1 = new Settler();
-					s1.setGame(game);
-					A1.placeTraveller(s1);
 					s.mine();
-					//possible failures are called in mine() method
 					break;
 					
 				case "pick up resource" :
 					System.out.println("Pick Up Resource command:");
-					Carbon c = new Carbon();
-					A2.addResource(c);
-					Settler s1 = new Settler();
-					s1.setGame(game);
-					A1.placeTraveller(s1);
 					s.pickUpResource();
-					//possible failures are called in pickUpResource() method
 					break;
 					
 				case "drop resource" :
 					System.out.println("Drop Resource command:");
-					Carbon c = new Carbon();
-					A2.addResource(c);
-					Settler s1 = new Settler();
-					s1.setGame(game);
-					A1.placeTraveller(s1);
-					s.pickUpResource();
 					s.removeResource(r);
-					//possible failures are called in removeResource() method
-					
 					break;
 					
 				case "hide" :
