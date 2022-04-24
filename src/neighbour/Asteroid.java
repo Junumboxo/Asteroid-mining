@@ -124,7 +124,7 @@ public class Asteroid implements INeighbour{
 	@Override
 	public void placeTraveller(Traveller t)     //Sets a travelller (settler/robot) on the asteroid
 	{
-		System.out.println("placeTraveller(t)");
+		//System.out.println("placeTraveller(t)");
 		travellers.add(t);
 		t.setAsteroid(this);
 	}
@@ -132,7 +132,7 @@ public class Asteroid implements INeighbour{
 	@Override
 	public void removeTraveller(Traveller t) //Removes a traveller from the asteroid
 	{
-		System.out.println("removeTraveller(t)");
+		//System.out.println("removeTraveller(t)");
 		travellers.remove(t);
 		t.setAsteroid(null);
 	}
@@ -140,7 +140,7 @@ public class Asteroid implements INeighbour{
 	@Override
 	public void addNeighbour(INeighbour n) //sets a neighbouring asteroid
 	{
-		System.out.println("addNeighbour(n)");
+		//System.out.println("addNeighbour(n)");
 		neighbours.add(n);
 	}
 

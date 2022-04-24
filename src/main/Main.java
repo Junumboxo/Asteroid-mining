@@ -23,6 +23,7 @@ public class Main {
 		t.setGame(game);
 		Settler s = game.getSettlers().get(0);
 		Resource r = new Carbon();
+		Robot robot = new Robot();
 		Gate g1 = new Gate();
 		Gate g2 = new Gate();
 		//setting up Gates for Traveler Teleport!!!
@@ -86,16 +87,17 @@ public class Main {
 					s.createGate();
 					break;
 					
-				case "install gate" :
-					System.out.println("Install Gate command:");
+				case "deploy" :
 					s.deployGate(g1);
 					break;
 					
-				case "traveler teleports" :
-					System.out.println("Traveler Teleports command:");
+				case "robot teleport" :
 					t.teleport(g1);
 					break;
 					
+				case "settler teleport" :
+					s.teleport(g1);
+					break;	
 				case "win game" :
 					System.out.println("Win Game command:");
 					game.winGame();
@@ -109,6 +111,9 @@ public class Main {
 					System.out.println("Sunstorm command:");
 					//Sun sun = new Sun();
 					sun.sunstorm();
+					break;
+				case "view inventory":
+					System.out.println(s.getResources().toString());
 					break;
 					
 				case "uranium explodes" :

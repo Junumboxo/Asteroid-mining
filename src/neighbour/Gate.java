@@ -26,35 +26,29 @@ public class Gate implements INeighbour{
 	
 	public INeighbour getNeighbour() //returns a neighbouring asteroid
 	{
-		System.out.println("getNeighbour()");
+		//System.out.println("getNeighbour()");
 		return neighbouringAsteroid;
 	}
 	
 	public void setActive(boolean b) // enables the usage of the gates
 	{
-		System.out.println("setActive(b)");
+		//System.out.println("setActive(b)");
 		active = b;
 	}
 	
-	public void underUse(Traveller t) // removes the teleportating unit from the 1st gate and places it to the 2nd gate if the gate is active(in operation)
-	{
-		System.out.println("underUse(t)");
-//		if (active) {
-//			neighbouringAsteroid.removeTraveller(t);
-//			Asteroid a2 = (Asteroid) pair.getNeighbour();
-//			a2.placeTraveller(t);
-//		}
-        System.out.println("Is g active? yes or no");
-   		Scanner in = new Scanner(System.in);
-   		String answ = in.nextLine();
-   		//checking winning condition
-   		if (answ.equals("yes")) {
+	public void underUse(Traveller t) // removes the teleportating unit from the 1st gate and 
+	{								  //places it to the 2nd gate if the gate is active(in operation)
+		if (active) {
 			neighbouringAsteroid.removeTraveller(t);
 			Asteroid a2 = (Asteroid) pair.getNeighbour();
 			a2.placeTraveller(t);
-   		}
+			if ( t instanceof Robot) 
+				System.out.println("Robot Teleported");
+			else 
+				System.out.println("Settler Teleported");
+		}
    		else { 
-   			System.out.println("Gate is not in use. Cannot teleport");
+   			System.out.println("Gate is not activated. Cannot teleport");
    		}
 	}
 	
@@ -75,7 +69,7 @@ public class Gate implements INeighbour{
 	@Override
 	public void addNeighbour(INeighbour a1) //sets a neighbouring asteroid
 	{
-		System.out.println("addNeighbour(a1)");
+		/*System.out.println("addNeighbour(a1)");
         System.out.println("Is asteroid a2 available? yes or no");
    		Scanner in = new Scanner(System.in);
    		String answ = in.nextLine();
@@ -84,7 +78,8 @@ public class Gate implements INeighbour{
 			this.setActive(true);
    		}
    		else { 
-   		}
+   		}*/
+		this.setActive(true);
 		//Asteroid a2 = (Asteroid)pair.getNeighbour();
 	}
 

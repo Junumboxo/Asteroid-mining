@@ -11,8 +11,8 @@ public class Settler extends Traveller{
     int resourcesOnBoardSize = 0; // at the start of the game settler has no resources  
 
     public void deployGate(Gate g){ 
-        System.out.println("deployGate(g)");
         g.addNeighbour(currentAsteroid);
+        System.out.println("Deployed");
     }
    
     public void travel(Asteroid a){//Requirement R15 
