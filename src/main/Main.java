@@ -107,6 +107,7 @@ public class Main {
 					
 				case "sunstorm" :
 					System.out.println("Sunstorm command:");
+					Sun sun = new Sun();
 					sun.sunstorm();
 					break;
 					
