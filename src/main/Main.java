@@ -54,28 +54,38 @@ public class Main {
 					
 				case "traveler drills" :
 					System.out.println("Traveler drills command:");
-					t.drill();
+					A1.setDepth(5);
+					s.drill()
 					break;		
 					
 				case "settler mines" :
 					System.out.println("Settler mines command:");
+		      //same question as in the pick up
+					Carbon c = new Carbon();
+					A1.addResource(c);
 					s.mine();
+					//possible failures are called in mine() method
 					break;
 					
 				case "pick up resource" :
 					System.out.println("Pick Up Resource command:");
-					s.pickUpResource();
+					Carbon c = new Carbon();
+					A1.addResource(c);
+          //maybe it is a good idea to add a resource
+          //because so far we dont initialize resources anywhere
+          s.pickUpResource();
+					//possible failures are called in pickUpResource() method
 					break;
 					
 				case "drop resource" :
 					System.out.println("Drop Resource command:");
 					s.removeResource(r);
+					//possible failures are called in removeResource() method
 					break;
 					
 				case "hide" :
 					System.out.println("Hide command:");
-					Traveller traveller = new Traveller();
-					//traveller.hide();
+					s.hide();
 					break;
 					
 				case "create robot" :
