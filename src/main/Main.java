@@ -102,7 +102,7 @@ public class Main {
 			System.out.println("Settler drills");
 			System.out.println("Settler mines");
 			System.out.println("Pick up resource");
-			//System.out.println("Drop resource");
+			System.out.println("Drop resource");
 			System.out.println("Settler hide");
 			System.out.println("Create robot");
 			System.out.println("Create transport gate");
@@ -119,12 +119,6 @@ public class Main {
 			
 			String input_command = in.nextLine();
 			switch(input_command.toLowerCase()) {
-//			case "control asteroids" :
-//				System.out.println("Control Asteroids command:");
-//			    sun.getAsteroids();	  
-//			    System.out.println("Enter 'p' if you want to set Perihelion on asteroid and 'a' if you want to set Aphelion"); String answ = in.nextLine(); if (answ.equals("p")) A1.setPerihelion(true);
-//			    else A1.setPerihelion(false); break;
-			  
 			  case "settler travels" :
 				  System.out.println("Choose a neighbour to travel to:");
 				  for (int j = 0; j < currentAsteroid.getNeighbours().size(); j++)
@@ -147,8 +141,8 @@ public class Main {
 				  break;
 			  
 			  case "drop resource" :
-				  //tofix
-				  //currentSettler.removeResource(r); //possible failures are called in removeResource()
+				  input = Integer.parseInt(in.nextLine()); //index of the resource to drop
+				  currentSettler.removeResource(currentSettler.getResources().get(input)); //possible failures are called in removeResource()
 				  break;
 			  
 			  case "settler hide" :
