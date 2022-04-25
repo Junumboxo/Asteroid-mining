@@ -25,10 +25,9 @@ public class Traveller {
 	}
 	public void setAsteroid(Asteroid a) { //R05
 		if (a != null) {
-		//System.out.println("setAsteroid()"); 
+			this.currentAsteroid=a;
+			System.out.println("Asteroid set");
 		}
-		this.currentAsteroid=a;
-		
 	}
 	public Asteroid getAsteroid() {
 		System.out.println("getAsteroid()");

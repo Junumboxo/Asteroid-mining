@@ -47,9 +47,13 @@ public class Asteroid implements INeighbour{
 	
 	public void setDepth(int depth)  //Sets the depth of an asteroid to the extent it can be drilled.
 	{
-		System.out.println("setDepth()");
 		if (depth > 0)
+		{
 			this.depth = depth;
+			System.out.println("Depth set " + depth);
+		}
+		else
+			System.out.println("Depth cannot be negative");
 	}
 	
 	public void decreaseDepth()  //Depth function that is reposible for changing the depth of the asteroid to ensure that it can be drilled.
@@ -76,11 +80,10 @@ public class Asteroid implements INeighbour{
 	
 	public boolean addResource(Resource r)  //Ensures that a dropped resource by the settler is kept in the asteroid.
 	{
-		System.out.println("addResource(r)");
 		if (isHollow) {
 			resource = r;
 			isHollow = false;
-			System.out.println("Resources in asteroids are set");
+			System.out.println("Resources set " + r.getType());
 		return true;
 		}
 		return false;
@@ -114,11 +117,6 @@ public class Asteroid implements INeighbour{
 				
 		}
 		isHollow = true;
-	}
-	
-	public void addTraveler(Traveller t) {
-		System.out.println("addTraveler(s)");
-		System.out.println("Settlers are positioned in playing field");
 	}
 	
 	@Override

@@ -54,28 +54,10 @@ public class Game {
 	  Then fills each asteroid with a resource. Settlers are positioned on 
 	  arbitrary asteroids by method addTraveller()*/
 	public void startGame() {
-		System.out.println("startGame()");
 		//adding asteroids
-		ArrayList<Asteroid> listOfAsteroids = new ArrayList <Asteroid>();
-		Asteroid A = new Asteroid ();
-		Asteroid A2 = new Asteroid();
-		listOfAsteroids.add(A);
-		listOfAsteroids.add(A2);
-		A.addNeighbour(A2);
-		sun = new Sun();
-		sun.addAsteroids(listOfAsteroids);
-
-		//adding resources to the asteroids
-		/*
-		 * Resource r = new Iron(); A.addResource(r);
-		 */
+		System.out.println("The game has started!");
+		this.sun = new Sun();
 		
-		//setting asteroids on the playing field and adding settlers on asteroids
-		Settler s = new Settler(); // do the extend of settler from traveler!
-		s.setGame(this);
-		A.addTraveler(s);
-		A.placeTraveller(s);
-		this.addSettler(s);
 	}
 
 	//Requirement R58
