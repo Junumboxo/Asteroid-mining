@@ -9,7 +9,7 @@ public class Traveller {
 	
 	public Traveller(){
 		currentAsteroid = new Asteroid();
-		//game = new Game(); // !!!!!!!!
+		game = new Game(); 
 	}
 	public void drill() { // R20, R41, R31, traveller drills 
 		this.currentAsteroid.decreaseDepth();
@@ -30,7 +30,7 @@ public class Traveller {
 		}
 	}
 	public Asteroid getAsteroid() {
-		System.out.println("getAsteroid()");
+		//System.out.println("getAsteroid()");
 		return (this.currentAsteroid);
 	}
 	

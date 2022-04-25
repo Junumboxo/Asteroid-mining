@@ -68,7 +68,7 @@ public class Asteroid implements INeighbour{
 
 	public void extract(Settler s)  //Function responsible for mining/picking up the resource.
 	{
-		System.out.println("extract(s)");
+		//System.out.println("extract(s)");
 		s.pickUpResource();
 	}
 	
@@ -85,13 +85,13 @@ public class Asteroid implements INeighbour{
 	
 	public Resource getResource()  
 	{
-		System.out.println("getResource()");
+		//System.out.println("getResource()");
 		return resource;
 	}
 	
 	public void removeResource()   //This function checks if an asteroid is being picked by the settler or exploded and the core is set to hollow.
 	{ 
-		System.out.println("removeResource()");
+		//System.out.println("removeResource()");
 		resource = null;
 		isHollow = true;
 	}

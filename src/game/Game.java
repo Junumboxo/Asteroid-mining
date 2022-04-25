@@ -76,8 +76,11 @@ public class Game {
 
 	//Requirement R56
 	public void loseGame() {
-		if (settlers.size() == 0)
+		if (settlers.size() == 0) {
 			System.out.println("Game lost");
+			System.exit(0);
+		}
+			
 		else 
 			System.out.println("Game not lost yet");
 	}

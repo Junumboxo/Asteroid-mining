@@ -3,8 +3,9 @@ package resource;
 import neighbour.Asteroid;
 
 public class Carbon extends Resource { //R10
-	private String type = "carbon";
-
+	public Carbon()  {
+		type = "Carbon";
+	}
 	@Override
 	public void exposed(Asteroid a) {
 		

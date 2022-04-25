@@ -33,7 +33,7 @@ public class Settler extends Traveller{
     
     public void setInventory()
     {
-    	resourcesOnBoard = null;
+    	resourcesOnBoard.clear();
     	resourcesOnBoard.add(new Iron());
     	resourcesOnBoard.add(new Iron());
     	resourcesOnBoard.add(new Carbon());
@@ -43,8 +43,9 @@ public class Settler extends Traveller{
 
     
     public void mine(){ //Requirement R21 
-        System.out.println("mine()");
+        //System.out.println("mine()");
        	currentAsteroid.extract(this);
+       	System.out.println("mined");
     }
 
         
@@ -115,7 +116,7 @@ public class Settler extends Traveller{
     
     public void pickUpResource()         //Requirement R55 - picking the resource
     {
-    	System.out.println("pickUpResource()");
+    	//System.out.println("pickUpResource()");
         Resource res = currentAsteroid.getResource();
    
    		if (resourcesOnBoard.size() < 10) {

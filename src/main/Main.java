@@ -51,7 +51,7 @@ public class Main {
 			default:
 				System.out.println("Resource could not be added!");
 			}
-			System.out.print("Depth set ");
+			System.out.print("Set Depth ");
 			asts.get(i).setDepth(Integer.parseInt(in.nextLine()));
 		}
 		sun.addAsteroids(asts);
@@ -134,7 +134,7 @@ public class Main {
 					  currentSettler.travel(asts.get(input));
 				  break;
 			  
-			  case "Settler drills" : 
+			  case "settler drills" : 
 				  currentSettler.drill();
 				  break;
 			
@@ -191,7 +191,7 @@ public class Main {
 				  sun.sunstorm();
 				  break;
 			  case "view inventory":
-				  currentSettler.setInventory();
+				  //currentSettler.setInventory();
 				  for (Resource res : currentSettler.getResources())
 				  { if (res != null)
 					  System.out.println(res.getType()); }
