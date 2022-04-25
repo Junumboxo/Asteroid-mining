@@ -203,16 +203,18 @@ public class Main {
 				  Uranium u1 = new Uranium();
 				  currentAsteroid.removeResource();
 				  currentAsteroid.addResource(u1);
-				  currentAsteroid.setDepth(0);
+				  currentAsteroid.setDepth(1);
 				  currentAsteroid.setPerihelion(true);
+				  currentSettler.drill();
 				  break;
 			  
 			  case "water evaporates" : 
 				  Water w = new Water();
 				  currentAsteroid.removeResource();
 				  currentAsteroid.addResource(w);
-				  currentAsteroid.setDepth(0);
+				  currentAsteroid.setDepth(1);
 				  currentAsteroid.setPerihelion(true);
+				  currentSettler.drill();
 				  break;
 			  
 			  default:
