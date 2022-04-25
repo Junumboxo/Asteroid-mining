@@ -88,6 +88,7 @@ public class Main {
 		Gate g1 = new Gate();
 		Gate g2 = new Gate();
 		g1.setPair(g2);
+		g2.setPair(g1);
 		g1.addNeighbour(asts.get(0));
 		g2.addNeighbour(asts.get(1));
 

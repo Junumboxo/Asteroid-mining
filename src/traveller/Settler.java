@@ -5,25 +5,11 @@ import neighbour.*;
 import resource.*;
 
 public class Settler extends Traveller{
-    Resource[] resourcesOnBoard = new Resource[10]; // Requirement R23
+    List<Resource> resourcesOnBoard = new ArrayList<Resource>(); // Requirement R23
     Gate g1=null;
     Gate g2=null; // Requirement R49
-    int resourcesOnBoardSize = 0; // at the start of the game settler has no resources  
-    
-    public Settler() {
-    	for(int i=0;i<resourcesOnBoard.length;i++)
-    	{
-    		resourcesOnBoard[i] = null;
-    	}
-    }
-    public void setInventory() { // method for initializing the inventory and testing !!!
-    	resourcesOnBoard[0]= new Iron();//To be removed
-    	resourcesOnBoard[1]= new Iron(); // comment to check not enough resources
-    	resourcesOnBoard[2]= new Water();
-    	resourcesOnBoard[3]= new Uranium();
-    	resourcesOnBoardSize = 4;
-    }
-    
+  
+
     public void deployGate(){
     	if (g1 != null)
     	{
@@ -44,6 +30,16 @@ public class Settler extends Traveller{
         a.placeTraveller(this);
         System.out.println("Travelled successfully");
     }
+    
+    public void setInventory()
+    {
+    	resourcesOnBoard = null;
+    	resourcesOnBoard.add(new Iron());
+    	resourcesOnBoard.add(new Iron());
+    	resourcesOnBoard.add(new Carbon());
+    	resourcesOnBoard.add(new Uranium());
+    	resourcesOnBoard.add(new Water());
+    }
 
     
     public void mine(){ //Requirement R21 
@@ -53,19 +49,30 @@ public class Settler extends Traveller{
 
         
         public void createRobot(){ //Requirement R38 
-            System.out.println("createRobot()");
-            System.out.println("Are there enough resources? yes or no");
-           		Scanner in = new Scanner(System.in);
-           		String answ = in.nextLine();
-           		//checking winning condition
-           		if (answ.equals("yes")) {
-           			Robot r = new Robot();
-           			currentAsteroid.placeTraveller(r);
-           			game.addRobot(r);
-           		}
-           		else { 
-           			System.out.println("Not enough resources!");
-           		}
+        	setInventory();
+        	int ironCount = 0;
+        	int carbonCount = 0;
+        	int uraniumCount = 0;
+        	for ( Resource r : this.getResources())
+        	{
+        		if (r instanceof Iron) ironCount++;
+        		if (r instanceof Water) carbonCount++;
+        		if (r instanceof Uranium) uraniumCount++;
+        	}
+        	if (ironCount>= 1 && carbonCount >= 1 && uraniumCount>= 1) {
+        		Robot robot = new Robot();
+        		currentAsteroid.placeTraveller(robot);
+        		game.addRobot(robot);
+        		System.out.println("Robot created");
+            	for ( Resource r : this.getResources())
+            		if (r instanceof Iron) {resourcesOnBoard.remove(r); break;}
+            	for ( Resource r : this.getResources())
+            		if (r instanceof Carbon) {resourcesOnBoard.remove(r); break;}
+            	for ( Resource r : this.getResources())
+            		if (r instanceof Uranium) {resourcesOnBoard.remove(r); break;}
+        	}
+        	else 
+        		System.out.println("Not enough resources to create Robot");
         }
         public void createGate(){ //Requirement R46
         	setInventory();
@@ -84,9 +91,14 @@ public class Settler extends Traveller{
         		g2 = new Gate();
         		g1.setPair(g2);
         		g2.setPair(g1);
-        		// ??????????????????????????????????????????????????????????
-        		//Iron r1, r2; Water w; Uranium u;
-        		//this.removeResource(r1);
+        		for ( Resource r : this.getResources())
+            		if (r instanceof Iron) {resourcesOnBoard.remove(r); break;}
+        		for ( Resource r : this.getResources())
+            		if (r instanceof Iron) {resourcesOnBoard.remove(r); break;}
+            	for ( Resource r : this.getResources())
+            		if (r instanceof Water) {resourcesOnBoard.remove(r); break;}
+            	for ( Resource r : this.getResources())
+            		if (r instanceof Uranium) {resourcesOnBoard.remove(r); break;}
         		System.out.println("Transport Gate created");
         	}
         	else 
@@ -94,18 +106,10 @@ public class Settler extends Traveller{
         } 
     
     public void removeResource(Resource r){
-        System.out.println("removeResource(r)");
-        System.out.println("Enter the current capacity of the settler. Enter number between 0 and 10.");
-   		Scanner in = new Scanner(System.in);
-   		String answ = in.nextLine();
-   		//checking winning condition
-   		if (Integer.parseInt(answ) < 10) {
-   			currentAsteroid.removeResource();
-   		}
-   		else { 
-   			System.out.println("The capacity is reached");
-   		}    
-        currentAsteroid.addResource(r);
+   		if (resourcesOnBoard.contains(r)) {
+   			resourcesOnBoard.remove(r);
+   			currentAsteroid.addResource(r);
+   		}  
     }
     
     
@@ -113,19 +117,17 @@ public class Settler extends Traveller{
     {
     	System.out.println("pickUpResource()");
         Resource res = currentAsteroid.getResource();
-        System.out.println("Enter the current capacity of the settler. Enter number between 0 and 10.");
-   		Scanner in = new Scanner(System.in);
-   		String answ = in.nextLine();
-   		//checking winning condition
-   		if (Integer.parseInt(answ) < 10) {
+   
+   		if (resourcesOnBoard.size() < 10) {
    			currentAsteroid.removeResource();
+   			resourcesOnBoard.add(res);
    		}
    		else { 
    			System.out.println("The capacity is reached");
    		}    
     }
 
-    public Resource[] getResources(){ // gives the current number of resources on board
+    public List<Resource> getResources(){ // gives the current number of resources on board
         //System.out.println("getResources()");
     	return(resourcesOnBoard);
         
@@ -138,7 +140,6 @@ public class Settler extends Traveller{
      public void die(){ 	//Requirement R36
     	 System.out.println("die()");
     	 resourcesOnBoard=null;
-         resourcesOnBoardSize=0;
          currentAsteroid.removeTraveller(this);
          game.removeSettler(this);
     }
