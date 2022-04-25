@@ -80,34 +80,29 @@ public class Game {
 
 	//Requirement R58
 	public void winGame() {
-		System.out.println("winGame()");
-		System.out.println("Are the resources collected enough for building space station?\n answer yes or no");
-		//reading user's input from the console
-		Scanner in = new Scanner(System.in);
-		String answ = in.nextLine();
-		//checking winning condition
-		if (answ.equals("yes")) {
-			System.out.println("Congratulations you have won!");
-		}
-		else { 
-			System.out.println("Game not won yet");
-		}
-		//in.close(); //would end the program after Win Game command execution
+		int ironCount = 0;
+    	int waterCount = 0;
+    	int uraniumCount = 0;
+    	int carbonCount = 0;
+    	for (Settler s: settlers)
+	    	for ( Resource r : s.getResources())
+	    	{
+	    		if (r instanceof Iron) ironCount++;
+	    		if (r instanceof Water) waterCount++;
+	    		if (r instanceof Uranium) uraniumCount++;
+	    		if (r instanceof Carbon) carbonCount++;
+	    	}
+		if (ironCount == 3 && waterCount == 3 && uraniumCount == 3 && carbonCount == 3)
+			System.out.println("Game won");
+		else 
+			System.out.println("Game not won yet\r\n");
 	}
 
 	//Requirement R56
 	public void loseGame() {
-		System.out.println("loseGame()\nHow many settlers are alive?");
-		//reading user's input from the console
-		Scanner in = new Scanner(System.in);
-		int answ = in.nextInt();
-		//Checking losing condition
-		if (answ == 0) {
-			System.out.println("You have lost :(");
-		}
-		else { 
-			System.out.println("Game isn't lost");
-		}
-		//in.close();  // //would end the program after Lose Game command execution
+		if (settlers.size() == 0)
+			System.out.println("Game lost");
+		else 
+			System.out.println("Game not lost yet");
 	}
 }

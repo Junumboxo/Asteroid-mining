@@ -71,9 +71,9 @@ public class Main {
 					System.out.println("Pick Up Resource command:");
 					//Carbon c = new Carbon();
 					//A1.addResource(c);
-          //maybe it is a good idea to add a resource
-          //because so far we dont initialize resources anywhere
-          s.pickUpResource();
+			        //maybe it is a good idea to add a resource
+			        //because so far we dont initialize resources anywhere
+			        s.pickUpResource();
 					//possible failures are called in pickUpResource() method
 					break;
 					
@@ -108,13 +108,14 @@ public class Main {
 				case "settler teleport" :
 					s.teleport(g1);
 					break;	
-				case "win game" :
-					System.out.println("Win Game command:");
+				case "check win" :
 					game.winGame();
 					break;
-				case "lose game" :
-					System.out.println("Lose Game command:");
+				case "check lose" :
 					game.loseGame();
+					break;
+				case "remove settler" :
+					game.removeSettler(s);
 					break;
 					
 				case "sunstorm" :
@@ -132,8 +133,8 @@ public class Main {
 					
 				case "uranium explodes" :
 					System.out.println("Uranium explodes command:");
-					Uranium u = new Uranium();
-					A1.addResource(u);
+					Uranium u1 = new Uranium();
+					A1.addResource(u1);
 					Settler s1 = new Settler();
 					s1.setGame(game);
 					A1.placeTraveller(s1);
@@ -155,8 +156,8 @@ public class Main {
 						
 				case "robot under explosion" :	
 					System.out.println("robot under explosion command:");	
-					Uranium u = new Uranium();
-					A1.addResource(u);
+					Uranium u2 = new Uranium();
+					A1.addResource(u2);
 					A1.placeTraveller(robot);
 					A1.setDepth(1);
 					s.drill();
