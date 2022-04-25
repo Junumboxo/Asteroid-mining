@@ -1,5 +1,6 @@
 package main;
 
+import java.nio.file.FileSystemNotFoundException;
 import java.util.*;
 import game.Game;
 import neighbour.*;
@@ -73,14 +74,16 @@ public class Main {
 			System.out.println("Finish with -1. Add neighbours to " + i);
 			input = Integer.parseInt(in.nextLine());
 			while (input != -1)
+			{
 				if (input < asts.size())
 					asts.get(i).addNeighbour(asts.get(input));
 				else 
 					System.out.println("Invalid index");
 				input = Integer.parseInt(in.nextLine());
+			}
 			System.out.println("Neighbours of " + i);
 			for (int j = 0; j < asts.get(i).getNeighbours().size(); j++)
-				System.out.print(j + " ");
+				System.out.println(asts.indexOf(asts.get(i).getNeighbours().get(j)) + " ");
 		}
 		
 		
@@ -97,9 +100,16 @@ public class Main {
 		}
 		
 		
+		System.out.println("All set!");
+		Iterator<Settler> it = settlers.iterator();
 		
+		while(it.hasNext()) {
+			  Settler currentSettler = it.next();
+			  System.out.println("It is the turn of settler " + settlers.indexOf(currentSettler));
+			  if (!it.hasNext())
+				  it = settlers.iterator();
+		}
 		
-		System.out.print("\nEnter the command:");
 		/*
 		 * // Command inputed must be identical to the one mentioned in the
 		 * documentation 5.2 !!! while (in.hasNext()) { while(true) { String

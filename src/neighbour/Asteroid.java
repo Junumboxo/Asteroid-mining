@@ -19,18 +19,10 @@ public class Asteroid implements INeighbour{
 	}
 	public void setPerihelion(boolean b)    //Sets the location of the perihelion
 	{ // pass true as parameter if Perihelion, false if Aphelion
-		if (b) System.out.println("setPerihelion(p)");
-		else 
-			System.out.println("setPerihelion(a)");
 		isPerihelion = b;
 		if (b) {
 			System.out.println("Current asteroid is in Perihelion phase");
-			System.out.println("What is the depth of the mantle? Enter number between 1 and 3");
-	   		Scanner in = new Scanner(System.in);
-	   		String answ = in.nextLine();
-	   		
-	   		if (Integer.parseInt(answ) == 0)
-	   			//Java polymorphism mechanism creates issues
+	   		if (depth == 0)
 	   			resource.exposed(this);
 		}
 		else {
@@ -138,8 +130,14 @@ public class Asteroid implements INeighbour{
 	@Override
 	public void addNeighbour(INeighbour n) //sets a neighbouring asteroid
 	{
-		neighbours.add(n);
-		System.out.println("Neighbour added");
+		if (!neighbours.contains(n))
+		{
+			neighbours.add(n);
+			n.addNeighbour(this);
+			System.out.println("Neighbour added");
+		}
+		else 
+			System.out.println("This neighbour already added");
 	}
 
 	@Override
