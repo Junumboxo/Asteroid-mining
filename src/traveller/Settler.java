@@ -24,11 +24,21 @@ public class Settler extends Traveller{
     	resourcesOnBoardSize = 4;
     }
     
-    public void deployGate(Gate g){ 
-        g.addNeighbour(currentAsteroid);
-        System.out.println("Deployed");
-    }
+    public void deployGate(){
+    	if (g1 != null)
+    	{
+    		g1.addNeighbour(currentAsteroid);
+    		g1 = null;
+    		System.out.println("Deployed");
+    	}
+    	else if (g2 != null)
+    	{
+    		g2.addNeighbour(currentAsteroid);
+    		g2 = null;
+    		System.out.println("Deployed");
+    	} else System.out.println("no gates to deploy");
    
+    }
     public void travel(Asteroid a){//Requirement R15 
         currentAsteroid.removeTraveller(this);
         a.placeTraveller(this);

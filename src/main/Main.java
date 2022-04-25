@@ -28,14 +28,6 @@ public class Main {
 		game.startGame();
 		Sun sun = game.getSun();
 
-		/*
-		 * Asteroid A1 = sun.getAsteroids().get(0); Asteroid A2 =
-		 * sun.getAsteroids().get(1); Traveller t = new Traveller(); t.setGame(game);
-		 * Settler s = game.getSettlers().get(0); Resource r = new Carbon(); Robot robot
-		 * = new Robot(); Gate g1 = new Gate(); Gate g2 = new Gate(); //setting up Gates
-		 * for Traveler Teleport!!! g1.setPair(g2);
-		 */
-
 		System.out.print("Create Asteroids ");
 		ArrayList<Asteroid> asts = new ArrayList<Asteroid>();
 		input = Integer.parseInt(in.nextLine());
@@ -92,11 +84,37 @@ public class Main {
 
 		System.out.println("All set!");
 		Iterator<Settler> it = settlers.iterator();
+		
+		Gate g1 = new Gate();
+		Gate g2 = new Gate();
+		g1.setPair(g2);
+		g1.addNeighbour(asts.get(0));
+		g2.addNeighbour(asts.get(1));
 
 		while (it.hasNext()) {
 			Settler currentSettler = it.next();
 			System.out.println("It is the turn of settler " + settlers.indexOf(currentSettler));
 			Asteroid currentAsteroid = currentSettler.getAsteroid();
+			
+			System.out.println("You have the following opportunities:");
+			System.out.println("Settler travels");
+			System.out.println("Settler drills");
+			System.out.println("Settler mines");
+			System.out.println("Pick up resource");
+			//System.out.println("Drop resource");
+			System.out.println("Settler hide");
+			System.out.println("Create robot");
+			System.out.println("Create transport gate");
+			System.out.println("Deploy gate");
+			System.out.println("Robot teleport");
+			System.out.println("Settler teleport");
+			System.out.println("Check win");
+			System.out.println("Check lose");
+			System.out.println("Remove settler");
+			System.out.println("Sunstorm");
+			System.out.println("View inventory");
+			System.out.println("Uranium explodes");
+			System.out.println("Water evaporates");
 			
 			String input_command = in.nextLine();
 			switch(input_command.toLowerCase()) {
@@ -115,7 +133,7 @@ public class Main {
 					  currentSettler.travel(asts.get(input));
 				  break;
 			  
-			  case "traveler drills" : 
+			  case "Settler drills" : 
 				  currentSettler.drill();
 				  break;
 			
@@ -132,7 +150,7 @@ public class Main {
 				  //currentSettler.removeResource(r); //possible failures are called in removeResource()
 				  break;
 			  
-			  case "hide" :
+			  case "settler hide" :
 				  currentSettler.hide(currentAsteroid);
 				  break;
 			  
@@ -141,31 +159,53 @@ public class Main {
 				  break;
 			  
 			  case "create transport gate" :
-				  currentSettler.createGate(); break;
+				  currentSettler.createGate();
+				  break;
 			  
-			  case "deploy" :
-				  currentSettler.deployGate(g1); break;
+			  case "deploy gate" :
+				  currentSettler.deployGate();
+				  break;
 			  
-			  case "robot teleport" : t.teleport(g1); break;
+			  case "robot teleport" :
+				  Robot r1 = new Robot();
+				  game.addRobot(r1);
+				  asts.get(0).placeTraveller(r1);
+				  r1.teleport(g1);
+				  break;
 			  
-			  case "settler teleport" : s.teleport(g1); break; case "check win" :
-			  game.winGame(); break; case "check lose" : game.loseGame(); break; case
-			  "remove settler" : game.removeSettler(s); break;
+			  case "settler teleport" :
+				  currentSettler.setAsteroid(asts.get(0));
+				  currentSettler.teleport(g1);
+				  break;
+			  case "check win" :
+				  game.winGame();
+				  break;
+			  case "check lose" : 
+				  game.loseGame();
+				  break;
+			  case "remove settler" :
+				  game.removeSettler(currentSettler);
+				  break;
+			  case "sunstorm" :
+				  sun.sunstorm();
+				  break;
+			  case "view inventory":
+				  currentSettler.setInventory();
+				  for (Resource res : currentSettler.getResources())
+				  { if (res != null)
+					  System.out.println(res.getType()); }
+				  break;
 			  
-			  case "sunstorm" : System.out.println("Sunstorm command:"); //Sun sun = new
-			  Sun(); sun.sunstorm(); break; case "view inventory": s.setInventory(); for
-			  (Resource res : s.getResources()) { if (res != null)
-			  System.out.println(res.getType()); } break;
-			  
-			  case "uranium explodes" : System.out.println("Uranium explodes command:");
-			  Uranium u1 = new Uranium(); A1.addResource(u1); Settler s1 = new Settler();
-			  s1.setGame(game); A1.placeTraveller(s1);
-			  
-			  Robot r1 = new Robot(); s1.setGame(game); A1.placeTraveller(r1);
-			  
-			  A1.setPerihelion(true);
-			  
-			  break;
+			  case "uranium explodes" :
+				  Robot r = new Robot();
+				  game.addRobot(r);
+				  currentAsteroid.placeTraveller(r);
+				  Uranium u1 = new Uranium();
+				  currentAsteroid.removeResource();
+				  currentAsteroid.addResource(u1);
+				  currentAsteroid.setDepth(0);
+				  currentAsteroid.setPerihelion(true);
+				  break;
 			  
 			  case "water evaporates" : 
 				  Water w = new Water();
@@ -174,30 +214,11 @@ public class Main {
 				  currentAsteroid.setDepth(0);
 				  currentAsteroid.setPerihelion(true);
 				  break;
-				  
-			  case "settler under explosion" :
-				  Uranium u1 = new Uranium();
-				  currentAsteroid.removeResource();
-				  currentAsteroid.addResource(u1);
-				  currentAsteroid.setDepth(0);
-				  currentAsteroid.setPerihelion(true);
-				  break;
-			  
-			  case "robot under explosion" :
-				  Robot r = new Robot();
-				  currentAsteroid.placeTraveller(r);
-				  Uranium u2 = new Uranium();
-				  currentAsteroid.removeResource();
-				  currentAsteroid.addResource(u2);
-				  currentAsteroid.setDepth(0);
-				  currentAsteroid.setPerihelion(true);
-				  break;
 			  
 			  default:
 				  System.out.println("The command is invalid!"); 
 				  break;
-				}
-			  
+				}  
 			
 			if (!it.hasNext())
 				it = settlers.iterator();
