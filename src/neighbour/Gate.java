@@ -55,14 +55,14 @@ public class Gate implements INeighbour{
 	@Override
 	public void placeTraveller(Traveller t) //Sets a travelller (settler/robot) on the asteroid
 	{
-		System.out.println("placeTraveller(t)");
+		//System.out.println("placeTraveller(t)");
 		neighbouringAsteroid.placeTraveller(t);
 	}
 	
 	@Override
 	public void removeTraveller(Traveller t) //Removes a traveller from the asteroid
 	{
-		System.out.println("removeTraveller(t)");
+		//System.out.println("removeTraveller(t)");
 		neighbouringAsteroid.removeTraveller(t);
 	}
 
@@ -86,7 +86,7 @@ public class Gate implements INeighbour{
 	@Override
 	public void removeNeighbour(INeighbour a2) //removes a gate/asteroid if it is exploded
 	{
-		System.out.println("removeNeighbour(a2)");
+		//System.out.println("removeNeighbour(a2)");
 		neighbouringAsteroid = null;
 	}
 	
