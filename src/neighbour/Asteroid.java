@@ -138,21 +138,26 @@ public class Asteroid implements INeighbour{
 	@Override
 	public void addNeighbour(INeighbour n) //sets a neighbouring asteroid
 	{
-		//System.out.println("addNeighbour(n)");
 		neighbours.add(n);
+		System.out.println("Neighbour added");
 	}
 
 	@Override
 	public void removeNeighbour(INeighbour n) //removes an asteroid if it is exploded
 	{
-		System.out.println("removeNeighbour(n)");
 		neighbours.remove(n);
+		System.out.println("Neighbour removed");
 	}
 	
 	public INeighbour getNeighbour(int i) 
 	{
 		System.out.println("getNeighbour()");
 		return neighbours.get(i);
+	}
+	
+	public List<INeighbour> getNeighbours() 
+	{
+		return neighbours;
 	}
 
 	public int getDepth() {

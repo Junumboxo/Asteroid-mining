@@ -36,6 +36,8 @@ public class Main {
 		 * for Traveler Teleport!!! g1.setPair(g2);
 		 */
 		
+		
+		
 		System.out.print("Create Asteroids ");
 		ArrayList<Asteroid> asts = new ArrayList<Asteroid>();
 		input = Integer.parseInt(in.nextLine());
@@ -64,6 +66,24 @@ public class Main {
 			asts.get(i).setDepth(Integer.parseInt(in.nextLine()));
 		}
 		sun.addAsteroids(asts);
+		
+		System.out.println("Set asteroid neighbours");
+		for (int i = 0; i < asts.size(); i++)
+		{
+			System.out.println("Finish with -1. Add neighbours to " + i);
+			input = Integer.parseInt(in.nextLine());
+			while (input != -1)
+				if (input < asts.size())
+					asts.get(i).addNeighbour(asts.get(input));
+				else 
+					System.out.println("Invalid index");
+				input = Integer.parseInt(in.nextLine());
+			System.out.println("Neighbours of " + i);
+			for (int j = 0; j < asts.get(i).getNeighbours().size(); j++)
+				System.out.print(j + " ");
+		}
+		
+		
 		
 		System.out.print("Create Settlers ");
 		ArrayList<Settler> settlers = new ArrayList<Settler>();
