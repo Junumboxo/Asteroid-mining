@@ -21,28 +21,22 @@ public class Game {
 	}
 
 	public ArrayList<Robot> getRobots() {
-        System.out.println("getRobots()");
 		return this.robots;
     }
 	public void addRobot(Robot r) {
-		System.out.println("addRobot()");
 		robots.add(r);
 	}
 	public void removeRobot(Robot r) {
-		System.out.println("removeRobot(r)");
 		robots.remove(r);
 	}
 
 	public ArrayList<Settler> getSettlers() {
-        System.out.println("getSettlers()");
 		return this.settlers;
     }
 	public void addSettler(Settler s) {
-		System.out.println("addSettler(s)");
 		settlers.add(s);
 	}
 	public void removeSettler(Settler s) {
-		System.out.println("removeSettler(s)");
 		settlers.remove(s);
 	}
 	

@@ -31,8 +31,8 @@ public class Settler extends Traveller{
    
     public void travel(Asteroid a){//Requirement R15 
         currentAsteroid.removeTraveller(this);
-        currentAsteroid=a;
-        currentAsteroid.placeTraveller(this);
+        a.placeTraveller(this);
+        System.out.println("Travelled successfully");
     }
 
     

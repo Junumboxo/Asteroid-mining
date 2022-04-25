@@ -50,9 +50,11 @@ public class Asteroid implements INeighbour{
 	
 	public void decreaseDepth()  //Depth function that is reposible for changing the depth of the asteroid to ensure that it can be drilled.
 	{
-		System.out.println("decreaseDepth()");
 		if (depth > 0)
+		{
 			depth--;
+			System.out.println("Depth decreased by 1");
+		}
 		else
 			System.out.print("The asteroid is fully drilled");
 	}
