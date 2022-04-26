@@ -38,6 +38,6 @@ public class Traveller {
 		game = g;
 	}
 	
-	public void underExplosion(){System.out.println("underExplosion()");} // R34, R35,  traveller is under exlosion
-	public void die() {System.out.println("die()");} // traveller dies
+	public void underExplosion(){System.out.println("Traveller under explosion");} // R34, R35,  traveller is under exlosion
+	public void die() {System.out.println("Travelled dies");} // traveller dies
 }

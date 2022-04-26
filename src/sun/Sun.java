@@ -13,6 +13,7 @@ public class Sun {
 	{
 		for (Asteroid a: asteroids)
 			a.underStorm();
+		System.out.println("Sunstorm occured");
 	}
 	
 	public void addAsteroids(List<Asteroid> toAdd)

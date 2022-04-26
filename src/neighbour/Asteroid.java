@@ -33,7 +33,6 @@ public class Asteroid implements INeighbour{
 	
 	public void setHollow(boolean b)  //Sets the core  of the asteroid hollow.
 	{
-		System.out.println("setHollow(b)");
 		isHollow = b;
 	}
 	
@@ -57,18 +56,19 @@ public class Asteroid implements INeighbour{
 		}
 		else
 			System.out.print("The asteroid is fully drilled");
+		if (depth == 0)
+			resource.exposed(this);
 	}
 	
 	public void explode()   //Provides the functionalities for the explosion of the asteroid.
 	{
-		System.out.println("explode()");
 		for (int i = 0; i < travellers.size(); i++)
 			travellers.get(i).underExplosion();
+		System.out.println("Asteroid exploded");
 	}
 
 	public void extract(Settler s)  //Function responsible for mining/picking up the resource.
 	{
-		//System.out.println("extract(s)");
 		s.pickUpResource();
 	}
 	
@@ -89,7 +89,7 @@ public class Asteroid implements INeighbour{
 		return resource;
 	}
 	
-	public void removeResource()   //This function checks if an asteroid is being picked by the settler or exploded and the core is set to hollow.
+	public void removeResource()   //This function checks if an resource is being picked by the settler
 	{ 
 		//System.out.println("removeResource()");
 		resource = null;
@@ -99,7 +99,6 @@ public class Asteroid implements INeighbour{
 	
 	public void underStorm()  //Provides functionalities for hiding of player under the sunstorm, also responsible for its behavior under the sunstorm.
 	{
-		System.out.println("underStorm()");
 		for (int i = 0; i < travellers.size(); i++)
 		{
 			if (isHollow)
@@ -111,6 +110,7 @@ public class Asteroid implements INeighbour{
 				
 		}
 		isHollow = true;
+		System.out.println("Asteroid is under storm");
 	}
 	
 	@Override
@@ -119,6 +119,7 @@ public class Asteroid implements INeighbour{
 		//System.out.println("placeTraveller(t)");
 		travellers.add(t);
 		t.setAsteroid(this);
+		System.out.println("Traveller placed on the asteroid");
 	}
 	
 	@Override
@@ -127,6 +128,7 @@ public class Asteroid implements INeighbour{
 		//System.out.println("removeTraveller(t)");
 		travellers.remove(t);
 		t.setAsteroid(null);
+		System.out.println("Traveller removed from the asteroid");
 	}
 
 	@Override
@@ -151,7 +153,6 @@ public class Asteroid implements INeighbour{
 	
 	public INeighbour getNeighbour(int i) 
 	{
-		System.out.println("getNeighbour()");
 		return neighbours.get(i);
 	}
 	

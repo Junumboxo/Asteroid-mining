@@ -20,7 +20,6 @@ public class Gate implements INeighbour{
 	
 	public Gate getPair() //Gets the pair of the gate
 	{
-		System.out.println("getPair()");
 		return pair;
 	}
 	

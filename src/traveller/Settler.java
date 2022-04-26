@@ -45,7 +45,7 @@ public class Settler extends Traveller{
     public void mine(){ //Requirement R21 
         //System.out.println("mine()");
        	currentAsteroid.extract(this);
-       	System.out.println("mined");
+       	System.out.println("Settler mined");
     }
 
         
@@ -107,10 +107,10 @@ public class Settler extends Traveller{
         } 
     
     public void removeResource(Resource r){
-   		if (resourcesOnBoard.contains(r)) {
+   		if (currentAsteroid.addResource(r)) {
    			resourcesOnBoard.remove(r);
-   			currentAsteroid.addResource(r);
-   		}  
+   			System.out.println("Resource dropped");
+   		}  else System.out.println("Resource cannot be dropped");
     }
     
     
@@ -120,8 +120,9 @@ public class Settler extends Traveller{
         Resource res = currentAsteroid.getResource();
    
    		if (resourcesOnBoard.size() < 10) {
-   			currentAsteroid.removeResource();
    			resourcesOnBoard.add(res);
+   			currentAsteroid.removeResource();
+   			System.out.println("Resource picked up: " + res.getType());
    		}
    		else { 
    			System.out.println("The capacity is reached");
@@ -139,10 +140,10 @@ public class Settler extends Traveller{
     }
     
      public void die(){ 	//Requirement R36
-    	 System.out.println("die()");
     	 resourcesOnBoard=null;
          currentAsteroid.removeTraveller(this);
          game.removeSettler(this);
+         System.out.println("Settler died");
     }
 
 }

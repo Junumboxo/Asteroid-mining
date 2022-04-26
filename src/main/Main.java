@@ -91,31 +91,31 @@ public class Main {
 		g2.setPair(g1);
 		g1.addNeighbour(asts.get(0));
 		g2.addNeighbour(asts.get(1));
+		
+		System.out.println("You have the following opportunities:");
+		System.out.println("Settler travels");
+		System.out.println("Settler drills");
+		System.out.println("Settler mines");
+		System.out.println("Pick up resource");
+		System.out.println("Drop resource");
+		System.out.println("Settler hide");
+		System.out.println("Create robot");
+		System.out.println("Create transport gate");
+		System.out.println("Deploy gate");
+		System.out.println("Robot teleport");
+		System.out.println("Settler teleport");
+		System.out.println("Check win");
+		System.out.println("Check lose");
+		System.out.println("Remove settler");
+		System.out.println("Sunstorm");
+		System.out.println("View inventory");
+		System.out.println("Uranium explodes");
+		System.out.println("Water evaporates");
 
 		while (it.hasNext()) {
 			Settler currentSettler = it.next();
 			System.out.println("It is the turn of settler " + settlers.indexOf(currentSettler));
 			Asteroid currentAsteroid = currentSettler.getAsteroid();
-			
-			System.out.println("You have the following opportunities:");
-			System.out.println("Settler travels");
-			System.out.println("Settler drills");
-			System.out.println("Settler mines");
-			System.out.println("Pick up resource");
-			System.out.println("Drop resource");
-			System.out.println("Settler hide");
-			System.out.println("Create robot");
-			System.out.println("Create transport gate");
-			System.out.println("Deploy gate");
-			System.out.println("Robot teleport");
-			System.out.println("Settler teleport");
-			System.out.println("Check win");
-			System.out.println("Check lose");
-			System.out.println("Remove settler");
-			System.out.println("Sunstorm");
-			System.out.println("View inventory");
-			System.out.println("Uranium explodes");
-			System.out.println("Water evaporates");
 			
 			String input_command = in.nextLine();
 			switch(input_command.toLowerCase()) {
