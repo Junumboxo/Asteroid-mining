@@ -58,7 +58,7 @@ public class Main {
 
 		System.out.println("Set asteroid neighbours");
 		for (int i = 0; i < asts.size(); i++) {
-			System.out.println("Finish with -1. Add neighbours to " + i);
+			System.out.println("Finish with -1. Add neighbours to Asteroid " + i);
 			input = Integer.parseInt(in.nextLine());
 			while (input != -1) {
 				if (input < asts.size())

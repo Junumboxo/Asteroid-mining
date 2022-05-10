@@ -119,6 +119,10 @@ public class Settler extends Traveller{
     	//System.out.println("pickUpResource()");
         Resource res = currentAsteroid.getResource();
    
+        if (res == null) {
+        	System.out.println("Resource cannot be picked up");
+        	return;
+        }
    		if (resourcesOnBoard.size() < 10) {
    			resourcesOnBoard.add(res);
    			currentAsteroid.removeResource();
