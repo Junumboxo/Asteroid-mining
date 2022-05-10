@@ -28,6 +28,9 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.swing.JTextArea;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
 
 public class MainWindow extends JFrame {
 
@@ -70,14 +73,6 @@ public class MainWindow extends JFrame {
 		Border border = BorderFactory.createLineBorder(Color.BLACK);
 
 		Image img;
-		/*
-		 * JLabel lblNewLabel_1 = new JLabel("Sample"); Image img = new
-		 * ImageIcon(this.getClass().getResource("/background.png")).getImage();
-		 * lblNewLabel_1.setIcon(new ImageIcon(img)); lblNewLabel_1.setBounds(100, 100,
-		 * 656, 380); contentPane.add(lblNewLabel_1);
-		 */
-
-		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(0,0,0,0));
 		contentPane.add(panel_1, BorderLayout.EAST);
@@ -165,6 +160,35 @@ public class MainWindow extends JFrame {
 		 panel_1.add(lblNewLabel_9);
 		 lblNewLabel_5.setIcon(new ImageIcon(img));
 		 panel_1.add(lblNewLabel_5);
+		 
+		 JPanel panel = new JPanel();
+		 contentPane.add(panel, BorderLayout.CENTER);
+		 panel.setBackground(new Color(0,0,0,0));
+		 img = new ImageIcon(this.getClass().getResource("/asteroid.png")).getImage();
+		 GridBagLayout gbl_panel = new GridBagLayout();
+		 gbl_panel.columnWidths = new int[]{177, 267, 0};
+		 gbl_panel.rowHeights = new int[]{201, 0, 0};
+		 gbl_panel.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
+		 gbl_panel.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
+		 panel.setLayout(gbl_panel);
+		 
+		 JLabel lblNewLabel_1 = new JLabel();
+		 lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		 lblNewLabel_1.setIcon(new ImageIcon(img));
+		 GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
+		 gbc_lblNewLabel_1.insets = new Insets(0, 0, 0, 5);
+		 gbc_lblNewLabel_1.anchor = GridBagConstraints.NORTHWEST;
+		 gbc_lblNewLabel_1.gridx = 0;
+		 gbc_lblNewLabel_1.gridy = 1;
+		 panel.add(lblNewLabel_1, gbc_lblNewLabel_1);
+		 
+		 JLabel lblNewLabel_10 = new JLabel();
+		 img = new ImageIcon(this.getClass().getResource("/asteroid.png")).getImage();
+		 lblNewLabel_10.setIcon(new ImageIcon(img));
+		 GridBagConstraints gbc_lblNewLabel_10 = new GridBagConstraints();
+		 gbc_lblNewLabel_10.gridx = 1;
+		 gbc_lblNewLabel_10.gridy = 1;
+		 panel.add(lblNewLabel_10, gbc_lblNewLabel_10);
 			
 	}
 
