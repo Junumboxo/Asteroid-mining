@@ -24,10 +24,11 @@ public class Controller {
 	private Gate g1, g2;
 	private Scanner in;
 	int input;
+	private Settler currentSettler;
+	private Asteroid currentAsteroid;
 	
 	public Controller(MainWindow main) {
 		mainFrame = main;
-		// initiating the game
 		game = new Game();
 		in = new Scanner(System.in);
 		System.out.println("Welcome to the game! Choose one integer");
@@ -50,8 +51,7 @@ public class Controller {
 		System.out.println(input + " Asteroids created");
 		for (int i = 0; i < input; i++) {
 			asts.add(new Asteroid());
-			
-			
+			asts.get(i).setView(mainFrame.createAsteroidView(i, i));
 			System.out.print("Set Resource ");
 			switch (in.nextLine()) {
 			case "Iron":
@@ -72,8 +72,7 @@ public class Controller {
 			System.out.print("Set Depth ");
 			asts.get(i).setDepth(Integer.parseInt(in.nextLine()));
 		}
-		//TODO:FIX
-		asts.get(0).setView(mainFrame.createAsteroidView());
+		
 		sun.addAsteroids(asts);
 
 		System.out.println("Set asteroid neighbours");
@@ -113,125 +112,121 @@ public class Controller {
 		
 	}
 	
-	public void attachAsteroidView(Asteroid asteroid, AsteroidView view)
-	{
-		asteroid.setView(view);
+	public void gameTurns() {
+		currentSettler = it.next();
+		currentSettler.setCurrent(true);
+		System.out.println("It is the turn of settler " + settlers.indexOf(currentSettler));
+		currentAsteroid = currentSettler.getAsteroid();
 	}
 	
 	public void takeAction(String action) {
-		while (it.hasNext()) {
-			Settler currentSettler = it.next();
-			currentSettler.setCurrent(true);
-			System.out.println("It is the turn of settler " + settlers.indexOf(currentSettler));
-			Asteroid currentAsteroid = currentSettler.getAsteroid();
-			currentAsteroid.setCurrent(true);
-
-			switch(action) {
-			  case "travel" :
-				  System.out.println("Choose a neighbour to travel to:");
-				  for (int j = 0; j < currentAsteroid.getNeighbours().size(); j++)
-						System.out.println(asts.indexOf(currentAsteroid.getNeighbours().get(j)) + " ");
-				  input = Integer.parseInt(in.nextLine());
-				  if (currentAsteroid.getNeighbours().contains(asts.get(input)))
-					  currentSettler.travel(asts.get(input));
-				  break;
-			  
-			  case "drill" : 
-				  currentSettler.drill();
-				  break;
-			
-			  case "mine" :
-				  currentSettler.mine();
-				  break;
-			  
-			  case "pick up" :
-				  currentSettler.pickUpResource(); //possible failures are called in pickUpResource() method
-				  break;
-			  
-			  case "drop" :
-				  input = Integer.parseInt(in.nextLine()); //index of the resource to drop
-				  currentSettler.removeResource(currentSettler.getResources().get(input)); //possible failures are called in removeResource()
-				  break;
-			  
-			  case "settler hide" :
-				  currentSettler.hide(currentAsteroid);
-				  break;
-			  
-			  case "build robot" :
-				  currentSettler.createRobot();
-				  break;
-			  
-			  case "build gate" :
-				  currentSettler.createGate();
-				  break;
-			  
-			  case "deploy gate" :
-				  currentSettler.deployGate();
-				  break;
-			  
-			  case "robot teleport" :
-				  Robot r1 = new Robot();
-				  game.addRobot(r1);
-				  asts.get(0).placeTraveller(r1);
-				  r1.teleport(g1);
-				  break;
-			  
-			  case "settler teleport" :
-				  currentSettler.setAsteroid(asts.get(0));
-				  currentSettler.teleport(g1);
-				  break;
-			  case "check win" :
-				  game.winGame();
-				  break;
-			  case "check lose" : 
-				  game.loseGame();
-				  break;
-			  case "remove settler" :
-				  game.removeSettler(currentSettler);
-				  break;
-			  case "sunstorm" :
-				  sun.sunstorm();
-				  break;
-			  case "view inventory":
-				  //currentSettler.setInventory();
-				  for (Resource res : currentSettler.getResources())
-				  { if (res != null)
-					  System.out.println(res.getType()); }
-				  break;
-			  
-			  case "uranium explodes" :
-				  Robot r = new Robot();
-				  game.addRobot(r);
-				  currentAsteroid.placeTraveller(r);
-				  Uranium u1 = new Uranium();
-				  currentAsteroid.removeResource();
-				  currentAsteroid.addResource(u1);
-				  currentAsteroid.setDepth(1);
-				  currentAsteroid.setPerihelion(true);
-				  currentSettler.drill();
-				  break;
-			  
-			  case "water evaporates" : 
-				  Water w = new Water();
-				  currentAsteroid.removeResource();
-				  currentAsteroid.addResource(w);
-				  currentAsteroid.setDepth(1);
-				  currentAsteroid.setPerihelion(true);
-				  currentSettler.drill();
-				  break;
-			  
-			  default:
-				  System.out.println("The command is invalid!"); 
-				  break;
-				}  
-			
-			if (!it.hasNext()) {
-				it = settlers.iterator();
-				currentSettler.setCurrent(false);
-				currentAsteroid.setCurrent(false);
-			}
+		gameTurns();
+		switch(action) {
+		  case "travel" :
+			  System.out.println("Choose a neighbour to travel to:");
+			  for (int j = 0; j < currentAsteroid.getNeighbours().size(); j++)
+					System.out.println(asts.indexOf(currentAsteroid.getNeighbours().get(j)) + " ");
+			  input = Integer.parseInt(in.nextLine());
+			  if (currentAsteroid.getNeighbours().contains(asts.get(input)))
+				  currentSettler.travel(asts.get(input));
+			  else System.out.println("Cannot travel because not a neighbour!");
+			  break;
+		  
+		  case "drill" : 
+			  currentSettler.drill();
+			  break;
+		
+		  case "mine" :
+			  currentSettler.mine();
+			  break;
+		  
+		  case "pick up" :
+			  currentSettler.pickUpResource(); //possible failures are called in pickUpResource() method
+			  break;
+		  
+		  case "drop" :
+			  input = Integer.parseInt(in.nextLine()); //index of the resource to drop
+			  currentSettler.removeResource(currentSettler.getResources().get(input)); //possible failures are called in removeResource()
+			  break;
+		  
+		  case "settler hide" :
+			  currentSettler.hide(currentAsteroid);
+			  break;
+		  
+		  case "build robot" :
+			  currentSettler.createRobot();
+			  break;
+		  
+		  case "build gate" :
+			  currentSettler.createGate();
+			  break;
+		  
+		  case "deploy gate" :
+			  currentSettler.deployGate();
+			  break;
+		  
+		  case "robot teleport" :
+			  Robot r1 = new Robot();
+			  game.addRobot(r1);
+			  asts.get(0).placeTraveller(r1);
+			  r1.teleport(g1);
+			  break;
+		  
+		  case "settler teleport" :
+			  currentSettler.setAsteroid(asts.get(0));
+			  currentSettler.teleport(g1);
+			  break;
+		  case "check win" :
+			  game.winGame();
+			  break;
+		  case "check lose" : 
+			  game.loseGame();
+			  break;
+		  case "remove settler" :
+			  game.removeSettler(currentSettler);
+			  break;
+		  case "sunstorm" :
+			  sun.sunstorm();
+			  break;
+		  case "view inventory":
+			  for (Resource res : currentSettler.getResources())
+			  { if (res != null)
+				  System.out.println(res.getType()); }
+			  break;
+		  
+		  case "uranium explodes" :
+			  Robot r = new Robot();
+			  game.addRobot(r);
+			  currentAsteroid.placeTraveller(r);
+			  Uranium u1 = new Uranium();
+			  currentAsteroid.removeResource();
+			  currentAsteroid.addResource(u1);
+			  currentAsteroid.setDepth(1);
+			  currentAsteroid.setPerihelion(true);
+			  currentSettler.drill();
+			  break;
+		  
+		  case "water evaporates" : 
+			  Water w = new Water();
+			  currentAsteroid.removeResource();
+			  currentAsteroid.addResource(w);
+			  currentAsteroid.setDepth(1);
+			  currentAsteroid.setPerihelion(true);
+			  currentSettler.drill();
+			  break;
+		  
+		  default:
+			  System.out.println("The command is invalid!"); 
+			  break;
+			}  
+		if (!it.hasNext()) {
+			it = settlers.iterator();
 		}
-
+		
+		currentSettler.setCurrent(false);
+	}
+	protected void finalize()
+	{
 		in.close();
 	}
 }

@@ -50,13 +50,13 @@ public class MainWindow extends JFrame {
 	 * Launch the application.
 	 */
 	
-	public AsteroidView createAsteroidView()
+	public AsteroidView createAsteroidView(int X, int Y)
 	{
 		JLabel newL = new JLabel();
 		AsteroidView view = new AsteroidView(newL);
 		GridBagConstraints gbc_label = new GridBagConstraints();
-		gbc_label.gridx = 2;
-		gbc_label.gridy = 2;
+		gbc_label.gridx = X;
+		gbc_label.gridy = Y;
 		panel.add(newL, gbc_label);
 		return view;
 	}
@@ -201,6 +201,17 @@ public class MainWindow extends JFrame {
 		btnNewButton_7.setBackground(Color.magenta);
 		btnNewButton_7.setFocusPainted(false);
 		panel_1.add(btnNewButton_7);
+		
+		JButton btnNewButton_8 = new JButton("Sunstorm");
+		btnNewButton_8.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				c.takeAction("sunstorm");
+			}
+		});
+		btnNewButton_8.setFont(new Font("Consolas", Font.BOLD, 10));
+		btnNewButton_8.setBackground(Color.magenta);
+		btnNewButton_8.setFocusPainted(false);		
+		panel_1.add(btnNewButton_8);
 		
 		//dont need hide according to requirements
 		

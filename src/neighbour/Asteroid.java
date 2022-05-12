@@ -13,7 +13,7 @@ public class Asteroid implements INeighbour{
 	private List<Traveller> travellers;
 	private List<INeighbour> neighbours; //Requirement R16
 	private Resource resource; //Requirement R08,09
-	private boolean current;
+	private boolean target;
 	private AsteroidView view;
 	
 	public Asteroid() {
@@ -39,10 +39,10 @@ public class Asteroid implements INeighbour{
 			
 	}
 	
-	public void setCurrent(boolean c)
+	public void setTarget(boolean c)
 	{
-		current = c;
-		view.update(current);
+		target = c;
+		view.update(target);
 	}
 	
 	public void setHollow(boolean b)  //Sets the core  of the asteroid hollow.

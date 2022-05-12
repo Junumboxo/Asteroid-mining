@@ -34,8 +34,7 @@ public class AsteroidView {
 			imageAddr = "/asteroid_current.png";
 		else 
 			imageAddr = "/asteroid.png";
-		img = new ImageIcon(this.getClass().getResource("/asteroid_current.png")).getImage();
-		this.label.setIcon(new ImageIcon(img));
+		img = new ImageIcon(this.getClass().getResource(imageAddr)).getImage();
 		label.paintImmediately(label.getVisibleRect());
 	}
 }
