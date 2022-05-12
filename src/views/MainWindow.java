@@ -1,4 +1,4 @@
-package game;
+package views;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -11,7 +11,6 @@ import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
 import controller.Controller;
-import views.AsteroidView;
 
 import javax.swing.JSplitPane;
 import javax.swing.JButton;
@@ -30,6 +29,8 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JTextArea;
 import java.awt.GridBagLayout;
@@ -37,6 +38,8 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;
 
 public class MainWindow extends JFrame {
@@ -49,6 +52,7 @@ public class MainWindow extends JFrame {
 	/**
 	 * Launch the application.
 	 */
+	List<AsteroidView> asteroidViews = new ArrayList<AsteroidView> ();
 	
 	public AsteroidView createAsteroidView(int X, int Y)
 	{
@@ -58,6 +62,13 @@ public class MainWindow extends JFrame {
 		gbc_label.gridx = X;
 		gbc_label.gridy = Y;
 		panel.add(newL, gbc_label);
+		asteroidViews.add(view);
+		newL.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				c.targetAsteroid = new int[] {X, Y};
+				view.update(true);
+			}
+		});
 		return view;
 	}
 	
@@ -258,39 +269,6 @@ public class MainWindow extends JFrame {
 		 panel_1.add(lblNewLabel_9);
 		 lblNewLabel_5.setIcon(new ImageIcon(img));
 		 panel_1.add(lblNewLabel_5);
-		 
-		 
-	
-		 img = new ImageIcon(this.getClass().getResource("/asteroid.png")).getImage();
-		 JLabel lblNewLabel_1 = new JLabel();
-		 lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		 lblNewLabel_1.setIcon(new ImageIcon(img));
-		 GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
-		 gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
-		 gbc_lblNewLabel_1.anchor = GridBagConstraints.NORTH;
-		 gbc_lblNewLabel_1.gridx = 0;
-		 gbc_lblNewLabel_1.gridy = 1;
-		 panel.add(lblNewLabel_1, gbc_lblNewLabel_1);
-		 
-			/*
-			 * JLabel lblNewLabel_10 = new JLabel(); img = new
-			 * ImageIcon(this.getClass().getResource("/asteroid.png")).getImage();
-			 * lblNewLabel_10.setIcon(new ImageIcon(img)); GridBagConstraints
-			 * gbc_lblNewLabel_10 = new GridBagConstraints(); gbc_lblNewLabel_10.insets =
-			 * new Insets(0, 0, 5, 0); gbc_lblNewLabel_10.gridx = 2;
-			 * gbc_lblNewLabel_10.gridy = 1; panel.add(lblNewLabel_10, gbc_lblNewLabel_10);
-			 */
-		 
-		 
-		 JLabel lblNewLabel_14 = new JLabel();
-		 GridBagConstraints gbc_lblNewLabel_14 = new GridBagConstraints();
-		 img = new ImageIcon(this.getClass().getResource("/asteroid.png")).getImage();
-		 lblNewLabel_14.setIcon(new ImageIcon(img));
-		 gbc_lblNewLabel_14.insets = new Insets(0, 0, 5, 5);
-		 gbc_lblNewLabel_14.gridx = 1;
-		 gbc_lblNewLabel_14.gridy = 1;
-		 panel.add(lblNewLabel_14, gbc_lblNewLabel_14);
-
 		 
 			/*
 			 * JPanel panel_2 = new JPanel(); GridBagConstraints gbc_panel_2 = new

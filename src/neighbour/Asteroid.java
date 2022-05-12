@@ -13,7 +13,6 @@ public class Asteroid implements INeighbour{
 	private List<Traveller> travellers;
 	private List<INeighbour> neighbours; //Requirement R16
 	private Resource resource; //Requirement R08,09
-	private boolean target;
 	private AsteroidView view;
 	
 	public Asteroid() {
@@ -39,10 +38,9 @@ public class Asteroid implements INeighbour{
 			
 	}
 	
-	public void setTarget(boolean c)
+	public void untarget()
 	{
-		target = c;
-		view.update(target);
+		view.update(false);
 	}
 	
 	public void setHollow(boolean b)  //Sets the core  of the asteroid hollow.
@@ -150,7 +148,7 @@ public class Asteroid implements INeighbour{
 	@Override
 	public void addNeighbour(INeighbour n) //sets a neighbouring asteroid
 	{
-		if (!neighbours.contains(n))
+		if (!neighbours.contains(n) && n != this)
 		{
 			neighbours.add(n);
 			n.addNeighbour(this);

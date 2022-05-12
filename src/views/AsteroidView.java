@@ -9,8 +9,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import game.MainWindow;
-
 public class AsteroidView {
 
 	private String imageAddr;
@@ -23,18 +21,14 @@ public class AsteroidView {
 		 img = new ImageIcon(this.getClass().getResource(imageAddr)).getImage();
 		 this.label.setIcon(new ImageIcon(img));
 	}
-	
-	public JLabel getLabel()
-	{
-		return label;
-	}
-	
-	public void update(boolean c) {
-		if (c)
+
+	public void update(boolean selected) {
+		if (selected)
 			imageAddr = "/asteroid_current.png";
 		else 
 			imageAddr = "/asteroid.png";
 		img = new ImageIcon(this.getClass().getResource(imageAddr)).getImage();
+		label.setIcon(new ImageIcon(img));
 		label.paintImmediately(label.getVisibleRect());
 	}
 }

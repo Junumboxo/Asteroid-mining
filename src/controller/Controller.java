@@ -6,12 +6,12 @@ import java.util.*;
 import javax.swing.JFrame;
 
 import game.Game;
-import game.MainWindow;
 import neighbour.*;
 import resource.*;
 import sun.*;
 import traveller.*;
 import views.AsteroidView;
+import views.MainWindow;
 
 public class Controller {
 
@@ -26,6 +26,7 @@ public class Controller {
 	int input;
 	private Settler currentSettler;
 	private Asteroid currentAsteroid;
+	public int[] targetAsteroid = new int[] {-1, -1};
 	
 	public Controller(MainWindow main) {
 		mainFrame = main;
@@ -45,12 +46,13 @@ public class Controller {
 		game.startGame();
 		sun = game.getSun();
 
-		System.out.print("Create Asteroids ");
+		System.out.print("Create How many Asteroids? ");
 		asts = new ArrayList<Asteroid>();
 		input = Integer.parseInt(in.nextLine());
 		System.out.println(input + " Asteroids created");
 		for (int i = 0; i < input; i++) {
 			asts.add(new Asteroid());
+			System.out.println("Coordinates: " + i + ", " + i);
 			asts.get(i).setView(mainFrame.createAsteroidView(i, i));
 			System.out.print("Set Resource ");
 			switch (in.nextLine()) {
@@ -123,13 +125,27 @@ public class Controller {
 		gameTurns();
 		switch(action) {
 		  case "travel" :
-			  System.out.println("Choose a neighbour to travel to:");
-			  for (int j = 0; j < currentAsteroid.getNeighbours().size(); j++)
-					System.out.println(asts.indexOf(currentAsteroid.getNeighbours().get(j)) + " ");
-			  input = Integer.parseInt(in.nextLine());
-			  if (currentAsteroid.getNeighbours().contains(asts.get(input)))
-				  currentSettler.travel(asts.get(input));
-			  else System.out.println("Cannot travel because not a neighbour!");
+			  if (targetAsteroid[0] == -1 || targetAsteroid[1] == -1)
+					  System.out.println("First choose the target asteroid and try again!");
+			  else
+			  {
+				  if (currentAsteroid.getNeighbours().contains(asts.get(targetAsteroid[0])))
+					  currentSettler.travel(asts.get(input));
+					  
+				  else
+					  System.out.println("Cannot travel because not a neighbour!");
+				  asts.get(targetAsteroid[0]).untarget();
+				  targetAsteroid = new int[]{-1, -1};  
+			  }
+
+				/*
+				 * for (int j = 0; j < currentAsteroid.getNeighbours().size(); j++)
+				 * System.out.println(asts.indexOf(currentAsteroid.getNeighbours().get(j)) +
+				 * " "); input = Integer.parseInt(in.nextLine()); if
+				 * (currentAsteroid.getNeighbours().contains(asts.get(input)))
+				 * currentSettler.travel(asts.get(input)); else
+				 * System.out.println("Cannot travel because not a neighbour!");
+				 */
 			  break;
 		  
 		  case "drill" : 
@@ -222,7 +238,6 @@ public class Controller {
 		if (!it.hasNext()) {
 			it = settlers.iterator();
 		}
-		
 		currentSettler.setCurrent(false);
 	}
 	protected void finalize()
