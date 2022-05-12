@@ -52,7 +52,12 @@ public class MainWindow extends JFrame {
 	
 	public AsteroidView createAsteroidView()
 	{
-		AsteroidView view = new AsteroidView(this, panel, 2, 1);
+		JLabel newL = new JLabel();
+		AsteroidView view = new AsteroidView(newL);
+		GridBagConstraints gbc_label = new GridBagConstraints();
+		gbc_label.gridx = 2;
+		gbc_label.gridy = 2;
+		panel.add(newL, gbc_label);
 		return view;
 	}
 	
