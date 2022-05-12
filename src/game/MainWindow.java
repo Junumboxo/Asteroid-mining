@@ -11,6 +11,7 @@ import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
 import controller.Controller;
+import views.AsteroidView;
 
 import javax.swing.JSplitPane;
 import javax.swing.JButton;
@@ -41,18 +42,27 @@ import java.awt.event.ActionEvent;
 public class MainWindow extends JFrame {
 
 	private JPanel contentPane;
-	private Controller c;
+	public Controller c;
+	private JPanel panel;
 	Image image = new ImageIcon(this.getClass().getResource("/background.png")).getImage();
 
 	/**
 	 * Launch the application.
 	 */
+	
+	public AsteroidView createAsteroidView()
+	{
+		AsteroidView view = new AsteroidView(this, panel, 2, 1);
+		return view;
+	}
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					MainWindow frame = new MainWindow();
 					frame.setVisible(true);
+					frame.c = new Controller(frame);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -64,7 +74,7 @@ public class MainWindow extends JFrame {
 	 * Create the frame.
 	 */
 	public MainWindow() {
-		c = new Controller();
+		
 		contentPane = new JPanel() {
 		         @Override
 		         public void paintComponent(Graphics g) {
@@ -72,11 +82,23 @@ public class MainWindow extends JFrame {
 		            g.drawImage(image, 0, 0, null);
 		         }
 		      };
+		      
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 761, 528);
+		setBounds(100, 100, 762, 559);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
-		setContentPane(contentPane);
+		setContentPane(contentPane);  
+		
+		panel = new JPanel();
+		panel.setBackground(new Color(5,5,5,5));
+		contentPane.add(panel, BorderLayout.CENTER);
+		GridBagLayout gbl_panel = new GridBagLayout();
+		gbl_panel.columnWidths = new int[]{177, 0, 267, 0};
+		gbl_panel.rowHeights = new int[]{201, 0, 0, 0, 0, 0};
+		gbl_panel.columnWeights = new double[]{1.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		panel.setLayout(gbl_panel);
+		
 
 		Border border = BorderFactory.createLineBorder(Color.BLACK);
 
@@ -221,17 +243,9 @@ public class MainWindow extends JFrame {
 		 lblNewLabel_5.setIcon(new ImageIcon(img));
 		 panel_1.add(lblNewLabel_5);
 		 
-		 JPanel panel = new JPanel();
-		 contentPane.add(panel, BorderLayout.CENTER);
-		 panel.setBackground(new Color(0,0,0,0));
-		 img = new ImageIcon(this.getClass().getResource("/asteroid.png")).getImage();
-		 GridBagLayout gbl_panel = new GridBagLayout();
-		 gbl_panel.columnWidths = new int[]{177, 0, 267, 0};
-		 gbl_panel.rowHeights = new int[]{201, 0, 0, 0, 0, 0};
-		 gbl_panel.columnWeights = new double[]{1.0, 0.0, 0.0, Double.MIN_VALUE};
-		 gbl_panel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
-		 panel.setLayout(gbl_panel);
 		 
+	
+		 img = new ImageIcon(this.getClass().getResource("/asteroid.png")).getImage();
 		 JLabel lblNewLabel_1 = new JLabel();
 		 lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		 lblNewLabel_1.setIcon(new ImageIcon(img));
@@ -242,14 +256,15 @@ public class MainWindow extends JFrame {
 		 gbc_lblNewLabel_1.gridy = 1;
 		 panel.add(lblNewLabel_1, gbc_lblNewLabel_1);
 		 
-		 JLabel lblNewLabel_10 = new JLabel();
-		 img = new ImageIcon(this.getClass().getResource("/asteroid.png")).getImage();
-		 lblNewLabel_10.setIcon(new ImageIcon(img));
-		 GridBagConstraints gbc_lblNewLabel_10 = new GridBagConstraints();
-		 gbc_lblNewLabel_10.insets = new Insets(0, 0, 5, 0);
-		 gbc_lblNewLabel_10.gridx = 2;
-		 gbc_lblNewLabel_10.gridy = 1;
-		 panel.add(lblNewLabel_10, gbc_lblNewLabel_10);
+			/*
+			 * JLabel lblNewLabel_10 = new JLabel(); img = new
+			 * ImageIcon(this.getClass().getResource("/asteroid.png")).getImage();
+			 * lblNewLabel_10.setIcon(new ImageIcon(img)); GridBagConstraints
+			 * gbc_lblNewLabel_10 = new GridBagConstraints(); gbc_lblNewLabel_10.insets =
+			 * new Insets(0, 0, 5, 0); gbc_lblNewLabel_10.gridx = 2;
+			 * gbc_lblNewLabel_10.gridy = 1; panel.add(lblNewLabel_10, gbc_lblNewLabel_10);
+			 */
+		 
 		 
 		 JLabel lblNewLabel_14 = new JLabel();
 		 GridBagConstraints gbc_lblNewLabel_14 = new GridBagConstraints();
@@ -261,43 +276,35 @@ public class MainWindow extends JFrame {
 		 panel.add(lblNewLabel_14, gbc_lblNewLabel_14);
 
 		 
-		 JPanel panel_2 = new JPanel();
-		 GridBagConstraints gbc_panel_2 = new GridBagConstraints();
-		 gbc_panel_2.insets = new Insets(0, 0, 0, 5);
-		 gbc_panel_2.fill = GridBagConstraints.BOTH;
-		 gbc_panel_2.gridx = 0;
-		 gbc_panel_2.gridy = 4;
-		 panel.add(panel_2, gbc_panel_2);
-		 panel_2.setLayout(new GridLayout(1, 0, 0, 0));
+			/*
+			 * JPanel panel_2 = new JPanel(); GridBagConstraints gbc_panel_2 = new
+			 * GridBagConstraints(); gbc_panel_2.insets = new Insets(0, 0, 0, 5);
+			 * gbc_panel_2.fill = GridBagConstraints.BOTH; gbc_panel_2.gridx = 0;
+			 * gbc_panel_2.gridy = 4; panel.add(panel_2, gbc_panel_2); panel_2.setLayout(new
+			 * GridLayout(1, 0, 0, 0));
+			 * 
+			 * JLabel lblNewLabel_11 = new JLabel(); img = new
+			 * ImageIcon(this.getClass().getResource("/iron.png")).getImage();
+			 * GridBagConstraints gbc_lblNewLabel_11 = new GridBagConstraints();
+			 * gbc_lblNewLabel_11.insets = new Insets(0, 0, 5, 5); gbc_lblNewLabel_11.gridx
+			 * = 0; gbc_lblNewLabel_11.gridy = 0; lblNewLabel_11.setIcon(new
+			 * ImageIcon(img)); panel_2.add(lblNewLabel_11, gbc_lblNewLabel_11);
+			 * 
+			 * JLabel lblNewLabel_12 = new JLabel(); img = new
+			 * ImageIcon(this.getClass().getResource("/iron.png")).getImage();
+			 * GridBagConstraints gbc_lblNewLabel_12 = new GridBagConstraints();
+			 * gbc_lblNewLabel_12.insets = new Insets(0, 0, 0, 0); gbc_lblNewLabel_12.gridx
+			 * = 0; gbc_lblNewLabel_12.gridy = 0; lblNewLabel_12.setIcon(new
+			 * ImageIcon(img)); panel_2.add(lblNewLabel_12, gbc_lblNewLabel_12);
+			 * 
+			 * JLabel lblNewLabel_13 = new JLabel(); panel_2.add(lblNewLabel_13); img = new
+			 * ImageIcon(this.getClass().getResource("/iron.png")).getImage();
+			 * GridBagConstraints gbc_lblNewLabel_13 = new GridBagConstraints();
+			 * gbc_lblNewLabel_13.insets = new Insets(0, 0, 0, 0); gbc_lblNewLabel_13.gridx
+			 * = 0; gbc_lblNewLabel_13.gridy = 0; lblNewLabel_13.setIcon(new
+			 * ImageIcon(img)); panel_2.add(lblNewLabel_13, gbc_lblNewLabel_13);
+			 */
 		 
-		 JLabel lblNewLabel_11 = new JLabel();
-		 img = new ImageIcon(this.getClass().getResource("/iron.png")).getImage();
-		 GridBagConstraints gbc_lblNewLabel_11 = new GridBagConstraints();
-		 gbc_lblNewLabel_11.insets = new Insets(0, 0, 5, 5);
-		 gbc_lblNewLabel_11.gridx = 0;
-		 gbc_lblNewLabel_11.gridy = 0;
-		 lblNewLabel_11.setIcon(new ImageIcon(img));
-		 panel_2.add(lblNewLabel_11, gbc_lblNewLabel_11);
-		 
-		 JLabel lblNewLabel_12 = new JLabel();
-		 img = new ImageIcon(this.getClass().getResource("/iron.png")).getImage();
-		 GridBagConstraints gbc_lblNewLabel_12 = new GridBagConstraints();
-		 gbc_lblNewLabel_12.insets = new Insets(0, 0, 0, 0);
-		 gbc_lblNewLabel_12.gridx = 0;
-		 gbc_lblNewLabel_12.gridy = 0;
-		 lblNewLabel_12.setIcon(new ImageIcon(img));
-		 panel_2.add(lblNewLabel_12, gbc_lblNewLabel_12);
-		 
-		 JLabel lblNewLabel_13 = new JLabel();
-		 panel_2.add(lblNewLabel_13);
-		 img = new ImageIcon(this.getClass().getResource("/iron.png")).getImage();
-		 GridBagConstraints gbc_lblNewLabel_13 = new GridBagConstraints();
-		 gbc_lblNewLabel_13.insets = new Insets(0, 0, 0, 0);
-		 gbc_lblNewLabel_13.gridx = 0;
-		 gbc_lblNewLabel_13.gridy = 0;
-		 lblNewLabel_13.setIcon(new ImageIcon(img));
-		 panel_2.add(lblNewLabel_13, gbc_lblNewLabel_13);
-
 	}
 
 }

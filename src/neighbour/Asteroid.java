@@ -3,6 +3,7 @@ package neighbour;
 import java.util.*;
 import resource.*;
 import traveller.*;
+import views.AsteroidView;
 
 public class Asteroid implements INeighbour{
 
@@ -12,11 +13,18 @@ public class Asteroid implements INeighbour{
 	private List<Traveller> travellers;
 	private List<INeighbour> neighbours; //Requirement R16
 	private Resource resource; //Requirement R08,09
+	private boolean current;
+	private AsteroidView view;
 	
 	public Asteroid() {
 		travellers = new ArrayList<Traveller>();
 		neighbours = new ArrayList<INeighbour>();
 	}
+	
+	public void setView(AsteroidView view) {
+		this.view = view;
+	}
+	
 	public void setPerihelion(boolean b)    //Sets the location of the perihelion
 	{ // pass true as parameter if Perihelion, false if Aphelion
 		isPerihelion = b;
@@ -29,6 +37,12 @@ public class Asteroid implements INeighbour{
 			System.out.println("Current asteroid is in Aphelion phase");
 		}
 			
+	}
+	
+	public void setCurrent(boolean c)
+	{
+		current = c;
+		view.update(current);
 	}
 	
 	public void setHollow(boolean b)  //Sets the core  of the asteroid hollow.

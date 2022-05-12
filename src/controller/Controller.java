@@ -2,14 +2,20 @@ package controller;
 
 import java.nio.file.FileSystemNotFoundException;
 import java.util.*;
+
+import javax.swing.JFrame;
+
 import game.Game;
+import game.MainWindow;
 import neighbour.*;
 import resource.*;
 import sun.*;
 import traveller.*;
+import views.AsteroidView;
 
 public class Controller {
 
+	private MainWindow mainFrame;
 	private Game game;
 	private Sun sun;
 	private List<Asteroid> asts;
@@ -19,7 +25,8 @@ public class Controller {
 	private Scanner in;
 	int input;
 	
-	public Controller() {
+	public Controller(MainWindow main) {
+		mainFrame = main;
 		// initiating the game
 		game = new Game();
 		in = new Scanner(System.in);
@@ -43,6 +50,8 @@ public class Controller {
 		System.out.println(input + " Asteroids created");
 		for (int i = 0; i < input; i++) {
 			asts.add(new Asteroid());
+			
+			
 			System.out.print("Set Resource ");
 			switch (in.nextLine()) {
 			case "Iron":
@@ -63,6 +72,8 @@ public class Controller {
 			System.out.print("Set Depth ");
 			asts.get(i).setDepth(Integer.parseInt(in.nextLine()));
 		}
+		//TODO:FIX
+		asts.get(0).setView(mainFrame.createAsteroidView());
 		sun.addAsteroids(asts);
 
 		System.out.println("Set asteroid neighbours");
@@ -102,11 +113,18 @@ public class Controller {
 		
 	}
 	
+	public void attachAsteroidView(Asteroid asteroid, AsteroidView view)
+	{
+		asteroid.setView(view);
+	}
+	
 	public void takeAction(String action) {
 		while (it.hasNext()) {
 			Settler currentSettler = it.next();
+			currentSettler.setCurrent(true);
 			System.out.println("It is the turn of settler " + settlers.indexOf(currentSettler));
 			Asteroid currentAsteroid = currentSettler.getAsteroid();
+			currentAsteroid.setCurrent(true);
 
 			switch(action) {
 			  case "travel" :
@@ -207,8 +225,11 @@ public class Controller {
 				  break;
 				}  
 			
-			if (!it.hasNext())
+			if (!it.hasNext()) {
 				it = settlers.iterator();
+				currentSettler.setCurrent(false);
+				currentAsteroid.setCurrent(false);
+			}
 		}
 
 		in.close();

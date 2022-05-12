@@ -6,6 +6,7 @@ import resource.*;
 
 public class Settler extends Traveller{
     List<Resource> resourcesOnBoard = new ArrayList<Resource>(); // Requirement R23
+    boolean current = false;
     Gate g1=null;
     Gate g2=null; // Requirement R49
   
@@ -29,6 +30,11 @@ public class Settler extends Traveller{
         currentAsteroid.removeTraveller(this);
         a.placeTraveller(this);
         System.out.println("Travelled successfully");
+    }
+    
+    public void setCurrent(boolean c)
+    {
+    	current = c;
     }
     
     public void setInventory()
