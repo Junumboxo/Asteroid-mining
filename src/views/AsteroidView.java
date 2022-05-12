@@ -29,6 +29,5 @@ public class AsteroidView {
 			imageAddr = "/asteroid.png";
 		img = new ImageIcon(this.getClass().getResource(imageAddr)).getImage();
 		label.setIcon(new ImageIcon(img));
-		label.paintImmediately(label.getVisibleRect());
 	}
 }

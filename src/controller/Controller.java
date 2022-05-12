@@ -132,20 +132,13 @@ public class Controller {
 				  if (currentAsteroid.getNeighbours().contains(asts.get(targetAsteroid[0])))
 					  currentSettler.travel(asts.get(input));
 					  
+				  else if (currentAsteroid.equals(asts.get(targetAsteroid[0])))
+					  System.out.println("This is the current asteroid!");
 				  else
 					  System.out.println("Cannot travel because not a neighbour!");
 				  asts.get(targetAsteroid[0]).untarget();
 				  targetAsteroid = new int[]{-1, -1};  
 			  }
-
-				/*
-				 * for (int j = 0; j < currentAsteroid.getNeighbours().size(); j++)
-				 * System.out.println(asts.indexOf(currentAsteroid.getNeighbours().get(j)) +
-				 * " "); input = Integer.parseInt(in.nextLine()); if
-				 * (currentAsteroid.getNeighbours().contains(asts.get(input)))
-				 * currentSettler.travel(asts.get(input)); else
-				 * System.out.println("Cannot travel because not a neighbour!");
-				 */
 			  break;
 		  
 		  case "drill" : 
