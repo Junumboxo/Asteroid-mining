@@ -31,6 +31,9 @@ import javax.swing.JTextArea;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.awt.GridLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class MainWindow extends JFrame {
 
@@ -166,18 +169,18 @@ public class MainWindow extends JFrame {
 		 panel.setBackground(new Color(0,0,0,0));
 		 img = new ImageIcon(this.getClass().getResource("/asteroid.png")).getImage();
 		 GridBagLayout gbl_panel = new GridBagLayout();
-		 gbl_panel.columnWidths = new int[]{177, 267, 0};
-		 gbl_panel.rowHeights = new int[]{201, 0, 0};
-		 gbl_panel.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
-		 gbl_panel.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
+		 gbl_panel.columnWidths = new int[]{177, 0, 267, 0};
+		 gbl_panel.rowHeights = new int[]{201, 0, 0, 0, 0, 0};
+		 gbl_panel.columnWeights = new double[]{1.0, 0.0, 0.0, Double.MIN_VALUE};
+		 gbl_panel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		 panel.setLayout(gbl_panel);
 		 
 		 JLabel lblNewLabel_1 = new JLabel();
 		 lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		 lblNewLabel_1.setIcon(new ImageIcon(img));
 		 GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
-		 gbc_lblNewLabel_1.insets = new Insets(0, 0, 0, 5);
-		 gbc_lblNewLabel_1.anchor = GridBagConstraints.NORTHWEST;
+		 gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
+		 gbc_lblNewLabel_1.anchor = GridBagConstraints.NORTH;
 		 gbc_lblNewLabel_1.gridx = 0;
 		 gbc_lblNewLabel_1.gridy = 1;
 		 panel.add(lblNewLabel_1, gbc_lblNewLabel_1);
@@ -186,10 +189,58 @@ public class MainWindow extends JFrame {
 		 img = new ImageIcon(this.getClass().getResource("/asteroid.png")).getImage();
 		 lblNewLabel_10.setIcon(new ImageIcon(img));
 		 GridBagConstraints gbc_lblNewLabel_10 = new GridBagConstraints();
-		 gbc_lblNewLabel_10.gridx = 1;
+		 gbc_lblNewLabel_10.insets = new Insets(0, 0, 5, 0);
+		 gbc_lblNewLabel_10.gridx = 2;
 		 gbc_lblNewLabel_10.gridy = 1;
 		 panel.add(lblNewLabel_10, gbc_lblNewLabel_10);
-			
+		 
+		 JLabel lblNewLabel_14 = new JLabel();
+		 GridBagConstraints gbc_lblNewLabel_14 = new GridBagConstraints();
+		 img = new ImageIcon(this.getClass().getResource("/asteroid.png")).getImage();
+		 lblNewLabel_14.setIcon(new ImageIcon(img));
+		 gbc_lblNewLabel_14.insets = new Insets(0, 0, 5, 5);
+		 gbc_lblNewLabel_14.gridx = 1;
+		 gbc_lblNewLabel_14.gridy = 1;
+		 panel.add(lblNewLabel_14, gbc_lblNewLabel_14);
+
+		 
+		 JPanel panel_2 = new JPanel();
+		 GridBagConstraints gbc_panel_2 = new GridBagConstraints();
+		 gbc_panel_2.insets = new Insets(0, 0, 0, 5);
+		 gbc_panel_2.fill = GridBagConstraints.BOTH;
+		 gbc_panel_2.gridx = 0;
+		 gbc_panel_2.gridy = 4;
+		 panel.add(panel_2, gbc_panel_2);
+		 panel_2.setLayout(new GridLayout(1, 0, 0, 0));
+		 
+		 JLabel lblNewLabel_11 = new JLabel();
+		 img = new ImageIcon(this.getClass().getResource("/iron.png")).getImage();
+		 GridBagConstraints gbc_lblNewLabel_11 = new GridBagConstraints();
+		 gbc_lblNewLabel_11.insets = new Insets(0, 0, 5, 5);
+		 gbc_lblNewLabel_11.gridx = 0;
+		 gbc_lblNewLabel_11.gridy = 0;
+		 lblNewLabel_11.setIcon(new ImageIcon(img));
+		 panel_2.add(lblNewLabel_11, gbc_lblNewLabel_11);
+		 
+		 JLabel lblNewLabel_12 = new JLabel();
+		 img = new ImageIcon(this.getClass().getResource("/iron.png")).getImage();
+		 GridBagConstraints gbc_lblNewLabel_12 = new GridBagConstraints();
+		 gbc_lblNewLabel_12.insets = new Insets(0, 0, 0, 0);
+		 gbc_lblNewLabel_12.gridx = 0;
+		 gbc_lblNewLabel_12.gridy = 0;
+		 lblNewLabel_12.setIcon(new ImageIcon(img));
+		 panel_2.add(lblNewLabel_12, gbc_lblNewLabel_12);
+		 
+		 JLabel lblNewLabel_13 = new JLabel();
+		 panel_2.add(lblNewLabel_13);
+		 img = new ImageIcon(this.getClass().getResource("/iron.png")).getImage();
+		 GridBagConstraints gbc_lblNewLabel_13 = new GridBagConstraints();
+		 gbc_lblNewLabel_13.insets = new Insets(0, 0, 0, 0);
+		 gbc_lblNewLabel_13.gridx = 0;
+		 gbc_lblNewLabel_13.gridy = 0;
+		 lblNewLabel_13.setIcon(new ImageIcon(img));
+		 panel_2.add(lblNewLabel_13, gbc_lblNewLabel_13);
+
 	}
 
 }
