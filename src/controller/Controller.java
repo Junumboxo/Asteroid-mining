@@ -1,4 +1,4 @@
-package main;
+package controller;
 
 import java.nio.file.FileSystemNotFoundException;
 import java.util.*;
@@ -8,16 +8,25 @@ import resource.*;
 import sun.*;
 import traveller.*;
 
-public class Main {
+public class Controller {
 
-	public static void main(String[] args) {
+	private Game game;
+	private Sun sun;
+	private List<Asteroid> asts;
+	private List<Settler> settlers;
+	private Iterator<Settler> it;
+	private Gate g1, g2;
+	private Scanner in;
+	int input;
+	
+	public Controller() {
 		// initiating the game
-		Game game = new Game();
-		Scanner in = new Scanner(System.in);
+		game = new Game();
+		in = new Scanner(System.in);
 		System.out.println("Welcome to the game! Choose one integer");
 		System.out.println("1. Start the game");
 		System.out.println("2. Exit the game");
-		int input = Integer.parseInt(in.nextLine());
+		input = Integer.parseInt(in.nextLine());
 		while (input != 1) {
 			if (input == 2)
 				System.out.println("Exit from the application");
@@ -26,10 +35,10 @@ public class Main {
 			input = Integer.parseInt(in.nextLine());
 		}
 		game.startGame();
-		Sun sun = game.getSun();
+		sun = game.getSun();
 
 		System.out.print("Create Asteroids ");
-		ArrayList<Asteroid> asts = new ArrayList<Asteroid>();
+		asts = new ArrayList<Asteroid>();
 		input = Integer.parseInt(in.nextLine());
 		System.out.println(input + " Asteroids created");
 		for (int i = 0; i < input; i++) {
@@ -73,7 +82,7 @@ public class Main {
 		}
 
 		System.out.print("Create Settlers ");
-		ArrayList<Settler> settlers = new ArrayList<Settler>();
+		settlers = new ArrayList<Settler>();
 		input = Integer.parseInt(in.nextLine());
 		System.out.println(input + " Settlers created");
 		for (int i = 0; i < input; i++) {
@@ -83,43 +92,24 @@ public class Main {
 		}
 
 		System.out.println("All set!");
-		Iterator<Settler> it = settlers.iterator();
+		it = settlers.iterator();
 		
-		Gate g1 = new Gate();
-		Gate g2 = new Gate();
+		g1 = new Gate(); g2 = new Gate();
 		g1.setPair(g2);
 		g2.setPair(g1);
 		g1.addNeighbour(asts.get(0));
 		g2.addNeighbour(asts.get(1));
 		
-		System.out.println("You have the following opportunities:");
-		System.out.println("Settler travels");
-		System.out.println("Settler drills");
-		System.out.println("Settler mines");
-		System.out.println("Pick up resource");
-		System.out.println("Drop resource");
-		System.out.println("Settler hide");
-		System.out.println("Create robot");
-		System.out.println("Create transport gate");
-		System.out.println("Deploy gate");
-		System.out.println("Robot teleport");
-		System.out.println("Settler teleport");
-		System.out.println("Check win");
-		System.out.println("Check lose");
-		System.out.println("Remove settler");
-		System.out.println("Sunstorm");
-		System.out.println("View inventory");
-		System.out.println("Uranium explodes");
-		System.out.println("Water evaporates");
-
+	}
+	
+	public void takeAction(String action) {
 		while (it.hasNext()) {
 			Settler currentSettler = it.next();
 			System.out.println("It is the turn of settler " + settlers.indexOf(currentSettler));
 			Asteroid currentAsteroid = currentSettler.getAsteroid();
-			
-			String input_command = in.nextLine();
-			switch(input_command.toLowerCase()) {
-			  case "settler travels" :
+
+			switch(action) {
+			  case "travel" :
 				  System.out.println("Choose a neighbour to travel to:");
 				  for (int j = 0; j < currentAsteroid.getNeighbours().size(); j++)
 						System.out.println(asts.indexOf(currentAsteroid.getNeighbours().get(j)) + " ");
@@ -128,19 +118,19 @@ public class Main {
 					  currentSettler.travel(asts.get(input));
 				  break;
 			  
-			  case "settler drills" : 
+			  case "drill" : 
 				  currentSettler.drill();
 				  break;
 			
-			  case "settler mines" :
+			  case "mine" :
 				  currentSettler.mine();
 				  break;
 			  
-			  case "pick up resource" :
+			  case "pick up" :
 				  currentSettler.pickUpResource(); //possible failures are called in pickUpResource() method
 				  break;
 			  
-			  case "drop resource" :
+			  case "drop" :
 				  input = Integer.parseInt(in.nextLine()); //index of the resource to drop
 				  currentSettler.removeResource(currentSettler.getResources().get(input)); //possible failures are called in removeResource()
 				  break;
@@ -149,11 +139,11 @@ public class Main {
 				  currentSettler.hide(currentAsteroid);
 				  break;
 			  
-			  case "create robot" :
+			  case "build robot" :
 				  currentSettler.createRobot();
 				  break;
 			  
-			  case "create transport gate" :
+			  case "build gate" :
 				  currentSettler.createGate();
 				  break;
 			  

@@ -9,6 +9,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
+
+import controller.Controller;
+
 import javax.swing.JSplitPane;
 import javax.swing.JButton;
 import java.awt.FlowLayout;
@@ -38,6 +41,7 @@ import java.awt.event.ActionEvent;
 public class MainWindow extends JFrame {
 
 	private JPanel contentPane;
+	private Controller c;
 	Image image = new ImageIcon(this.getClass().getResource("/background.png")).getImage();
 
 	/**
@@ -60,6 +64,7 @@ public class MainWindow extends JFrame {
 	 * Create the frame.
 	 */
 	public MainWindow() {
+		c = new Controller();
 		contentPane = new JPanel() {
 		         @Override
 		         public void paintComponent(Graphics g) {
@@ -81,42 +86,94 @@ public class MainWindow extends JFrame {
 		contentPane.add(panel_1, BorderLayout.EAST);
 		panel_1.setLayout(new BoxLayout(panel_1, BoxLayout.Y_AXIS));
 
-		JButton btnNewButton = new JButton(" Travel");
+		JButton btnNewButton = new JButton(" Travel ");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				c.takeAction("travel");
+			}
+		});
 		btnNewButton.setFont(new Font("Consolas", Font.BOLD, 10));
 		btnNewButton.setBackground(Color.magenta);
 		btnNewButton.setFocusPainted(false);
 		panel_1.add(btnNewButton);
 
-		JButton btnNewButton_1 = new JButton(" Drill ");
+		JButton btnNewButton_1 = new JButton(" Drill  ");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				c.takeAction("drill");
+			}
+		});
 		btnNewButton_1.setFont(new Font("Consolas", Font.BOLD, 10));
 		btnNewButton_1.setBackground(Color.magenta);
 		btnNewButton_1.setFocusPainted(false);
 		panel_1.add(btnNewButton_1);
 
-		JButton btnNewButton_2 = new JButton(" Mine  ");
+		JButton btnNewButton_2 = new JButton(" Mine   ");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				c.takeAction("mine");
+			}
+		});
 		btnNewButton_2.setFont(new Font("Consolas", Font.BOLD, 10));
 		btnNewButton_2.setBackground(Color.magenta);
 		btnNewButton_2.setFocusPainted(false);
 		panel_1.add(btnNewButton_2);
 
-		JButton btnNewButton_3 = new JButton(" Drop  ");
+		JButton btnNewButton_3 = new JButton(" Drop   ");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				c.takeAction("drop");
+			}
+		});
 		btnNewButton_3.setFont(new Font("Consolas", Font.BOLD, 10));
 		btnNewButton_3.setBackground(Color.magenta);
 		btnNewButton_3.setFocusPainted(false);
 		panel_1.add(btnNewButton_3);
 
-		JButton btnNewButton_4 = new JButton("Pick up");
+		JButton btnNewButton_4 = new JButton("Pick up ");
+		btnNewButton_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				c.takeAction("pick up");
+			}
+		});
 		btnNewButton_4.setFont(new Font("Consolas", Font.BOLD, 10));
 		btnNewButton_4.setBackground(Color.magenta);
 		btnNewButton_4.setFocusPainted(false);
 		btnNewButton_4.setPreferredSize(new Dimension(100, 10));
 		panel_1.add(btnNewButton_4);
 
-		JButton btnNewButton_5 = new JButton(" Build ");
+		JButton btnNewButton_5 = new JButton(" Build R");
+		btnNewButton_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				c.takeAction("build robot");
+			}
+		});
 		btnNewButton_5.setFont(new Font("Consolas", Font.BOLD, 10));
 		btnNewButton_5.setBackground(Color.magenta);
 		btnNewButton_5.setFocusPainted(false);
 		panel_1.add(btnNewButton_5);
+		
+		JButton btnNewButton_6 = new JButton(" Build G");
+		btnNewButton_6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				c.takeAction("build gate");
+			}
+		});
+		btnNewButton_6.setFont(new Font("Consolas", Font.BOLD, 10));
+		btnNewButton_6.setBackground(Color.magenta);
+		btnNewButton_6.setFocusPainted(false);
+		panel_1.add(btnNewButton_6);
+		
+		JButton btnNewButton_7 = new JButton("Deploy G");
+		btnNewButton_7.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				c.takeAction("deploy gate");
+			}
+		});
+		btnNewButton_7.setFont(new Font("Consolas", Font.BOLD, 10));
+		btnNewButton_7.setBackground(Color.magenta);
+		btnNewButton_7.setFocusPainted(false);
+		panel_1.add(btnNewButton_7);
 		
 		//dont need hide according to requirements
 		
