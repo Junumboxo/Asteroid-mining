@@ -39,11 +39,12 @@ public class Controller {
 		game = new Game();
 		in = new Scanner(System.in);
 		System.out.println("Welcome to the game! Choose one integer");
-		System.out.println("1. Start the game");
-		System.out.println("2. Exit the game");
+		System.out.println("1. Create a new game");
+		System.out.println("2. Load a game");
+		System.out.println("3. Exit the game");
 		input = Integer.parseInt(in.nextLine());
-		while (input != 1) {
-			if (input == 2)
+		while (!(input == 1 || input == 2)) {
+			if (input == 3)
 				System.out.println("Exit from the application");
 			System.exit(0);
 			System.out.println("Invalid option! Try again!");
@@ -51,9 +52,11 @@ public class Controller {
 		}
 		game.startGame();
 		sun = game.getSun();
-
-		System.out.print("Create How many Asteroids? ");
+		settlers = new ArrayList<Settler>();
 		asts = new ArrayList<Asteroid>();
+		
+		if (input == 1) {
+		System.out.print("Create How many Asteroids? ");
 		input = Integer.parseInt(in.nextLine());
 		System.out.println(input + " Asteroids created");
 		for (int i = 0; i < input; i++) {
@@ -108,13 +111,60 @@ public class Controller {
 		}
 
 		System.out.print("Create Settlers ");
-		settlers = new ArrayList<Settler>();
 		input = Integer.parseInt(in.nextLine());
 		System.out.println(input + " Settlers created");
 		for (int i = 0; i < input; i++) {
 			settlers.add(new Settler());
 			game.addSettler(settlers.get(i));
 			asts.get(0).placeTraveller(settlers.get(i));
+		}
+		}
+		
+		
+		
+		
+		if (input == 2) {
+			for (int i = 0; i < 3; i++) {
+				asts.add(new Asteroid());
+				asts.get(i).setView(mainFrame.createAsteroidView(i, i));
+				switch (i) {
+				case 0:
+					Iron ir = new Iron();
+					ir.setView(mainFrame.label_iron);
+					asts.get(i).addResource(ir);
+					break;
+				case 1:
+					Water w = new Water();
+					w.setView(mainFrame.label_water);
+					asts.get(i).addResource(w);
+					break;
+				case 2:
+					Uranium u = new Uranium();
+					u.setView(mainFrame.label_uranium);
+					asts.get(i).addResource(u);
+					break;
+				case 3:
+					Carbon c = new Carbon();
+					c.setView(mainFrame.label_carbon);
+					asts.get(i).addResource(c);
+					break;
+				}
+				asts.get(i).setDepth(2);
+			}
+			
+			sun.addAsteroids(asts);
+			for (int i = 0; i < asts.size(); i++) {
+				if (i != 2)
+					asts.get(i).addNeighbour(asts.get(i+1));
+				if (i == 0)
+					asts.get(i).addNeighbour(asts.get(i+2));
+			}
+
+			for (int i = 0; i < 2; i++) {
+				settlers.add(new Settler());
+				game.addSettler(settlers.get(i));
+				asts.get(0).placeTraveller(settlers.get(i));
+			}
 		}
 
 		System.out.println("All set!");
