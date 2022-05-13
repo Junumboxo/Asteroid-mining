@@ -11,6 +11,7 @@ import resource.*;
 import sun.*;
 import traveller.*;
 import views.AsteroidView;
+import views.InventoryItemView;
 import views.MainWindow;
 
 public class Controller {
@@ -62,16 +63,24 @@ public class Controller {
 			System.out.print("Set Resource ");
 			switch (in.nextLine()) {
 			case "Iron":
-				asts.get(i).addResource(new Iron());
+				Iron ir = new Iron();
+				ir.setView(mainFrame.label_iron);
+				asts.get(i).addResource(ir);
 				break;
 			case "Water":
-				asts.get(i).addResource(new Water());
+				Water w = new Water();
+				w.setView(mainFrame.label_water);
+				asts.get(i).addResource(w);
 				break;
 			case "Uranium":
-				asts.get(i).addResource(new Uranium());
+				Uranium u = new Uranium();
+				u.setView(mainFrame.label_uranium);
+				asts.get(i).addResource(u);
 				break;
 			case "Carbon":
-				asts.get(i).addResource(new Carbon());
+				Carbon c = new Carbon();
+				c.setView(mainFrame.label_carbon);
+				asts.get(i).addResource(c);
 				break;
 			default:
 				System.out.println("Resource could not be added!");
@@ -155,7 +164,7 @@ public class Controller {
 			  break;
 		  
 		  case "pick up" :
-			  currentSettler.pickUpResource(); //possible failures are called in pickUpResource() method
+			  currentSettler.pickUpResource();
 			  break;
 		  
 		  case "drop" :
@@ -238,6 +247,7 @@ public class Controller {
 		}
 		currentSettler.setCurrent(false);
 	}
+	
 	protected void finalize()
 	{
 		in.close();

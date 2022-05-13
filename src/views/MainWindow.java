@@ -45,8 +45,10 @@ import java.awt.event.ActionEvent;
 public class MainWindow extends JFrame {
 
 	private JPanel contentPane;
+	private JPanel inventoryPanel;
 	public Controller c;
 	private JPanel panel;
+	public JLabel label_iron, label_carbon, label_uranium, label_water;
 	Image image = new ImageIcon(this.getClass().getResource("/background.png")).getImage();
 
 	/**
@@ -92,7 +94,8 @@ public class MainWindow extends JFrame {
 	 * Create the frame.
 	 */
 	public MainWindow() {
-		
+
+		Image img;
 		contentPane = new JPanel() {
 		         @Override
 		         public void paintComponent(Graphics g) {
@@ -112,15 +115,64 @@ public class MainWindow extends JFrame {
 		contentPane.add(panel, BorderLayout.CENTER);
 		GridBagLayout gbl_panel = new GridBagLayout();
 		gbl_panel.columnWidths = new int[]{177, 0, 267, 0};
-		gbl_panel.rowHeights = new int[]{201, 0, 0, 0, 0, 0};
+		gbl_panel.rowHeights = new int[]{201, 0, 0, 0, 0, 0, 0};
 		gbl_panel.columnWeights = new double[]{1.0, 0.0, 0.0, Double.MIN_VALUE};
-		gbl_panel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gbl_panel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		panel.setLayout(gbl_panel);
 		
+		JLabel lblNewLabel_1 = new JLabel("Inventory");
+		lblNewLabel_1.setForeground(Color.WHITE);
+		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
+		gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNewLabel_1.gridx = 0;
+		gbc_lblNewLabel_1.gridy = 6;
+		panel.add(lblNewLabel_1, gbc_lblNewLabel_1);
+		
+		inventoryPanel = new JPanel();
+		inventoryPanel.setBackground(new Color(5,5,5,5)); GridBagConstraints gbc_panel_2 = new
+		GridBagConstraints(); gbc_panel_2.insets = new Insets(0, 0, 0, 5);
+		gbc_panel_2.fill = GridBagConstraints.BOTH; gbc_panel_2.gridx = 0; gbc_panel_2.gridy = 5;
+		panel.add(inventoryPanel, gbc_panel_2); inventoryPanel.setLayout(new GridLayout(1, 1, 1, 1));
+		inventoryPanel.setBorder(BorderFactory.createLineBorder(Color.white, 3));
+		
+		label_iron = new JLabel();
+		label_iron.setText("0");
+		label_iron.setForeground(Color.WHITE);
+		img = new ImageIcon(this.getClass().getResource("/iron.png")).getImage();
+		label_iron.setIcon(new ImageIcon(img));
+		GridBagConstraints consts = new GridBagConstraints();
+		consts.gridx = 0; consts.gridy = 0;
+		inventoryPanel.add(label_iron, consts);
+		
+		label_uranium = new JLabel();
+		label_uranium.setText("0");
+		label_uranium.setForeground(Color.WHITE);
+		img = new ImageIcon(this.getClass().getResource("/uranium.png")).getImage();
+		label_uranium.setIcon(new ImageIcon(img));
+		GridBagConstraints consts_2 = new GridBagConstraints();
+		consts_2.gridx = 1; consts_2.gridy = 0;
+		inventoryPanel.add(label_uranium, consts_2);
+		
+		label_water = new JLabel();
+		label_water.setText("0");
+		label_water.setForeground(Color.WHITE);
+		img = new ImageIcon(this.getClass().getResource("/ice.png")).getImage();
+		label_water.setIcon(new ImageIcon(img));
+		GridBagConstraints consts_3 = new GridBagConstraints();
+		consts_3.gridx = 0; consts_3.gridy = 1;
+		inventoryPanel.add(label_water, consts_3);
+		
+		label_carbon = new JLabel();
+		label_carbon.setText("0");
+		label_carbon.setForeground(Color.WHITE);
+		img = new ImageIcon(this.getClass().getResource("/coal.png")).getImage();
+		label_carbon.setIcon(new ImageIcon(img));
+		GridBagConstraints consts_4 = new GridBagConstraints();
+		consts_4.gridx = 1; consts_4.gridy = 1;
+		inventoryPanel.add(label_carbon, consts_4);
 
 		Border border = BorderFactory.createLineBorder(Color.BLACK);
 
-		Image img;
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(0,0,0,0));
 		contentPane.add(panel_1, BorderLayout.EAST);
@@ -271,35 +323,6 @@ public class MainWindow extends JFrame {
 		 panel_1.add(lblNewLabel_9);
 		 lblNewLabel_5.setIcon(new ImageIcon(img));
 		 panel_1.add(lblNewLabel_5);
-		 
-			/*
-			 * JPanel panel_2 = new JPanel(); GridBagConstraints gbc_panel_2 = new
-			 * GridBagConstraints(); gbc_panel_2.insets = new Insets(0, 0, 0, 5);
-			 * gbc_panel_2.fill = GridBagConstraints.BOTH; gbc_panel_2.gridx = 0;
-			 * gbc_panel_2.gridy = 4; panel.add(panel_2, gbc_panel_2); panel_2.setLayout(new
-			 * GridLayout(1, 0, 0, 0));
-			 * 
-			 * JLabel lblNewLabel_11 = new JLabel(); img = new
-			 * ImageIcon(this.getClass().getResource("/iron.png")).getImage();
-			 * GridBagConstraints gbc_lblNewLabel_11 = new GridBagConstraints();
-			 * gbc_lblNewLabel_11.insets = new Insets(0, 0, 5, 5); gbc_lblNewLabel_11.gridx
-			 * = 0; gbc_lblNewLabel_11.gridy = 0; lblNewLabel_11.setIcon(new
-			 * ImageIcon(img)); panel_2.add(lblNewLabel_11, gbc_lblNewLabel_11);
-			 * 
-			 * JLabel lblNewLabel_12 = new JLabel(); img = new
-			 * ImageIcon(this.getClass().getResource("/iron.png")).getImage();
-			 * GridBagConstraints gbc_lblNewLabel_12 = new GridBagConstraints();
-			 * gbc_lblNewLabel_12.insets = new Insets(0, 0, 0, 0); gbc_lblNewLabel_12.gridx
-			 * = 0; gbc_lblNewLabel_12.gridy = 0; lblNewLabel_12.setIcon(new
-			 * ImageIcon(img)); panel_2.add(lblNewLabel_12, gbc_lblNewLabel_12);
-			 * 
-			 * JLabel lblNewLabel_13 = new JLabel(); panel_2.add(lblNewLabel_13); img = new
-			 * ImageIcon(this.getClass().getResource("/iron.png")).getImage();
-			 * GridBagConstraints gbc_lblNewLabel_13 = new GridBagConstraints();
-			 * gbc_lblNewLabel_13.insets = new Insets(0, 0, 0, 0); gbc_lblNewLabel_13.gridx
-			 * = 0; gbc_lblNewLabel_13.gridy = 0; lblNewLabel_13.setIcon(new
-			 * ImageIcon(img)); panel_2.add(lblNewLabel_13, gbc_lblNewLabel_13);
-			 */
 		 
 	}
 

@@ -81,7 +81,7 @@ public class Asteroid implements INeighbour{
 
 	public void extract(Settler s)  //Function responsible for mining/picking up the resource.
 	{	
-		if (depth == 0)
+		if (depth == 0) 
 			s.pickUpResource();
 	}
 	

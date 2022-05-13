@@ -49,7 +49,6 @@ public class Settler extends Traveller{
 
     
     public void mine(){ //Requirement R21 
-        //System.out.println("mine()");
        	currentAsteroid.extract(this);
        	System.out.println("Settler mined");
     }
@@ -63,7 +62,7 @@ public class Settler extends Traveller{
         	for ( Resource r : this.getResources())
         	{
         		if (r instanceof Iron) ironCount++;
-        		if (r instanceof Water) carbonCount++;
+        		if (r instanceof Carbon) carbonCount++;
         		if (r instanceof Uranium) uraniumCount++;
         	}
         	if (ironCount>= 1 && carbonCount >= 1 && uraniumCount>= 1) {
@@ -120,19 +119,20 @@ public class Settler extends Traveller{
     }
     
     
-    public void pickUpResource()         //Requirement R55 - picking the resource
+    public void pickUpResource()         //Requirement R55 - picking the resource, bool if new view needed
     {
     	//System.out.println("pickUpResource()");
         Resource res = currentAsteroid.getResource();
    
         if (res == null) {
         	System.out.println("Resource cannot be picked up");
-        	return;
         }
    		if (resourcesOnBoard.size() < 10) {
    			resourcesOnBoard.add(res);
    			currentAsteroid.removeResource();
    			System.out.println("Resource picked up: " + res.getType());
+   			String t = res.getView().getText();
+   			res.getView().setText(Integer.toString(Integer.parseInt(t) + 1));
    		}
    		else { 
    			System.out.println("The capacity is reached");
