@@ -123,7 +123,7 @@ public class Asteroid implements INeighbour{
 				travellers.get(i).die();
 				
 		}
-		isHollow = true;
+		
 		System.out.println("Asteroid is under storm");
 	}
 	

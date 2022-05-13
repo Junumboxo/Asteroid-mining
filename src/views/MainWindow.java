@@ -50,7 +50,6 @@ public class MainWindow extends JFrame {
 	private JPanel panel;
 	public JLabel label_iron, label_carbon, label_uranium, label_water;
 	Image image = new ImageIcon(this.getClass().getResource("/background.png")).getImage();
-
 	/**
 	 * Launch the application.
 	 */
