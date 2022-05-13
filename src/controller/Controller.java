@@ -28,6 +28,11 @@ public class Controller {
 	private Asteroid currentAsteroid;
 	public int[] targetAsteroid = new int[] {-1, -1};
 	
+	public List<Asteroid> getAsts()
+	{
+		return asts;
+	}
+	
 	public Controller(MainWindow main) {
 		mainFrame = main;
 		game = new Game();

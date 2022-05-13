@@ -65,6 +65,8 @@ public class MainWindow extends JFrame {
 		asteroidViews.add(view);
 		newL.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
+				if (c.targetAsteroid[0] != -1 && c.targetAsteroid[1] != -1)
+					c.getAsts().get(c.targetAsteroid[0]).untarget();
 				c.targetAsteroid = new int[] {X, Y};
 				view.update(true);
 			}
