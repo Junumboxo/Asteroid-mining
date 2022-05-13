@@ -1,5 +1,10 @@
 /views/
 /controller/
+<<<<<<< Updated upstream
 /neighbour/
 /traveller/
 /resource/
+=======
+/traveller/
+>>>>>>> Stashed changes
+/settler_current.png

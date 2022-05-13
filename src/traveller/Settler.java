@@ -3,14 +3,19 @@ package traveller;
 import java.util.*;
 import neighbour.*;
 import resource.*;
+import views.AsteroidView;
+import views.SettlerView;
 
 public class Settler extends Traveller{
     List<Resource> resourcesOnBoard = new ArrayList<Resource>(); // Requirement R23
     boolean current = false;
     Gate g1=null;
     Gate g2=null; // Requirement R49
+    private SettlerView view;
   
-
+    public void setView(SettlerView view) {
+		this.view = view;
+	}
     public void deployGate(){
     	if (g1 != null)
     	{

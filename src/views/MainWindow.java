@@ -49,12 +49,14 @@ public class MainWindow extends JFrame {
 	public Controller c;
 	private JPanel panel;
 	public JLabel label_iron, label_carbon, label_uranium, label_water;
+	private JPanel panel_1;
 	Image image = new ImageIcon(this.getClass().getResource("/background.png")).getImage();
 
 	/**
 	 * Launch the application.
 	 */
 	List<AsteroidView> asteroidViews = new ArrayList<AsteroidView> ();
+	List<SettlerView> settlerViews = new ArrayList<SettlerView>();
 	
 	public AsteroidView createAsteroidView(int X, int Y)
 	{
@@ -74,6 +76,18 @@ public class MainWindow extends JFrame {
 			}
 		});
 		return view;
+	}
+	public SettlerView createSettlerView(int settlerNumber) {
+		 JLabel headerLabel = new JLabel("Settler "+ settlerNumber);
+		 JLabel settlerLabel = new JLabel();
+		 SettlerView settlerView = new SettlerView(settlerLabel);
+		 settlerLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		 headerLabel.setForeground(Color.WHITE);
+		 
+		 panel_1.add(headerLabel);
+		 panel_1.add(settlerLabel);
+		 
+		 return settlerView;
 	}
 	
 	public static void main(String[] args) {
@@ -111,6 +125,7 @@ public class MainWindow extends JFrame {
 		setContentPane(contentPane);  
 		
 		panel = new JPanel();
+		
 		panel.setBackground(new Color(5,5,5,5));
 		contentPane.add(panel, BorderLayout.CENTER);
 		GridBagLayout gbl_panel = new GridBagLayout();
@@ -173,7 +188,7 @@ public class MainWindow extends JFrame {
 
 		Border border = BorderFactory.createLineBorder(Color.BLACK);
 
-		JPanel panel_1 = new JPanel();
+		panel_1 = new JPanel();
 		panel_1.setBackground(new Color(0,0,0,0));
 		contentPane.add(panel_1, BorderLayout.EAST);
 		panel_1.setLayout(new BoxLayout(panel_1, BoxLayout.Y_AXIS));
@@ -283,47 +298,6 @@ public class MainWindow extends JFrame {
 		JLabel lblNewLabel = new JLabel("Settlers:");
 		lblNewLabel.setForeground(Color.WHITE);
 		panel_1.add(lblNewLabel);
-		
-		 JLabel lblNewLabel_2 = new JLabel();
-		 lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
-		 img = new ImageIcon(this.getClass().getResource("/settler_alive.png")).getImage();
-		 
-		 JLabel lblNewLabel_7 = new JLabel("Settler 1");
-		 lblNewLabel_7.setForeground(Color.WHITE);
-		 panel_1.add(lblNewLabel_7);
-		 lblNewLabel_2.setIcon(new ImageIcon(img));
-		 panel_1.add(lblNewLabel_2);
-		 
-		 JLabel lblNewLabel_3 = new JLabel();
-		 lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
-		 img = new ImageIcon(this.getClass().getResource("/settler_alive.png")).getImage();
-		 
-		 JLabel lblNewLabel_6 = new JLabel("Settler 2");
-		 lblNewLabel_6.setForeground(Color.WHITE);
-		 panel_1.add(lblNewLabel_6);
-		 lblNewLabel_3.setIcon(new ImageIcon(img));
-		 panel_1.add(lblNewLabel_3);
-		 
-		 JLabel lblNewLabel_4 = new JLabel();
-		 lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
-		 img = new ImageIcon(this.getClass().getResource("/settler_alive.png")).getImage();
-		 
-		 JLabel lblNewLabel_8 = new JLabel("Settler 3");
-		 lblNewLabel_8.setForeground(Color.WHITE);
-		 panel_1.add(lblNewLabel_8);
-		 lblNewLabel_4.setIcon(new ImageIcon(img));
-		 panel_1.add(lblNewLabel_4);
-			
-		 JLabel lblNewLabel_5 = new JLabel();
-		 lblNewLabel_5.setHorizontalAlignment(SwingConstants.CENTER);
-		 img = new ImageIcon(this.getClass().getResource("/settler_alive.png")).getImage();
-		 
-		 JLabel lblNewLabel_9 = new JLabel("Settler 4");
-		 lblNewLabel_9.setForeground(Color.WHITE);
-		 panel_1.add(lblNewLabel_9);
-		 lblNewLabel_5.setIcon(new ImageIcon(img));
-		 panel_1.add(lblNewLabel_5);
-		 
 	}
 
 }
