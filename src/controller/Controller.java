@@ -121,10 +121,9 @@ public class Controller {
 		for (int i = 0; i < input; i++) {
 			settlers.add(new Settler());
 			game.addSettler(settlers.get(i));
+			asts.get(0).placeTraveller(settlers.get(i));
 			settlers.get(i).setView(mainFrame.createSettlerView(i+1));
-			//mainFrame.createSettlerView(i+1);
 		}
-<<<<<<< Updated upstream
 		}
 		
 		
@@ -171,13 +170,12 @@ public class Controller {
 				settlers.add(new Settler());
 				game.addSettler(settlers.get(i));
 				asts.get(0).placeTraveller(settlers.get(i));
+				settlers.get(i).setView(mainFrame.createSettlerView(i+1));
 			}
 		}
 
-=======
 		System.out.println(input + " Settlers created");
 		
->>>>>>> Stashed changes
 		System.out.println("All set!");
 		it = settlers.iterator();
 		

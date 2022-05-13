@@ -48,11 +48,8 @@ public class MainWindow extends JFrame {
 	private JPanel inventoryPanel;
 	public Controller c;
 	private JPanel panel;
-<<<<<<< Updated upstream
 	public JLabel label_iron, label_carbon, label_uranium, label_water;
-=======
 	private JPanel panel_1;
->>>>>>> Stashed changes
 	Image image = new ImageIcon(this.getClass().getResource("/background.png")).getImage();
 
 	/**
@@ -191,12 +188,7 @@ public class MainWindow extends JFrame {
 
 		Border border = BorderFactory.createLineBorder(Color.BLACK);
 
-<<<<<<< Updated upstream
-		JPanel panel_1 = new JPanel();
-=======
-		Image img;
 		panel_1 = new JPanel();
->>>>>>> Stashed changes
 		panel_1.setBackground(new Color(0,0,0,0));
 		contentPane.add(panel_1, BorderLayout.EAST);
 		panel_1.setLayout(new BoxLayout(panel_1, BoxLayout.Y_AXIS));
@@ -306,80 +298,6 @@ public class MainWindow extends JFrame {
 		JLabel lblNewLabel = new JLabel("Settlers:");
 		lblNewLabel.setForeground(Color.WHITE);
 		panel_1.add(lblNewLabel);
-		/*
-		//Creating settler1View
-		 JLabel lblNewLabel_2 = new JLabel();
-		 lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
-		 img = new ImageIcon(this.getClass().getResource("/settler_alive.png")).getImage();
-		 
-		 JLabel lblNewLabel_7 = new JLabel("Settler 1");
-		 lblNewLabel_7.setForeground(Color.WHITE);
-		 panel_1.add(lblNewLabel_7);
-		 lblNewLabel_2.setIcon(new ImageIcon(img));
-		 panel_1.add(lblNewLabel_2);
-		 
-		 //Creating Settler2View
-		 JLabel lblNewLabel_3 = new JLabel();
-		 lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
-		 img = new ImageIcon(this.getClass().getResource("/settler_alive.png")).getImage();
-		 JLabel lblNewLabel_6 = new JLabel("Settler 2");
-		 lblNewLabel_6.setForeground(Color.WHITE);
-		 panel_1.add(lblNewLabel_6);
-		 lblNewLabel_3.setIcon(new ImageIcon(img));
-		 panel_1.add(lblNewLabel_3);
-		 
-		 JLabel lblNewLabel_4 = new JLabel();
-		 lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
-		 img = new ImageIcon(this.getClass().getResource("/settler_alive.png")).getImage();
-		 
-		 JLabel lblNewLabel_8 = new JLabel("Settler 3");
-		 lblNewLabel_8.setForeground(Color.WHITE);
-		 panel_1.add(lblNewLabel_8);
-		 lblNewLabel_4.setIcon(new ImageIcon(img));
-		 panel_1.add(lblNewLabel_4);
-			
-		 JLabel lblNewLabel_5 = new JLabel();
-		 lblNewLabel_5.setHorizontalAlignment(SwingConstants.CENTER);
-		 img = new ImageIcon(this.getClass().getResource("/settler_alive.png")).getImage();
-		 
-		 JLabel lblNewLabel_9 = new JLabel("Settler 4");
-		 lblNewLabel_9.setForeground(Color.WHITE);
-		 panel_1.add(lblNewLabel_9);
-		 lblNewLabel_5.setIcon(new ImageIcon(img));
-		 panel_1.add(lblNewLabel_5);
-<<<<<<< Updated upstream
-=======
-		 */
-			/*
-			 * JPanel panel_2 = new JPanel(); GridBagConstraints gbc_panel_2 = new
-			 * GridBagConstraints(); gbc_panel_2.insets = new Insets(0, 0, 0, 5);
-			 * gbc_panel_2.fill = GridBagConstraints.BOTH; gbc_panel_2.gridx = 0;
-			 * gbc_panel_2.gridy = 4; panel.add(panel_2, gbc_panel_2); panel_2.setLayout(new
-			 * GridLayout(1, 0, 0, 0));
-			 * 
-			 * JLabel lblNewLabel_11 = new JLabel(); img = new
-			 * ImageIcon(this.getClass().getResource("/iron.png")).getImage();
-			 * GridBagConstraints gbc_lblNewLabel_11 = new GridBagConstraints();
-			 * gbc_lblNewLabel_11.insets = new Insets(0, 0, 5, 5); gbc_lblNewLabel_11.gridx
-			 * = 0; gbc_lblNewLabel_11.gridy = 0; lblNewLabel_11.setIcon(new
-			 * ImageIcon(img)); panel_2.add(lblNewLabel_11, gbc_lblNewLabel_11);
-			 * 
-			 * JLabel lblNewLabel_12 = new JLabel(); img = new
-			 * ImageIcon(this.getClass().getResource("/iron.png")).getImage();
-			 * GridBagConstraints gbc_lblNewLabel_12 = new GridBagConstraints();
-			 * gbc_lblNewLabel_12.insets = new Insets(0, 0, 0, 0); gbc_lblNewLabel_12.gridx
-			 * = 0; gbc_lblNewLabel_12.gridy = 0; lblNewLabel_12.setIcon(new
-			 * ImageIcon(img)); panel_2.add(lblNewLabel_12, gbc_lblNewLabel_12);
-			 * 
-			 * JLabel lblNewLabel_13 = new JLabel(); panel_2.add(lblNewLabel_13); img = new
-			 * ImageIcon(this.getClass().getResource("/iron.png")).getImage();
-			 * GridBagConstraints gbc_lblNewLabel_13 = new GridBagConstraints();
-			 * gbc_lblNewLabel_13.insets = new Insets(0, 0, 0, 0); gbc_lblNewLabel_13.gridx
-			 * = 0; gbc_lblNewLabel_13.gridy = 0; lblNewLabel_13.setIcon(new
-			 * ImageIcon(img)); panel_2.add(lblNewLabel_13, gbc_lblNewLabel_13);
-			 */
->>>>>>> Stashed changes
-		 
 	}
 
 }
