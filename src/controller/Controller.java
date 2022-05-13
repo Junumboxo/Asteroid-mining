@@ -13,6 +13,7 @@ import traveller.*;
 import views.AsteroidView;
 import views.InventoryItemView;
 import views.MainWindow;
+import views.SettlerView;
 
 public class Controller {
 
@@ -34,6 +35,10 @@ public class Controller {
 		return asts;
 	}
 	
+	public List<Settler> getSettlers()
+	{
+		return settlers;
+	}
 	public Controller(MainWindow main) {
 		mainFrame = main;
 		game = new Game();
@@ -112,12 +117,14 @@ public class Controller {
 
 		System.out.print("Create Settlers ");
 		input = Integer.parseInt(in.nextLine());
-		System.out.println(input + " Settlers created");
+		
 		for (int i = 0; i < input; i++) {
 			settlers.add(new Settler());
 			game.addSettler(settlers.get(i));
-			asts.get(0).placeTraveller(settlers.get(i));
+			settlers.get(i).setView(mainFrame.createSettlerView(i+1));
+			//mainFrame.createSettlerView(i+1);
 		}
+<<<<<<< Updated upstream
 		}
 		
 		
@@ -167,6 +174,10 @@ public class Controller {
 			}
 		}
 
+=======
+		System.out.println(input + " Settlers created");
+		
+>>>>>>> Stashed changes
 		System.out.println("All set!");
 		it = settlers.iterator();
 		
