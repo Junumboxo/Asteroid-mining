@@ -40,6 +40,7 @@ public class Settler extends Traveller{
     public void setCurrent(boolean c)
     {
     	current = c;
+    	view.update(current);
     }
     
     public void setInventory()
@@ -55,7 +56,6 @@ public class Settler extends Traveller{
     
     public void mine(){ //Requirement R21 
        	currentAsteroid.extract(this);
-       	System.out.println("Settler mined");
     }
 
         
