@@ -54,9 +54,10 @@ public class MainWindow extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	List<AsteroidView> asteroidViews = new ArrayList<AsteroidView> ();
-	List<SettlerView> settlerViews = new ArrayList<SettlerView>();
+	List<AsteroidView> asteroidViews = new ArrayList<AsteroidView> (); // List that stores asteroid views
+	List<SettlerView> settlerViews = new ArrayList<SettlerView>(); // List that stores settler views
 	
+	//gets x and y parameters and creates the asteroids graphical representation
 	public AsteroidView createAsteroidView(int X, int Y)
 	{
 		JLabel newL = new JLabel();
@@ -76,6 +77,7 @@ public class MainWindow extends JFrame {
 		});
 		return view;
 	}
+	//gets a number of settlers as a parameter and creates the settler graphical representation
 	public SettlerView createSettlerView(int settlerNumber) {
 		 JLabel headerLabel = new JLabel("Settler "+ settlerNumber);
 		 JLabel settlerLabel = new JLabel();
