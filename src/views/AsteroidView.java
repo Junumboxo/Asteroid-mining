@@ -15,13 +15,15 @@ public class AsteroidView {
 	private Image img;
 	private JLabel label;
 	
+	//constructor to initialise an asteroid's view
 	public AsteroidView(JLabel label) {
 		 this.label = label;
 		 imageAddr = "/asteroid.png";
 		 img = new ImageIcon(this.getClass().getResource(imageAddr)).getImage();
 		 this.label.setIcon(new ImageIcon(img));
 	}
-
+        
+	//gets a boolean type parameter and updates the imageAddr attribute
 	public void update(boolean selected) {
 		if (selected)
 			imageAddr = "/asteroid_current.png";
