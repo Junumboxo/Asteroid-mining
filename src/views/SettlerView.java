@@ -13,8 +13,8 @@ public class SettlerView {
 	//constructor to initialize a settler's view
 	public SettlerView(JLabel label) {
 		this.label = label;
-		imageAddr = "/settler_alive.png";
-		img = new ImageIcon(this.getClass().getResource(imageAddr)).getImage();
+		imageAddr = "/img/settler_alive.png";
+		img = new ImageIcon(SettlerView.class.getResource(imageAddr)).getImage();
 		this.label.setIcon(new ImageIcon(img));
 		
 	}
@@ -22,10 +22,10 @@ public class SettlerView {
 	//gets a boolean type parameter and adds an image to the label
 	public void update(boolean selected) {
 		if (selected)
-			imageAddr = "/settler_current.png";
+			imageAddr = "/img/settler_current.png";
 		else 
-			imageAddr = "/settler_alive.png";
-		img = new ImageIcon(this.getClass().getResource(imageAddr)).getImage();
+			imageAddr = "/img/settler_alive.png";
+		img = new ImageIcon(SettlerView.class.getResource(imageAddr)).getImage();
 		label.setIcon(new ImageIcon(img));
 	}
 }

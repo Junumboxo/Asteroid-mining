@@ -18,7 +18,7 @@ public class AsteroidView {
 	//constructor to initialise an asteroid's view
 	public AsteroidView(JLabel label) {
 		 this.label = label;
-		 imageAddr = "/asteroid.png";
+		 imageAddr = "/img/asteroid.png";
 		 img = new ImageIcon(this.getClass().getResource(imageAddr)).getImage();
 		 this.label.setIcon(new ImageIcon(img));
 	}
@@ -26,9 +26,9 @@ public class AsteroidView {
 	//gets a boolean type parameter and updates the imageAddr attribute
 	public void update(boolean selected) {
 		if (selected)
-			imageAddr = "/asteroid_current.png";
+			imageAddr = "/img/asteroid_current.png";
 		else 
-			imageAddr = "/asteroid.png";
+			imageAddr = "/img/asteroid.png";
 		img = new ImageIcon(this.getClass().getResource(imageAddr)).getImage();
 		label.setIcon(new ImageIcon(img));
 	}

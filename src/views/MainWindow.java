@@ -50,7 +50,7 @@ public class MainWindow extends JFrame {
 	private JPanel panel;
 	public JLabel label_iron, label_carbon, label_uranium, label_water;
 	private JPanel panel_1;
-	Image image = new ImageIcon(this.getClass().getResource("/background.png")).getImage();
+	Image image = new ImageIcon(MainWindow.class.getResource("/img/background.png")).getImage();
 	/**
 	 * Launch the application.
 	 */
@@ -154,7 +154,7 @@ public class MainWindow extends JFrame {
 		label_iron = new JLabel();
 		label_iron.setText("0");
 		label_iron.setForeground(Color.WHITE);
-		img = new ImageIcon(this.getClass().getResource("/iron.png")).getImage();
+		img = new ImageIcon(MainWindow.class.getResource("/img/iron.png")).getImage();
 		label_iron.setIcon(new ImageIcon(img));
 		GridBagConstraints consts = new GridBagConstraints();
 		consts.gridx = 0; consts.gridy = 0;
@@ -163,7 +163,7 @@ public class MainWindow extends JFrame {
 		label_uranium = new JLabel();
 		label_uranium.setText("0");
 		label_uranium.setForeground(Color.WHITE);
-		img = new ImageIcon(this.getClass().getResource("/uranium.png")).getImage();
+		img = new ImageIcon(MainWindow.class.getResource("/img/uranium.png")).getImage();
 		label_uranium.setIcon(new ImageIcon(img));
 		GridBagConstraints consts_2 = new GridBagConstraints();
 		consts_2.gridx = 1; consts_2.gridy = 0;
@@ -172,7 +172,7 @@ public class MainWindow extends JFrame {
 		label_water = new JLabel();
 		label_water.setText("0");
 		label_water.setForeground(Color.WHITE);
-		img = new ImageIcon(this.getClass().getResource("/ice.png")).getImage();
+		img = new ImageIcon(MainWindow.class.getResource("/img/ice.png")).getImage();
 		label_water.setIcon(new ImageIcon(img));
 		GridBagConstraints consts_3 = new GridBagConstraints();
 		consts_3.gridx = 0; consts_3.gridy = 1;
@@ -181,7 +181,7 @@ public class MainWindow extends JFrame {
 		label_carbon = new JLabel();
 		label_carbon.setText("0");
 		label_carbon.setForeground(Color.WHITE);
-		img = new ImageIcon(this.getClass().getResource("/coal.png")).getImage();
+		img = new ImageIcon(MainWindow.class.getResource("/img/coal.png")).getImage();
 		label_carbon.setIcon(new ImageIcon(img));
 		GridBagConstraints consts_4 = new GridBagConstraints();
 		consts_4.gridx = 1; consts_4.gridy = 1;
