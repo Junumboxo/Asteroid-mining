@@ -39,6 +39,7 @@ public class Controller {
 	{
 		return settlers;
 	}
+	//updates the game according to the user commands
 	public Controller(MainWindow main) {
 		mainFrame = main;
 		game = new Game();
@@ -186,7 +187,7 @@ public class Controller {
 		g2.addNeighbour(asts.get(1));
 		
 	}
-	
+	//writes the current settler's index to the console and sets the current Asteroid
 	public void gameTurns() {
 		currentSettler = it.next();
 		currentSettler.setCurrent(true);
@@ -194,6 +195,7 @@ public class Controller {
 		currentAsteroid = currentSettler.getAsteroid();
 	}
 	
+	//updates the game according to the user commands
 	public void takeAction(String action) {
 		gameTurns();
 		switch(action) {
