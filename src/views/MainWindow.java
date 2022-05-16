@@ -111,7 +111,7 @@ public class MainWindow extends JFrame {
 	public MainWindow() {
 
 		Image img;
-		contentPane = new JPanel() {
+		contentPane = new JPanel() { // Creates the main Panel
 		         @Override
 		         public void paintComponent(Graphics g) {
 		            super.paintComponent(g);
@@ -128,7 +128,7 @@ public class MainWindow extends JFrame {
 		panel = new JPanel();
 		
 		panel.setBackground(new Color(5,5,5,5));
-		contentPane.add(panel, BorderLayout.CENTER);
+		contentPane.add(panel, BorderLayout.CENTER); // Adds a new panel to the center of the main one
 		GridBagLayout gbl_panel = new GridBagLayout();
 		gbl_panel.columnWidths = new int[]{177, 0, 267, 0};
 		gbl_panel.rowHeights = new int[]{201, 0, 0, 0, 0, 0, 0};
@@ -136,7 +136,7 @@ public class MainWindow extends JFrame {
 		gbl_panel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		panel.setLayout(gbl_panel);
 		
-		JLabel lblNewLabel_1 = new JLabel("Inventory");
+		JLabel lblNewLabel_1 = new JLabel("Inventory"); // Adds a new label for the inventory
 		lblNewLabel_1.setForeground(Color.WHITE);
 		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
 		gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
@@ -154,8 +154,9 @@ public class MainWindow extends JFrame {
 		label_iron = new JLabel();
 		label_iron.setText("0");
 		label_iron.setForeground(Color.WHITE);
-		img = new ImageIcon(MainWindow.class.getResource("/img/iron.png")).getImage();
-		label_iron.setIcon(new ImageIcon(img));
+
+		img = new ImageIcon(this.getClass().getResource("/iron.png")).getImage(); // Gets an iron image
+		label_iron.setIcon(new ImageIcon(img)); // Sets the image to the label
 		GridBagConstraints consts = new GridBagConstraints();
 		consts.gridx = 0; consts.gridy = 0;
 		inventoryPanel.add(label_iron, consts);
@@ -195,6 +196,7 @@ public class MainWindow extends JFrame {
 		panel_1.setLayout(new BoxLayout(panel_1, BoxLayout.Y_AXIS));
 
 		JButton btnNewButton = new JButton(" Travel ");
+		// Adding an action listener for the button "Travel"
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				c.takeAction("travel");

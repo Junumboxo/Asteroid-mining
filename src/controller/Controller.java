@@ -66,15 +66,15 @@ public class Controller {
 		input = Integer.parseInt(in.nextLine());
 		System.out.println(input + " Asteroids created");
 		for (int i = 0; i < input; i++) {
-			asts.add(new Asteroid());
+			asts.add(new Asteroid()); //adds a new asteroid to the list
 			System.out.println("Coordinates: " + i + ", " + i);
-			asts.get(i).setView(mainFrame.createAsteroidView(i, i));
+			asts.get(i).setView(mainFrame.createAsteroidView(i, i)); //sets the view
 			System.out.print("Set Resource ");
 			switch (in.nextLine()) {
 			case "Iron":
 				Iron ir = new Iron();
-				ir.setView(mainFrame.label_iron);
-				asts.get(i).addResource(ir);
+				ir.setView(mainFrame.label_iron); // changes the view
+				asts.get(i).addResource(ir); // add the resource to the asteroid
 				break;
 			case "Water":
 				Water w = new Water();
@@ -95,7 +95,7 @@ public class Controller {
 				System.out.println("Resource could not be added!");
 			}
 			System.out.print("Set Depth ");
-			asts.get(i).setDepth(Integer.parseInt(in.nextLine()));
+			asts.get(i).setDepth(Integer.parseInt(in.nextLine())); // set the asteroid depth according to the user command
 		}
 		
 		sun.addAsteroids(asts);
@@ -104,6 +104,7 @@ public class Controller {
 		for (int i = 0; i < asts.size(); i++) {
 			System.out.println("Finish with -1. Add neighbours to Asteroid " + i);
 			input = Integer.parseInt(in.nextLine());
+			// Adds a new neighbour to the asteroid i 
 			while (input != -1) {
 				if (input < asts.size())
 					asts.get(i).addNeighbour(asts.get(input));
@@ -113,17 +114,17 @@ public class Controller {
 			}
 			System.out.println("Neighbours of " + i);
 			for (int j = 0; j < asts.get(i).getNeighbours().size(); j++)
-				System.out.println(asts.indexOf(asts.get(i).getNeighbours().get(j)) + " ");
+				System.out.println(asts.indexOf(asts.get(i).getNeighbours().get(j)) + " "); // traverse the asteroid list and prints all the neighbpurs
 		}
 
 		System.out.print("Create Settlers ");
 		input = Integer.parseInt(in.nextLine());
 		
 		for (int i = 0; i < input; i++) {
-			settlers.add(new Settler());
+			settlers.add(new Settler()); // Creates the number of settlers according to the user input
 			game.addSettler(settlers.get(i));
-			asts.get(0).placeTraveller(settlers.get(i));
-			settlers.get(i).setView(mainFrame.createSettlerView(i+1));
+			asts.get(0).placeTraveller(settlers.get(i)); // Sets the settlers to the appropriate asteroid
+			settlers.get(i).setView(mainFrame.createSettlerView(i+1)); 
 		}
 		}
 		
@@ -205,7 +206,7 @@ public class Controller {
 			  else
 			  {
 				  if (currentAsteroid.getNeighbours().contains(asts.get(targetAsteroid[0])))
-					  currentSettler.travel(asts.get(input));
+					  currentSettler.travel(asts.get(input)); // Settlers travels to the target asteroid
 					  
 				  else if (currentAsteroid.equals(asts.get(targetAsteroid[0])))
 					  System.out.println("This is the current asteroid!");
